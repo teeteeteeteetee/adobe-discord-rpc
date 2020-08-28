@@ -1,0 +1,19 @@
+{
+    "adobe": [
+        {
+            "appName": "Photoshop",
+            "processExe": "photoshop.exe",
+            "clientID": "748586506888806460"
+        },
+        {
+            "appName": "Premiere Pro",
+            "processExe": "adobe premiere pro.exe",
+            "clientID": "748580494324662353"
+        },
+        {
+            "appName": "After Effects",
+            "processExe": "afterfx.exe",
+            "clientID": "748567063185850500"
+        }
+    ]
+}

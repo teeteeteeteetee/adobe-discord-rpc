@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <ExtensionList>
+        <Extension Id="com.tee.discord.rpc">
+           <HostList>
+
+                <Host Name="PHXS" Port="8088"/>
+                <Host Name="PHSP" Port="8089"/>
+                <Host Name="PHSP" Port="8090"/>
+                <Host Name="PHXS" Port="8091"/>
+                <Host Name="IDSN" Port="8092"/>
+                <Host Name="AICY" Port="8093"/>
+                <Host Name="ILST" Port="8094"/>
+                <Host Name="PPRO" Port="8095"/>
+                <Host Name="PRLD" Port="8096"/>
+                <Host Name="AEFT" Port="8097"/>
+                <Host Name="ILST" Port="8098"/>
+                <Host Name="FLPR" Port="8099"/>
+                <Host Name="AUDT" Port="8100"/>
+                <Host Name="DRWV" Port="8101"/>
+                <Host Name="MUSE" Port="8102"/>
+                <Host Name="KBRG" Port="8103"/>
+
+            </HostList>
+        </Extension>
+    </ExtensionList>  
