@@ -5,7 +5,7 @@ var config = require("./config.json")
 
 var port = config.server.port
 
-module.exports = run
+module.exports = run;
 
 function run(){
 
@@ -25,7 +25,7 @@ function connect(){
 }
 
 app.get("/version", (req, res, next) => {
-	res.send("ok")
+    res.send("ok")
 });
    
 }

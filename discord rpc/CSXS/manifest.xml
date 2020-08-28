@@ -66,6 +66,8 @@
       <Resources>
         <MainPath>./client/localServer.html</MainPath>
         <CEFCommandLine>
+          <Parameter>--allow-file-access</Parameter>
+					<Parameter>--allow-file-access-from-files</Parameter>
           <Parameter>--enable-nodejs</Parameter>
           <Parameter>--mixed-context</Parameter>
         </CEFCommandLine>
@@ -73,10 +75,15 @@
       <Lifecycle>
         <AutoVisible>false</AutoVisible>
       </Lifecycle>
-      <UI>
-        <Type>Custom</Type>
-        <Icons />
-      </UI>
+        <UI>
+          <Type>Custom</Type>
+          <Geometry>
+            <Size>
+              <Height>600</Height>
+              <Width>600</Width>
+            </Size>
+          </Geometry>
+        </UI>
     </DispatchInfo>
   </Extension>
   </DispatchInfoList>
