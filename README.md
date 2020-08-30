@@ -5,5 +5,7 @@
 - Premiere Pro
 - Audition
 
-![Demo](demo/preview.gif)
+![](demo/preview.gif)
 - Shows Composition and the name of the file as a status on Discord
+
+![](demo/rpc.gif)
