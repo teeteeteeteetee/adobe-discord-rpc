@@ -1,37 +1,56 @@
-exports.rpc = function(version) {
-    const RPC = require("discord-rpc");
-    const rpc = new RPC.Client({
-        transport: "ipc"
-    });
+var RPC = require("discord-rpc");
+var rpc = new RPC.Client({
+    transport: "ipc"
+});
+
+var currentTime = new Date()
+
+module.exports = discord
+
+function discord (appID, state, details, smallImageKey, smallImageText, largeImageText) {
+    console.log("RPC")
     
     const apps = require("./adobe.json")
     
-    var app;
-    var exec = require('child_process').exec;
+    // var app;
+    // var exec = require('child_process').exec;
     
-    exec('tasklist', function(err, stdout, stderr) {
+    // exec('tasklist', function(err, stdout, stderr) {
     
-        var output = stdout.toLowerCase()
+    //     var output = stdout.toLowerCase()
     
-    for (let index = 0; index < apps.adobe.length; index++) {
-        const element = apps.adobe[index]
+    // for (let index = 0; index < apps.adobe.length; index++) {
+    //     const element = apps.adobe[index]
     
-        var check = output.includes(element.processExe)
-        if(check == true){
-            app = element.processExe
-            console.log(app)
-        }
+    //     var check = output.includes(element.processExe)
+    //     if(check == true){
+    //         app = element.processExe
+    //         console.log(app)
+    //     }
+    // }
+    
+    // });
+
+    function setActivity(){
+        rpc.setActivity({
+            largeImageKey: "logo",
+            smallImageKey: smallImageKey,
+            smallImageText: smallImageText,
+            largeImageText: largeImageText,
+            details: details,
+            state: state,
+            startTimestamp: currentTime
+        })
     }
     
-    });
-    
-    rpc.on("ready", () => {
-        rpc.setActivity({
-            largeImageKey: "logo"
-        })
-    })
-    
-    rpc.login({
-        clientId: "748568089939148832"
+   
+rpc.login({
+    clientId: "748568089939148832"
+})
+
+rpc.on("ready", () => {
+    console.log("ready")
+    setActivity();
     })
 }
+
