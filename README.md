@@ -1,6 +1,6 @@
 # Adobe Discord Rich Presence
 
-INSTALLATION GUIDE
+![Installation guide](https://github.com/lolitee/adobe-discord-rpc/blob/master/GUIDE.md)
 
 **Support**s:
 - After Effects
