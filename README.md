@@ -1,4 +1,7 @@
 # Adobe Discord Rich Presence
+
+INSTALLATION GUIDE
+
 **Support**s:
 - After Effects
 - Photoshop
