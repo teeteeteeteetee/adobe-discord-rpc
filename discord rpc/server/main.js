@@ -8,7 +8,9 @@ var lock;
 
 module.exports = run;
 
-function run(){
+function run(x){
+
+  lock = x;
 
     connect();
 
@@ -16,14 +18,14 @@ process.on('uncaughtException', (err) => {
     console.log(err)
     if (err.code === 'EADDRINUSE') {
       console.log("port is currently in use")
-      setTimeout(function(){ connect()}, 15e3)
-      return;
+      setTimeout(function(){ connect()}, 2e3)
       //retry if failed
+      return;
     }
 });
 
 function connect(){
-    app.listen(port)
+    app.listen(port, 'localhost')
     console.log("connecting")
 }
 

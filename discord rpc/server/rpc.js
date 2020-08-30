@@ -42,10 +42,9 @@ function discord (appID, state, details, smallImageKey, smallImageText, largeIma
             startTimestamp: currentTime
         })
     }
-    
    
 rpc.login({
-    clientId: "748568089939148832"
+    clientId: apps[appID].clientID
 })
 
 rpc.on("ready", () => {

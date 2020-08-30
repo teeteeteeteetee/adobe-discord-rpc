@@ -2,8 +2,10 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<script src="index.js"></script>
+	<script src="../lib/CSInterface.js"></script>
 	<script>
-	    var localServer = cep_node.require(__dirname + '/server/main.js')();
+	    var localServer = cep_node.require(__dirname + '/server/main.js')(getAppID());
 	</script>
 	<title>localServer</title>
 </head>

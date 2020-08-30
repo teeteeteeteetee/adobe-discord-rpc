@@ -9,6 +9,16 @@ function AETitle(){
 }
 
 function AEComp(){
-    var info = app.project.activeItem.name
+    var info = app.project.activeItem.name;
+    return info;
+}
+
+function PSTitle(){
+    var info = app.activeDocument.name
+    return info;
+}
+
+function PSLayer(){
+    var info = app.activeDocument.activeLayer.name
     return info;
 }

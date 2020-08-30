@@ -1,22 +1,41 @@
 {
-    "adobe": [
-        {
-            "appName": "Photoshop",
-            "processExe": "photoshop.exe",
-            "ID": "PHXS",
-            "clientID": "748586506888806460"
-        },
-        {
-            "appName": "Premiere Pro",
-            "processExe": "adobe premiere pro.exe",
-            "ID": "PPRO",
-            "clientID": "748580494324662353"
-        },
-        {
-            "appName": "After Effects",
-            "processExe": "afterfx.exe",
-            "ID": "AEFT",
-            "clientID": "748567063185850500"
-        }
-    ]
+    "PHSP": {
+        "clientID": "748586506888806460"
+    },
+    "PHXS": {
+        "clientID": "748586506888806460"
+    },
+    "IDSN": {
+        "clientID": ""
+    },
+    "AICY": {
+        "clientID": ""
+    },
+    "ILST": {
+        "clientID": ""
+    },
+    "PPRO": {
+        "clientID": "748580494324662353"
+    },
+    "PRLD": {
+        "clientID": ""
+    },
+    "AEFT": {
+        "clientID": "748568089939148832"
+    },
+    "FLPR": {
+        "clientID": ""
+    },
+    "AUDT": {
+        "clientID": ""
+    },
+    "DRWV": {
+        "clientID": ""
+    },
+    "MUSE": {
+        "clientID": ""
+    },
+    "KBRG": {
+        "clientID": ""
+    }
 }

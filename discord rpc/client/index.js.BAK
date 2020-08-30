@@ -6,7 +6,7 @@
 
 var csInterface = new CSInterface();
 var appID, state, details, smallImageKey, smallImageText, largeImageText;
-var stateOld, detailsOld, smallImageKeyOld, smallImageTextOld, largeImageTextOld;
+
 //server
 csInterface.requestOpenExtension("com.tee.server");
 
@@ -35,23 +35,13 @@ function getApp () {
             csInterface.evalScript('PSTitle()', response => {
                 if(response === ("EvalScript error.")){
                     response = "Idle";
-                }
+                } 
                 details = response
             })
-            csInterface.evalScript('PSLayer()', response => {
-                if(response === ("EvalScript error.")){
-                    response = undefined
-                    smallImageKey = undefined
-                } else {
-                    smallImageKey = "edit"
-                    smallImageText = `Editing ${details}`
-                }
-                console.log(response)
-                state = response
-            })
+            state = "test"
+            smallImageKey = "logo"
 
-
-              
+            put(appID, state, details, smallImageKey, smallImageText, largeImageText);
 
             break;
         case "PHXS":
@@ -77,7 +67,7 @@ function getApp () {
             })
 
             put(appID, state, details, smallImageKey, smallImageText, largeImageText);
-            
+
             break;
         case "IDSN":
             break;
@@ -144,31 +134,23 @@ function refresh(timer){
     setTimeout(function(){ getApp()}, timer)
 }
 
-function put(appID, state, details, smallImageKey, smallImageText, largeImageText){
+function put(appID, state, details, smallImageKey){
 
-    if(state != stateOld || details != detailsOld || smallImageKey != smallImageKeyOld || smallImageText != smallImageTextOld || largeImageText != largeImageTextOld){
-        let data = {
-            "appID": appID,
-            "state": state,
-            "details": details,
-            "smallImageKey": smallImageKey,
-            "smallImageText": smallImageText,
-            "largeImageText": largeImageText
-        }
-        
-            $.ajax({
-                type: 'PUT',
-                url: 'http://localhost:6767/rpc/',
-                contentType: 'application/json',
-                data: JSON.stringify(data), 
-            })
-
-            stateOld = state 
-            detailsOld = details
-            smallImageKeyOld = smallImageKey
-            smallImageTextOld = smallImageText
-            largeImageTextOld = largeImageText
+    let data = {
+        "appID": appID,
+        "state": state,
+        "details": details,
+        "smallImageKey": smallImageKey,
+        "smallImageText": smallImageText,
+        "largeImageText": largeImageText
     }
+    
+        $.ajax({
+            type: 'PUT',
+            url: 'http://localhost:6767/rpc/',
+            contentType: 'application/json',
+            data: JSON.stringify(data), 
+        })
 
     refresh(2e3)
 
