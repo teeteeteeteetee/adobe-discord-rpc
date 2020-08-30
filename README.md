@@ -13,4 +13,4 @@
 
 **Configuration panel with autosave**
 
-This whole project is open-source, feel free to modify them ^^, a little bit of credit would be really appreciated!
+This whole project is open-source, feel free to modify them ^^. but but I would like to get some credits if you really want to re-distribute them. 
