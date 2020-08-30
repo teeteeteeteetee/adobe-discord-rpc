@@ -1,5 +1,5 @@
 # Adobe Discord Rich Presence
-Supports:
+**Support**s:
 - After Effects
 - Photoshop
 - Premiere Pro
