@@ -4,6 +4,7 @@
 - Photoshop
 - Premiere Pro
 - Audition
+- Illustrator
 
 ![](demo/preview.gif)
 - Shows Composition and the name of the file as a status on Discord
