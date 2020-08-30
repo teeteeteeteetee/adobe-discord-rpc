@@ -6,4 +6,4 @@
 - Audition
 
 ![Demo](demo/aftereffects.gif)
-- Shows Composition and the name of the file
+- Shows Composition and the name of the file as a status on Discord
