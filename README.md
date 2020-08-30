@@ -4,3 +4,6 @@ Supports:
   Photoshop
   Premiere Pro
   Audition
+
+![Demo](demo/aftereffects.gif)
+- Shows Composition and the name of the file
