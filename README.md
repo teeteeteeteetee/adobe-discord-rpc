@@ -10,4 +10,4 @@
 
 ![](https://cdn.discordapp.com/attachments/738153603079995453/749741755003306084/rpc.png)
 
-**Configuration panel**
+**Configuration panel with autosave**
