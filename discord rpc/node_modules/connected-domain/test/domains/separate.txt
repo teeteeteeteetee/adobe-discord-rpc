@@ -1,0 +1,9 @@
+---AAAA-------BBBBBBBBBB----
+--AAAAAAA-----BBBBBBBBBBBB--
+-AAAAAAAA-----BBBBBBBBBB----
+AAAAAAA--------BBBBBBBB-----
+--AAAA----CCC---BBBBBB------
+---AA---CCCCCC--BBBBB-------
+------CCCCCCCCC-------------
+----CCCCCCCCCCCCCC----------
+-----CCCCCCCCCCC------------

@@ -1,0 +1,5 @@
+  PID TTY           TIME CMD
+  692 ttys000    0:00.06 login -pfl neekey /bin/bash -c exec -la bash /bin/bash
+49693 ttys000666 0:00.06 -bash
+      ttys000    0:47.81 /Users/neekey/Dropbox/nodejs/app/windTest/Redis/mac_linux/src/redis-server
+52300 ttys001    0:00.05 login -pfl neekey /bin/bash -c exec -la bash /bin/bash
