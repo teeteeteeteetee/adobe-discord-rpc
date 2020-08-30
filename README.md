@@ -8,4 +8,4 @@
 ![](demo/preview.gif)
 - Shows Composition and the name of the file as a status on Discord
 
-![](demo/rpc.gif)
+![](https://cdn.discordapp.com/attachments/738153603079995453/749741755003306084/rpc.png)
