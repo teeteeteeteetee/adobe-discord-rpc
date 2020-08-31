@@ -88,10 +88,23 @@ function getApp () {
         case "PPRO":
 
             largeImageText = "Adobe Premiere Pro"
-
-            details = "test"
-            state = "test"
-            smallImageKey = "logo"
+            csInterface.evalScript('PPTitle()', response => {
+                if(!response){
+                    response = "Untitled Project.aep"
+                }
+                details = response
+            })
+    
+            csInterface.evalScript('PPSequence()', response => {
+                if(!response){
+                    response = "Idle"
+                    smallImageKey = undefined
+                } else {
+                    smallImageKey = "edit"
+                    smallImageText = `Editing ${details}`
+                }
+                state = response
+            })
 
             put(appID, state, details, smallImageKey, smallImageText, largeImageText);
 
