@@ -141,6 +141,25 @@ function getApp () {
         case "FLPR":
             break;
         case "AUDT":
+
+            largeImageText = "Adobe Audition"
+
+            csInterface.evalScript('AUTitle()', response => {
+                if(response === "EvalScript error."){
+                    response = undefined
+                }
+                details = response
+            })
+    
+            csInterface.evalScript('AUType()', response => {
+                if(response === "EvalScript error."){
+                    response = "Idle"
+                }
+                state = response
+            })
+
+            put(appID, state, details, smallImageKey, smallImageText, largeImageText);
+
             break;
         case "DRWV":
             break;
