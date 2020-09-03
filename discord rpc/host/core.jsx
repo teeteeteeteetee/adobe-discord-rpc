@@ -58,3 +58,8 @@ function AUType() {
     }
     return info
 }
+
+function ILTitle() {
+    var info = app.activeDocument.name
+    return info
+}
