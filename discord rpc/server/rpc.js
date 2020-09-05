@@ -7,7 +7,7 @@ var currentTime = new Date()
 
 module.exports = discord
 
-function discord (appID, state, details, smallImageKey, smallImageText, largeImageText) {
+function discord (appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax) {
     console.log("RPC")
     
     const apps = require("./adobe.json")
@@ -39,7 +39,9 @@ function discord (appID, state, details, smallImageKey, smallImageText, largeIma
             largeImageText: largeImageText,
             details: details,
             state: state,
-            startTimestamp: currentTime
+            startTimestamp: currentTime,
+            partySize: parseInt(partySize),
+            partyMax: parseInt(partyMax)
         })
     }
    

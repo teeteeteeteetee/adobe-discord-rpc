@@ -44,7 +44,7 @@ app.put('/rpc', function (req, res) {
       return;
     }
 
-    rpc(jsonBody.appID, jsonBody.state, jsonBody.details, jsonBody.smallImageKey, jsonBody.smallImageText, jsonBody.largeImageText)
+    rpc(jsonBody.appID, jsonBody.state, jsonBody.details, jsonBody.smallImageKey, jsonBody.smallImageText, jsonBody.largeImageText, jsonBody.partySize, jsonBody.partyMax)
 
   })
    

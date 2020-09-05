@@ -7,11 +7,21 @@
 var csInterface = new CSInterface();
 var appID, state, details, smallImageKey, smallImageText, largeImageText;
 var stateOld, detailsOld, smallImageKeyOld, smallImageTextOld, largeImageTextOld;
+
+var partySize = 0
+var partyMax = 0
+
+//ae stuff
+var renderItemLock;
+
 //server
 csInterface.requestOpenExtension("com.tee.server");
 
 window.onload = getApp();
 appID = csInterface.getApplicationID()
+
+var button = document.querySelector("#button");
+button.addEventListener("click", csInterface.requestOpenExtension("com.tee.server"));
 
 getApp();
 
@@ -34,7 +44,7 @@ function getApp () {
 
             csInterface.evalScript('PSTitle()', response => {
                 if(response === ("EvalScript error.")){
-                    response = "Idle";
+                    response = "Idling";
                 }
                 details = response
             })
@@ -60,7 +70,7 @@ function getApp () {
 
             csInterface.evalScript('PSTitle()', response => {
                 if(response === ("EvalScript error.")){
-                    response = "Idle";
+                    response = "Idling";
                 }
                 details = response
             })
@@ -76,7 +86,7 @@ function getApp () {
                 state = response
             })
 
-            put(appID, state, details, smallImageKey, smallImageText, largeImageText);
+            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
             
             break;
         case "IDSN":
@@ -84,6 +94,29 @@ function getApp () {
         case "AICY":
             break;
         case "ILST":
+
+            largeImageText = "Adobe Illustrator"
+
+            csInterface.evalScript('ILTitle()', response => {
+                if(response === ("EvalScript error.")){
+                    response = "Idling";
+                }
+                details = response
+            })
+
+            csInterface.evalScript('PSLayer()', response => {
+                if(response === ("EvalScript error.")){
+                    response = undefined
+                    smallImageKey = undefined
+                } else {
+                    smallImageKey = "edit"
+                    smallImageText = `Editing ${details}`
+                }
+                state = response
+            })
+
+            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
+
             break;
         case "PPRO":
 
@@ -97,7 +130,7 @@ function getApp () {
     
             csInterface.evalScript('PPSequence()', response => {
                 if(!response){
-                    response = "Idle"
+                    response = "Idling"
                     smallImageKey = undefined
                 } else {
                     smallImageKey = "edit"
@@ -106,7 +139,7 @@ function getApp () {
                 state = response
             })
 
-            put(appID, state, details, smallImageKey, smallImageText, largeImageText);
+            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
 
             break;
         case "PRLD":
@@ -124,7 +157,7 @@ function getApp () {
     
             csInterface.evalScript('AEComp()', response => {
                 if(!response){
-                    response = "Idle"
+                    response = "Idling"
                     smallImageKey = undefined
                 } else {
                     smallImageKey = "edit"
@@ -133,10 +166,27 @@ function getApp () {
                 state = response
             })
 
-            put(appID, state, details, smallImageKey, smallImageText, largeImageText);
+            csInterface.evalScript('AERender()', response => {                
+                if(response === "true"){
+                    csInterface.evalScript('AERenderNumItems()', response => {
+                        if(!renderItemLock){
+                            renderItemLock = response
+                        }
+                        csInterface.evalScript('AERenderItems()', response => {    
+                            partySize = response
+                        })
+                        partyMax = renderItemLock
+                    })
+                    state = "Rendering"
+                } else {
+                    renderItemLock = null;
+                    partyMax = 0
+                    partySize = 0
+                }
+            })
 
-            break;
-        case "ILST":
+            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
+
             break;
         case "FLPR":
             break;
@@ -153,12 +203,12 @@ function getApp () {
     
             csInterface.evalScript('AUType()', response => {
                 if(response === "EvalScript error."){
-                    response = "Idle"
+                    response = "Idling"
                 }
                 state = response
             })
 
-            put(appID, state, details, smallImageKey, smallImageText, largeImageText);
+            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
 
             break;
         case "DRWV":
@@ -176,16 +226,18 @@ function refresh(timer){
     setTimeout(function(){ getApp()}, timer)
 }
 
-function put(appID, state, details, smallImageKey, smallImageText, largeImageText){
+function put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax){
 
-    if(state != stateOld || details != detailsOld || smallImageKey != smallImageKeyOld || smallImageText != smallImageTextOld || largeImageText != largeImageTextOld){
+    if(state != stateOld || details != detailsOld || smallImageKey != smallImageKeyOld || smallImageText != smallImageTextOld || largeImageText != largeImageTextOld || partyMax || partySize){
         let data = {
             "appID": appID,
             "state": state,
             "details": details,
             "smallImageKey": smallImageKey,
             "smallImageText": smallImageText,
-            "largeImageText": largeImageText
+            "largeImageText": largeImageText,
+            "partySize": partySize, 
+            "partyMax": partyMax
         }
         
             $.ajax({
