@@ -2,5 +2,14 @@
 
 ![](demo/installation1.gif)
 
+Method 1
+
 - Unzip the zip file which contains "adobe rpc" into C:/Program Files (x86)/Common Files/Adobe/CEP/extensions
-- Start the app (if it doesn't work then) https://github.com/Adobe-CEP/Getting-Started-guides/tree/master/Client-side%20Debugging
+- Make sure you have turned on debug mode more information in: https://github.com/Adobe-CEP/Getting-Started-guides/tree/master/Client-side%20Debugging (the reason is because I didn't sign the extension)
+- Open any adobe app that is being supported by this extension
+- On top of the window "Window -> Extensions -> Discord Rich Presence"
+
+Method 2 (untested)
+
+- Install any applications that supports .zxp file
+- import the file there
