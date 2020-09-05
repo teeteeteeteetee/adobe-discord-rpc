@@ -45,10 +45,10 @@
           <CEFCommandLine />
         </Resources>
         <Lifecycle>
-          <AutoVisible>true</AutoVisible>
+          <AutoVisible>false</AutoVisible>
         </Lifecycle>
         <UI>
-          <Type>Panel</Type>
+          <Type>Custom</Type>
           <!-- 6) -->
           <Menu>Discord Rich Presence</Menu>
           <Geometry>

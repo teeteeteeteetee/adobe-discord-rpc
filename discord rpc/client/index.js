@@ -20,8 +20,8 @@ csInterface.requestOpenExtension("com.tee.server");
 window.onload = getApp();
 appID = csInterface.getApplicationID()
 
-var button = document.querySelector("#button");
-button.addEventListener("click", csInterface.requestOpenExtension("com.tee.server"));
+// var button = document.querySelector("#button");
+// button.addEventListener("click", csInterface.requestOpenExtension("com.tee.server"));
 
 getApp();
 
