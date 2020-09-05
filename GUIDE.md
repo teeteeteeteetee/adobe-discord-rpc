@@ -2,4 +2,4 @@
 
 ![](demo/installation1.gif)
 
-Unzip the zip file which contains "adobe rpc" into C:/Program Files (x86)/Common Files/Adobe/CEP/extensions
+- Unzip the zip file which contains "adobe rpc" into C:/Program Files (x86)/Common Files/Adobe/CEP/extensions
