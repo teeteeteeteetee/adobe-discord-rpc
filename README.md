@@ -2,7 +2,8 @@
 
 Adobe Discord Rich Presence is an extension that connects Adobe apps with Discord and provides information for your profile.
 
-**Preview:**:
+**Preview**:
+
 ![](https://cdn.discordapp.com/attachments/738153603079995453/749741755003306084/rpc.png)![](demo/rpc.gif)
 
 **THE EXTENSION IS STILL IN ALPHA STAGE, THERE WILL BE SOME STUFF THAT DOESN'T WORK**
