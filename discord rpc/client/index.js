@@ -14,14 +14,18 @@ var partyMax = 0
 //ae stuff
 var renderItemLock;
 
+// var button = document.querySelector("#button");
+// button.addEventListener("click", () => {
+//             csInterface.evalScript('PSTool()', response => {
+            
+//             })
+// });
+
 //server
 csInterface.requestOpenExtension("com.tee.server");
 
 window.onload = getApp();
 appID = csInterface.getApplicationID()
-
-// var button = document.querySelector("#button");
-// button.addEventListener("click", csInterface.requestOpenExtension("com.tee.server"));
 
 getApp();
 
@@ -60,6 +64,10 @@ function getApp () {
                 state = response
             })
 
+            // csInterface.evalScript('PSTool()', response => {
+            
+            // })
+
 
               
 
@@ -84,6 +92,11 @@ function getApp () {
                 }
                 console.log(response)
                 state = response
+            })
+            csInterface.evalScript('PSTool()', response => {
+                var x = response.toLowerCase()
+                smallImageKey = x
+
             })
 
             put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);

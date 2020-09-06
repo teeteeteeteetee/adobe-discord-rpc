@@ -52,6 +52,11 @@ function PSLayer(){
     return info;
 }
 
+function PSTool(){
+    var info = app.currentTool
+    return info
+}
+
 function PPTitle(){
     var info = app.project.name
     return info

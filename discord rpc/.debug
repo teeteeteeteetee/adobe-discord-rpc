@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <ExtensionList>
+        <Extension Id="com.tee.discord.rpc">
+           <HostList>
+
+                <Host Name="PHSP" Port="8083" />
+                <Host Name="PHXS" Port="8084" />
+                <Host Name="AEFT" Port="8082" />
+
+            </HostList>
+        </Extension>
+    </ExtensionList>  

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- 1) -->
-<ExtensionManifest ExtensionBundleId="com.tee.discord.rpc" ExtensionBundleVersion="1.0.0" Version="7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ExtensionManifest ExtensionBundleId="com.discord.rpc.tee" ExtensionBundleVersion="1.0.0" Version="7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ExtensionList>
     <!-- 2) -->
-    <Extension Id="com.tee.discord.rpc" Version="1.0.0" />
-    <Extension Id="com.tee.server" Version="1.0.0" />
+    <Extension Id="com.tee.discord.rpc" Version="0.0.2" />
+    <Extension Id="com.tee.server" Version="0.0.2" />
   </ExtensionList>
   <ExecutionEnvironment>
     <HostList>
@@ -48,7 +48,7 @@
           <AutoVisible>false</AutoVisible>
         </Lifecycle>
         <UI>
-          <Type>Custom</Type>
+          <Type>Panel</Type>
           <!-- 6) -->
           <Menu>Discord Rich Presence</Menu>
           <Geometry>

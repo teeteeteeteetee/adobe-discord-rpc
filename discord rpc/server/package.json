@@ -1,13 +1,13 @@
 {
   "name": "com.tee.server",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "MIT",
+  "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
     "request": "^2.88.2"
