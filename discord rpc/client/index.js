@@ -14,12 +14,13 @@ var partyMax = 0
 //ae stuff
 var renderItemLock;
 
-// var button = document.querySelector("#button");
-// button.addEventListener("click", () => {
-//             csInterface.evalScript('PSTool()', response => {
-            
-//             })
-// });
+var button = document.querySelector("#button");
+button.addEventListener("click", () => {
+    csInterface.evalScript('PPTest()', response => {
+        alert(response)
+    })
+
+});
 
 //server
 csInterface.requestOpenExtension("com.tee.server");
@@ -57,7 +58,6 @@ function getApp () {
                     response = undefined
                     smallImageKey = undefined
                 } else {
-                    smallImageKey = "edit"
                     smallImageText = `Editing ${details}`
                 }
                 console.log(response)
@@ -87,7 +87,6 @@ function getApp () {
                     response = undefined
                     smallImageKey = undefined
                 } else {
-                    smallImageKey = "edit"
                     smallImageText = `Editing ${details}`
                 }
                 console.log(response)
@@ -171,12 +170,15 @@ function getApp () {
             csInterface.evalScript('AEComp()', response => {
                 if(!response){
                     response = "Idling"
-                    smallImageKey = undefined
+                    smallImageText = `Editing ${details}`
                 } else {
-                    smallImageKey = "edit"
                     smallImageText = `Editing ${details}`
                 }
                 state = response
+            })
+
+            csInterface.evalScript('AETool()', response => {
+                smallImageKey = response
             })
 
             csInterface.evalScript('AERender()', response => {                
@@ -197,6 +199,10 @@ function getApp () {
                     partySize = 0
                 }
             })
+
+            // csInterface.evalScript('AETool()', response => {
+
+            // })
 
             put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
 

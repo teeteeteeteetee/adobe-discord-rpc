@@ -31,6 +31,10 @@ function connect(){
 
 app.use(express.json())
 
+app.get('/', function (req, res) { 
+    res.send("com.discord.rpc.tee")
+});
+
 app.put('/rpc', function (req, res) {
     console.log(req.body)
     res.send(req.body)

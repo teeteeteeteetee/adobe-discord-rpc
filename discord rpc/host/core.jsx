@@ -42,6 +42,11 @@ function AERenderItems(){
     return info;
 }
 
+function AETool(){
+    var info = app.project.toolType
+    return info
+}
+
 function PSTitle(){
     var info = app.activeDocument.name
     return info;
@@ -69,6 +74,12 @@ function PPSequence(){
     } else {
         info = "No active sequence.";
     }
+    return info
+}
+
+function PPTest(){
+    var info =  app.properties
+
     return info
 }
 
