@@ -46,6 +46,11 @@
         </Resources>
         <Lifecycle>
           <AutoVisible>false</AutoVisible>
+          <StartOn>
+            <Event>com.adobe.csxs.events.ApplicationInitialized</Event>
+            <!-- <Event>com.adobe.csxs.events.AppOnline</Event> -->
+            <Event>applicationActivate</Event>
+          </StartOn>
         </Lifecycle>
         <UI>
           <Type>Panel</Type>
@@ -54,7 +59,7 @@
           <Geometry>
             <Size>
               <!-- 7) -->
-              <Height>500</Height>
+              <Height>200</Height>
               <Width>350</Width>
             </Size>
           </Geometry>

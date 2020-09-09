@@ -1,4 +1,4 @@
-// i dont care if it theres duplicates i wanted everything to have their own function B) ill make it smaller in future
+// i dont care if it theres duplicates i wanted everything to have their own function B) ill make it smaller in future also adobe is kinda eh so
 
 //ae stuff
 var AEItems;
@@ -63,8 +63,30 @@ function PSTool(){
 }
 
 function PPTitle(){
-    var info = app.project.name
-    return info
+
+    //this thing is so stupid
+
+    var info = "test"
+
+    // if (!app.project) {
+    //     info = "Idling";
+    // } else {
+    //     if(!app.project.name){
+    //         info = "Idling"
+    //     }else{
+    //         info = (app.project.name)
+    //     }
+    // }
+
+    // } else if(info === "Uncaught exception"){
+    //     info = "Idle"
+    // }
+    // else {
+    //     info = "Untitled Project.aep"
+    // }
+
+    return info;
+
 }
 
 function PPSequence(){
@@ -106,5 +128,10 @@ function AUType() {
 
 function ILTitle() {
     var info = app.activeDocument.name
+    return info;
+}
+
+function ILLayer(){
+    var info = app.activeDocument.activeLayer.name
     return info;
 }

@@ -1,3 +1,5 @@
+//please dont mind me error handling these i swear theres no way to do it ill take a look on it
+
 const express = require("express");
 const app = express();
 

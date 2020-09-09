@@ -22,10 +22,11 @@ button.addEventListener("click", () => {
 
 });
 
+
 //server
 csInterface.requestOpenExtension("com.tee.server");
 
-window.onload = getApp();
+// window.onload = getApp();
 appID = csInterface.getApplicationID()
 
 getApp();
@@ -112,14 +113,19 @@ function getApp () {
             csInterface.evalScript('ILTitle()', response => {
                 if(response === ("EvalScript error.")){
                     response = "Idling";
+                } else if(response.includes("Error 1302:")){
+                    response = "Idling";
                 }
+                
                 details = response
             })
 
-            csInterface.evalScript('PSLayer()', response => {
+            csInterface.evalScript('ILLayer()', response => {
                 if(response === ("EvalScript error.")){
                     response = undefined
                     smallImageKey = undefined
+                } else if(response.includes("Error 1302:")){
+                    response = undefined;
                 } else {
                     smallImageKey = "edit"
                     smallImageText = `Editing ${details}`
@@ -130,30 +136,30 @@ function getApp () {
             put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
 
             break;
-        case "PPRO":
+        // case "PPRO":
 
-            largeImageText = "Adobe Premiere Pro"
-            csInterface.evalScript('PPTitle()', response => {
-                if(!response){
-                    response = "Untitled Project.aep"
-                }
-                details = response
-            })
+        //     largeImageText = "Adobe Premiere Pro"
+        //     csInterface.evalScript('PPTitle()', response => {
+        //         details = response
+        //     })
     
-            csInterface.evalScript('PPSequence()', response => {
-                if(!response){
-                    response = "Idling"
-                    smallImageKey = undefined
-                } else {
-                    smallImageKey = "edit"
-                    smallImageText = `Editing ${details}`
-                }
-                state = response
-            })
+        //     csInterface.evalScript('PPSequence()', response => {
+        //         if(!response){
+        //             response = "Idling"
+        //             smallImageKey = undefined
+        //         } else {
+        //             smallImageKey = "edit"
+        //             smallImageText = `Editing ${details}`
+        //         }
+        //         state = response
+        //     })
 
-            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
+        //     //i have to take a look at it why it kills the whole extension on loading a project
+        //     // csInterface.requestOpenExtension("com.tee.server");
 
-            break;
+        //     put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
+
+        //     break;
         case "PRLD":
             break;
         case "AEFT": 
