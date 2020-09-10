@@ -66,26 +66,8 @@ function PPTitle(){
 
     //this thing is so stupid
 
-    var info = "test"
-
-    // if (!app.project) {
-    //     info = "Idling";
-    // } else {
-    //     if(!app.project.name){
-    //         info = "Idling"
-    //     }else{
-    //         info = (app.project.name)
-    //     }
-    // }
-
-    // } else if(info === "Uncaught exception"){
-    //     info = "Idle"
-    // }
-    // else {
-    //     info = "Untitled Project.aep"
-    // }
-
-    return info;
+    var info = app.project.name
+    return info
 
 }
 
@@ -132,6 +114,16 @@ function ILTitle() {
 }
 
 function ILLayer(){
+    var info = app.activeDocument.activeLayer.name
+    return info;
+}
+
+function IDTitle() {
+    var info = app.activeDocument.name
+    return info;
+}
+
+function IDLayer(){
     var info = app.activeDocument.activeLayer.name
     return info;
 }

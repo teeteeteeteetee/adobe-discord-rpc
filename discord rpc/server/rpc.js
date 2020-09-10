@@ -11,25 +11,6 @@ function discord (appID, state, details, smallImageKey, smallImageText, largeIma
     console.log("RPC")
     
     const apps = require("./adobe.json")
-    
-    // var app;
-    // var exec = require('child_process').exec;
-    
-    // exec('tasklist', function(err, stdout, stderr) {
-    
-    //     var output = stdout.toLowerCase()
-    
-    // for (let index = 0; index < apps.adobe.length; index++) {
-    //     const element = apps.adobe[index]
-    
-    //     var check = output.includes(element.processExe)
-    //     if(check == true){
-    //         app = element.processExe
-    //         console.log(app)
-    //     }
-    // }
-    
-    // });
 
     function setActivity(){
         rpc.setActivity({

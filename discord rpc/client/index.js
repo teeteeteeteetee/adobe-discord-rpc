@@ -16,9 +16,8 @@ var renderItemLock;
 
 var button = document.querySelector("#button");
 button.addEventListener("click", () => {
-    csInterface.evalScript('PPTest()', response => {
-        alert(response)
-    })
+
+    csInterface.requestOpenExtension("com.tee.server");
 
 });
 
@@ -26,7 +25,7 @@ button.addEventListener("click", () => {
 //server
 csInterface.requestOpenExtension("com.tee.server");
 
-// window.onload = getApp();
+//window.onload = getApp();
 appID = csInterface.getApplicationID()
 
 getApp();
@@ -64,13 +63,12 @@ function getApp () {
                 console.log(response)
                 state = response
             })
+            csInterface.evalScript('PSTool()', response => {
+                var x = response.toLowerCase()
+                smallImageKey = x
 
-            // csInterface.evalScript('PSTool()', response => {
-            
-            // })
+            })
 
-
-              
 
             break;
         case "PHXS":
@@ -103,6 +101,25 @@ function getApp () {
             
             break;
         case "IDSN":
+            largeImageText = "Adobe InDesign"
+
+            csInterface.evalScript('IDTitle()', response => {
+                if(response === ("EvalScript error.")){
+                    response = "Idling";
+                }
+                details = response
+            })
+
+            csInterface.evalScript('IDLayer()', response => {
+                if(response === "EvalScript error."){
+                    response = undefined
+                }
+                state = response
+            })
+            
+
+            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
+
             break;
         case "AICY":
             break;
@@ -136,30 +153,36 @@ function getApp () {
             put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
 
             break;
-        // case "PPRO":
+        case "PPRO":
 
-        //     largeImageText = "Adobe Premiere Pro"
-        //     csInterface.evalScript('PPTitle()', response => {
-        //         details = response
-        //     })
-    
-        //     csInterface.evalScript('PPSequence()', response => {
-        //         if(!response){
-        //             response = "Idling"
-        //             smallImageKey = undefined
-        //         } else {
-        //             smallImageKey = "edit"
-        //             smallImageText = `Editing ${details}`
-        //         }
-        //         state = response
-        //     })
+            largeImageText = "Adobe Premiere Pro"
+            csInterface.evalScript('PPTitle()', response => {
+                if(response === "EvalScript error."){
+                    response = "Idling"
+                } else {
+                    csInterface.evalScript('PPSequence()', response => {
+                        if(!response){
+                            response = "Idling"
+                            smallImageKey = undefined
+                        } else {
+                            smallImageKey = "edit"
+                            smallImageText = `Editing ${details}`
+                        }
+                        state = response
+                    })
+                }
+                details = response
+            })
 
-        //     //i have to take a look at it why it kills the whole extension on loading a project
-        //     // csInterface.requestOpenExtension("com.tee.server");
+            console.log(csInterface.getExtensions())
 
-        //     put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
+            //i have to take a look at it why it kills the whole extension on loading a project
+            //apparently the server doesnt get duplicated by putting this here lol
+            // csInterface.requestOpenExtension("com.tee.server");
 
-        //     break;
+            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
+
+            break;
         case "PRLD":
             break;
         case "AEFT": 
@@ -264,6 +287,8 @@ function put(appID, state, details, smallImageKey, smallImageText, largeImageTex
             "partySize": partySize, 
             "partyMax": partyMax
         }
+
+        //csInterface.requestOpenExtension("com.tee.server");
         
             $.ajax({
                 type: 'PUT',
