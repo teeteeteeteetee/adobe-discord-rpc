@@ -1,5 +1,3 @@
-//please dont mind me error handling these i swear theres no way to do it ill take a look on it
-
 const express = require("express");
 const app = express();
 
@@ -14,6 +12,8 @@ run()
 
 function run(x){
 
+try{
+
   lock = x;
 
     connect();
@@ -22,8 +22,8 @@ process.on('uncaughtException', (err) => {
     console.log(err)
     if (err.code === 'EADDRINUSE') {
       console.log("port is currently in use")
-      setTimeout(function(){ connect()}, 5e3)
-      //retry if failed
+      setTimeout(function(){ connect()}, 15e3)
+
       return;
     }
 });
@@ -55,5 +55,9 @@ app.put('/rpc', function (req, res) {
     rpc(jsonBody.appID, jsonBody.state, jsonBody.details, jsonBody.smallImageKey, jsonBody.smallImageText, jsonBody.largeImageText, jsonBody.partySize, jsonBody.partyMax)
 
   })
+
+}catch(err){
+  console.error(err);
+}
    
 }

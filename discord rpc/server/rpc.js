@@ -30,7 +30,7 @@ rpc.login({
     clientId: apps[appID].clientID
 })
 
-rpc.on("ready", () => {
+rpc.once("ready", () => {
     console.log("ready")
     setActivity();
     })
