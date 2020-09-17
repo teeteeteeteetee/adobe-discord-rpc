@@ -8,7 +8,7 @@ var lock;
 
 module.exports = run;
 
-run()
+//run()
 
 function run(x){
 
