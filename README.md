@@ -21,6 +21,10 @@ Adobe Discord Rich Presence is an extension that connects Adobe apps with Discor
 - Dreamweaver (doesn't work)
 - Muse (doesn't work)
 
+**Doesn't support**:
+- Media Encoder
+- Acrobat
+
 ![Installation guide](https://github.com/lolitee/adobe-discord-rpc/blob/master/GUIDE.md)
 
 **Configuration panel with autosave**
