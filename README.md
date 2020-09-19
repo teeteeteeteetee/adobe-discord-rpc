@@ -14,7 +14,7 @@ Adobe Discord Rich Presence is an extension that connects Adobe apps with Discor
 - Premiere Pro
 - Audition
 - Illustrator
-- Animate (activates on panel click)
+- Animate (activates on opening the panel)
 - Prelude (doesn't work)
 - Dreamweaver (doesn't work)
 
