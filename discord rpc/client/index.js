@@ -5,21 +5,27 @@
 */
 
 var csInterface = new CSInterface();
-var appID, state, details, smallImageKey, smallImageText, largeImageText;
-var stateOld, detailsOld, smallImageKeyOld, smallImageTextOld, largeImageTextOld;
+var appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax;
+var stateOld, detailsOld, smallImageKeyOld, smallImageTextOld, largeImageTextOld, partySizeOld, partyMaxOld;
 
-var partySize = 0
-var partyMax = 0
+partySize = 0
+partyMax = 0
 
 //ae stuff
 var renderItemLock;
 
-var button = document.querySelector("#button");
-button.addEventListener("click", () => {
+// var button = document.querySelector("#button");
+// button.addEventListener("click", () => {
 
-    csInterface.requestOpenExtension("com.tee.server");
+//     //csInterface.requestOpenExtension("com.tee.server");
+//     csInterface.evalScript('ILTest()', response => {
+//         alert(response)
+//     })
+//     // csInterface.evalScript('PLTitle()', response => {
+//     //     alert(response)
+//     // })
 
-});
+// });
 
 
 //server
@@ -44,7 +50,7 @@ function getApp () {
 
     switch(appID){
         case "PHSP":
-
+        
             largeImageText = "Adobe Photoshop"
 
             csInterface.evalScript('PSTitle()', response => {
@@ -63,13 +69,22 @@ function getApp () {
                 console.log(response)
                 state = response
             })
+
+            csInterface.evalScript('PSLayerMax()', response => {
+                partyMax = response;
+            })
+            csInterface.evalScript('PSLayerMin()', response => {
+                partySize = response;
+            })
+
             csInterface.evalScript('PSTool()', response => {
                 var x = response.toLowerCase()
                 smallImageKey = x
 
             })
 
-
+            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
+            
             break;
         case "PHXS":
         
@@ -91,6 +106,20 @@ function getApp () {
                 console.log(response)
                 state = response
             })
+
+            csInterface.evalScript('PSLayerMax()', response => {
+                if(response === "EvalScript error."){
+                    response = 0
+                }
+                partyMax = response;
+            })
+            csInterface.evalScript('PSLayerMin()', response => {
+                if(response === "EvalScript error."){
+                    response = 0
+                }
+                partySize = response;
+            })
+
             csInterface.evalScript('PSTool()', response => {
                 var x = response.toLowerCase()
                 smallImageKey = x
@@ -150,6 +179,19 @@ function getApp () {
                 state = response
             })
 
+            csInterface.evalScript('ILLayerMax()', response => {
+                if(response === "EvalScript error."){
+                    response = 0
+                }
+                partyMax = response;
+            })
+            csInterface.evalScript('ILLayerMin()', response => {
+                if(response === "EvalScript error."){
+                    response = 0
+                }
+                partySize = response;
+            })
+
             put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
 
             break;
@@ -174,16 +216,33 @@ function getApp () {
                 details = response
             })
 
-            console.log(csInterface.getExtensions())
-
-            //i have to take a look at it why it kills the whole extension on loading a project
-            //apparently the server doesnt get duplicated by putting this here lol
-            // csInterface.requestOpenExtension("com.tee.server");
-
             put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
 
             break;
         case "PRLD":
+
+            largeImageText = "Adobe Prelude"
+
+            csInterface.evalScript('PLTitle()', response => {
+                if(response === "EvalScript error."){
+                    response = "Idling"
+                } else {
+                    csInterface.evalScript('PLSequence()', response => {
+                        if(!response){
+                            response = "Idling"
+                            smallImageKey = undefined
+                        } else {
+                            smallImageKey = "edit"
+                            smallImageText = `Editing ${details}`
+                        }
+                        state = response
+                    })
+                }
+                details = response
+            })
+
+            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
+
             break;
         case "AEFT": 
 
@@ -237,6 +296,21 @@ function getApp () {
 
             break;
         case "FLPR":
+
+            largeImageText = "Adobe Animate"
+
+            csInterface.evalScript('FLTitle()', response => {
+                
+                details = response
+            })
+
+            csInterface.evalScript('FLLayer()', response => {
+
+                state = response
+            })
+
+            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
+
             break;
         case "AUDT":
 
@@ -260,10 +334,17 @@ function getApp () {
 
             break;
         case "DRWV":
+
+            largeImageText = "Adobe Dreamweaver"
+
+            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
+
             break;
-        case "MUSE":
-            break;
-        case "KBRG":
+        case "RUSH":
+
+
+            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
+
             break;
     
     }
@@ -276,7 +357,7 @@ function refresh(timer){
 
 function put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax){
 
-    if(state != stateOld || details != detailsOld || smallImageKey != smallImageKeyOld || smallImageText != smallImageTextOld || largeImageText != largeImageTextOld || partyMax || partySize){
+    if(state != stateOld || details != detailsOld || smallImageKey != smallImageKeyOld || smallImageText != smallImageTextOld || largeImageText != largeImageTextOld || partyMax != partyMaxOld || partySize != partySizeOld){
         let data = {
             "appID": appID,
             "state": state,
@@ -302,6 +383,8 @@ function put(appID, state, details, smallImageKey, smallImageText, largeImageTex
             smallImageKeyOld = smallImageKey
             smallImageTextOld = smallImageText
             largeImageTextOld = largeImageText
+            partyMaxOld = partyMax
+            partySizeOld = partySize
     }
 
     refresh(2e3)

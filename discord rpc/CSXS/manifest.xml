@@ -50,6 +50,7 @@
             <Event>com.adobe.csxs.events.ApplicationInitialized</Event>
             <!-- <Event>com.adobe.csxs.events.AppOnline</Event> -->
             <Event>applicationActivate</Event>
+            <Event>com.adobe.csxs.events.ApplicationActivate</Event>
           </StartOn>
         </Lifecycle>
         <UI>
@@ -59,8 +60,8 @@
           <Geometry>
             <Size>
               <!-- 7) -->
-              <Height>200</Height>
-              <Width>350</Width>
+              <Height>100</Height>
+              <Width>100</Width>
             </Size>
           </Geometry>
           <Icons />

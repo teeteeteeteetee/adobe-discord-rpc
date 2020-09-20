@@ -3,6 +3,9 @@
 //ae stuff
 var AEItems;
 
+//fl stuff
+var FLTitle2;
+
 function AETitle(){
     var info = app.project.file.displayName;
     return info;
@@ -54,6 +57,16 @@ function PSTitle(){
 
 function PSLayer(){
     var info = app.activeDocument.activeLayer.name
+    return info;
+}
+
+function PSLayerMax(){
+    var info = app.activeDocument.layers.length
+    return info;
+}
+
+function PSLayerMin(){
+    var info = app.activeDocument.activeLayer.itemIndex
     return info;
 }
 
@@ -118,12 +131,67 @@ function ILLayer(){
     return info;
 }
 
-function IDTitle() {
-    var info = app.activeDocument.name
+function ILLayerMax(){
+    var info = app.activeDocument.layers.length
     return info;
 }
 
-function IDLayer(){
-    var info = app.activeDocument.activeLayer.name
+function ILLayerMin(){
+    var info = app.activeDocument.activeLayer.zOrderPosition
     return info;
+}
+
+function FLTitle(){
+    var info;
+
+    try{
+        if(document.name){
+            info = document.name
+            FLTitle2 = info;
+        }
+    }catch(err){
+
+        if(err){
+            info = FLTitle2;
+        }
+    }
+
+    return info;
+}
+
+function FLLayer(){
+    try{
+        if(document.name){
+            var i = fl.getDocumentDOM().getTimeline().currentLayer;
+            var info = fl.getDocumentDOM().getTimeline().layers[i].name
+        }
+    }catch(err){
+
+        if(err){
+            info = "Testing Movie";
+        }
+    }
+
+    return info;
+}
+
+function PLTitle(){
+    var info = app.project.name
+    return info
+
+}
+
+function PLApp(){
+    var info = app.project
+    return info
+}
+
+function PLSequence(){
+    var info;
+    if (app.project.activeSequence) {
+        info = app.project.activeSequence.name;
+    } else {
+        info = "No active sequence.";
+    }
+    return info
 }
