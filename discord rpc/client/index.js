@@ -18,7 +18,7 @@ var renderItemLock;
 // button.addEventListener("click", () => {
 
 //     //csInterface.requestOpenExtension("com.tee.server");
-//     csInterface.evalScript('ILTest()', response => {
+//     csInterface.evalScript('PPTest()', response => {
 //         alert(response)
 //     })
 //     // csInterface.evalScript('PLTitle()', response => {

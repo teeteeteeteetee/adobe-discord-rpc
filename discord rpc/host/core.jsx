@@ -32,11 +32,11 @@ function AERenderItems(){
     var info;
     var item;
 
-    for (var index = 1; index < AEItems; index++) {
+    for (var index = 1; index < AEItems + 1; index++) {
 
         item = app.project.renderQueue.item(index).status
         if(item === RQItemStatus.RENDERING){
-            info = index + 1
+            info = index
             //stops looping
             index = AEItems
         }
@@ -85,20 +85,16 @@ function PPTitle(){
 }
 
 function PPSequence(){
-    var info;
-    if (app.project.activeSequence) {
-        info = app.project.activeSequence.name;
+    var info = undefined
+    var sequence = app.project.activeSequence
+    if (sequence) {
+        info = sequence.name+" ("+ app.project.rootItem.children.numItems+ ")";
     } else {
         info = "No active sequence.";
     }
     return info
 }
 
-function PPTest(){
-    var info =  app.properties
-
-    return info
-}
 
 function AUTitle() {
     var info = app.activeDocument.displayName
