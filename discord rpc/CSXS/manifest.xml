@@ -11,8 +11,8 @@
       <!-- 3) -->
       <Host Name="PHSP" Version="19" />
       <Host Name="PHXS" Version="19" />
-      <Host Name="IDSN" Version="13" />
-      <Host Name="AICY" Version="13" />
+      <!-- <Host Name="IDSN" Version="13" /> -->
+      <!-- <Host Name="AICY" Version="13" /> -->
       <Host Name="ILST" Version="22" />
       <Host Name="PPRO" Version="12" />
       <Host Name="PRLD" Version="7" />
@@ -20,7 +20,7 @@
       <Host Name="FLPR" Version="18" />
       <Host Name="AUDT" Version="11" />
       <Host Name="DRWV" Version="18" />
-      <Host Name="MUSE" Version="2018" />
+      <!-- <Host Name="MUSE" Version="2018" /> -->
       <Host Name="RUSH" Version="1" />
       
     </HostList>
@@ -40,7 +40,7 @@
           <MainPath>./client/index.html</MainPath>
           <!-- 5) -->
 
-          <ScriptPath>./host/core.jsx</ScriptPath>
+          <!-- <ScriptPath>./host/core.jsx</ScriptPath> -->
 
           <CEFCommandLine />
         </Resources>

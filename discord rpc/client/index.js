@@ -14,16 +14,23 @@ partyMax = 0
 //ae stuff
 var renderItemLock;
 
-// var button = document.querySelector("#button");
+var button = document.querySelector("#button");
+
+
+function loadJSX(fileName) {
+    var csInterface = new CSInterface();
+    var extensionRoot = csInterface.getSystemPath(SystemPath.EXTENSION) + "/host/";
+    csInterface.evalScript('$.evalFile("' + extensionRoot + fileName + '")');
+  }
+
 // button.addEventListener("click", () => {
 
 //     //csInterface.requestOpenExtension("com.tee.server");
-//     csInterface.evalScript('PPTest()', response => {
-//         alert(response)
-//     })
 //     // csInterface.evalScript('PLTitle()', response => {
 //     //     alert(response)
 //     // })
+    
+//     // loadJSX("AEFT.jsx");
 
 // });
 
@@ -34,6 +41,8 @@ csInterface.requestOpenExtension("com.tee.server");
 //window.onload = getApp();
 appID = csInterface.getApplicationID()
 
+
+loadJSX(appID+".jsx");
 getApp();
 
 function getAppID () {
