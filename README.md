@@ -7,6 +7,8 @@ Adobe Discord Rich Presence is an extension that connects Adobe apps with Discor
 
 ![](demo/preview.gif)
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/14e27cba3be44af2b1128fc7e2a332e2)](https://www.codacy.com/manual/Tee/adobe-discord-rpc/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=lolitee/adobe-discord-rpc&amp;utm_campaign=Badge_Grade)
+
 **Supports**:
 - After Effects
 - Photoshop
