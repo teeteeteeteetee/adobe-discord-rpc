@@ -396,6 +396,6 @@ function put(appID, state, details, smallImageKey, smallImageText, largeImageTex
             partySizeOld = partySize
     }
 
-    refresh(2e3)
+    refresh(20000)
 
 }
