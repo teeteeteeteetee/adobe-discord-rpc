@@ -26,9 +26,9 @@ function loadJSX(fileName) {
 // button.addEventListener("click", () => {
 
 //     //csInterface.requestOpenExtension("com.tee.server");
-//     // csInterface.evalScript('PLTitle()', response => {
-//     //     alert(response)
-//     // })
+//     csInterface.evalScript('IDPageName()', response => {
+//         alert(response)
+//     })
     
 //     // loadJSX("AEFT.jsx");
 
@@ -148,13 +148,32 @@ function getApp () {
                 details = response
             })
 
-            csInterface.evalScript('IDLayer()', response => {
-                if(response === "EvalScript error."){
-                    response = undefined
+            csInterface.evalScript('IDPageName()', response => {
+                if(response === ("EvalScript error.")){
+                    response = undefined;
+                } else {
+                    response = `Page: ${response}`
                 }
                 state = response
             })
-            
+
+            csInterface.evalScript('IDPageMax()', response => {
+                if(response === "EvalScript error."){
+                    response = 0
+                }
+                partyMax = response;
+            })
+            csInterface.evalScript('IDPageMin()', response => {
+                if(response === "EvalScript error."){
+                    response = 0
+                }
+                partySize = response;
+            })
+
+            smallImageText = undefined
+            smallImageKey = undefined
+
+            //alert("flying")
 
             put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
 
@@ -396,6 +415,6 @@ function put(appID, state, details, smallImageKey, smallImageText, largeImageTex
             partySizeOld = partySize
     }
 
-    refresh(20000)
+    refresh(2e3)
 
 }

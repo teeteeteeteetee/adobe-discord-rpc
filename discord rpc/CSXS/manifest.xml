@@ -3,7 +3,7 @@
 <ExtensionManifest ExtensionBundleId="com.discord.rpc.tee" ExtensionBundleVersion="0.0.3" Version="7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ExtensionList>
     <!-- 2) -->
-    <Extension Id="com.tee.discord.rpc" Version="0.0.3" />
+    <Extension Id="com.tee.discord.rpc" Version="0.0.9" />
     <Extension Id="com.tee.server" Version="0.0.1" />
   </ExtensionList>
   <ExecutionEnvironment>
@@ -11,7 +11,7 @@
       <!-- 3) -->
       <Host Name="PHSP" Version="19" />
       <Host Name="PHXS" Version="19" />
-      <!-- <Host Name="IDSN" Version="13" /> -->
+      <Host Name="IDSN" Version="13" />
       <!-- <Host Name="AICY" Version="13" /> -->
       <Host Name="ILST" Version="22" />
       <Host Name="PPRO" Version="12" />
@@ -56,7 +56,7 @@
         <UI>
           <Type>Panel</Type>
           <!-- 6) -->
-          <Menu>Discord Rich Presence</Menu>
+          <Menu Placement="'Main:&amp;Window',600.0,'KBSCE Window menu'">Discord Rich Presence</Menu>
           <Geometry>
             <Size>
               <!-- 7) -->
