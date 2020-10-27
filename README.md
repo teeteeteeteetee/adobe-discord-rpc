@@ -18,10 +18,10 @@ Adobe Discord Rich Presence is an extension that connects Adobe apps with Discor
 - Audition
 - Illustrator
 - Animate (activates on opening the panel) // issue on adobe's side
-- Prelude (scuffed kinda eh)
+- Prelude (scuffed)
 - Dreamweaver (doesn't work)
 - InDesign
-- InCopy (doesn't work)
+- InCopy
 
 **Doesn't support**:
 - Media Encoder
