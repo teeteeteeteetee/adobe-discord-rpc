@@ -1,20 +1,17 @@
 const express = require("express");
 const app = express();
+const fs = require('fs');
 
 var config = require("./config.json")
-var rpc = require("./rpc")
 var port = config.server.port
-var lock;
+
+var apps = {};
 
 module.exports = run;
 
-//run()
-
-function run(x){
+function run(){
 
 try{
-
-  lock = x;
 
     connect();
 
@@ -35,29 +32,28 @@ function connect(){
 
 app.use(express.json())
 
+fs.readdir(__dirname+"\\..\\host", (err, files) => {
+  
+files.forEach(file => {
+  var _app = file.replace(".jsx", "");
+app.put(`/rpc/${_app}`, function (req, res) {
+      console.log(req.body)
+      res.send(req.body)
+    
+      apps[_app] = req.body;
+
+      var rpc = require('./rpc')
+      rpc(JSON.stringify(apps))
+    })
+  })
+})
+
 app.get('/', function (req, res) { 
-    res.send(`com.discord.rpc.tee ${lock}`)
+    res.send(`com.discord.rpc.tee`)
 });
 
-app.put('/rpc', function (req, res) {
-    console.log(req.body)
-    res.send(req.body)
-
-    var jsonBody = req.body;
-
-    if(!lock){
-      lock = jsonBody.appID
-    }
-    if(lock != jsonBody.appID){
-      return;
-    }
-
-    rpc(jsonBody.appID, jsonBody.state, jsonBody.details, jsonBody.smallImageKey, jsonBody.smallImageText, jsonBody.largeImageText, jsonBody.partySize, jsonBody.partyMax)
-
-  })
-
 }catch(err){
-  console.error(err);
+  throw err;
 }
    
 }

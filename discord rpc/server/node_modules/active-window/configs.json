@@ -1,0 +1,18 @@
+{
+  "linux": {
+    "bin"    :"sh",
+    "parameters" : [],
+    "script_url" : "scripts/linux.sh"
+  },
+  "mac" :{
+    "bin"    : "sh",
+    "parameters" : [],
+    "script_url" : "scripts/mac.sh",
+    "subscript_url":"scripts/mac.scpt"
+  },
+  "win32":{
+    "bin"    :"powershell",
+    "parameters" : ["-ExecutionPolicy", "Bypass","-File"],
+    "script_url" : "scripts\\windows.ps1"
+  }
+}

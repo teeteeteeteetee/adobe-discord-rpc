@@ -1,15 +1,10 @@
 /*
-
     im not bothered to find the way to make strings to be listened so theres a loop for it im sorry, dm me if u can help me with it
-
 */
 
 var csInterface = new CSInterface();
-var appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax;
+var appID = "", state = "", details = "", smallImageKey = "", smallImageText = "", largeImageText = "", partySize = 0, partyMax = 0;
 var stateOld, detailsOld, smallImageKeyOld, smallImageTextOld, largeImageTextOld, partySizeOld, partyMaxOld;
-
-partySize = 0
-partyMax = 0
 
 //ae stuff
 var renderItemLock;
@@ -401,7 +396,7 @@ function put(appID, state, details, smallImageKey, smallImageText, largeImageTex
         
             $.ajax({
                 type: 'PUT',
-                url: 'http://localhost:6767/rpc/',
+                url: 'http://localhost:6767/rpc/'+appID,
                 contentType: 'application/json',
                 data: JSON.stringify(data), 
             })

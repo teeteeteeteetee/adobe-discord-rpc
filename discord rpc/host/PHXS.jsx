@@ -1,9 +1,32 @@
 function PSTitle(){
-    return app.activeDocument.name
+    try{
+        return app.activeDocument.name
+
+    }catch(err){
+        switch(err.description){
+            case "No such element":
+                return "Idling"
+            break;
+
+            default:
+                return "";
+        }
+    }
+    //return app.activeDocument.name
 }
 
 function PSLayer(){
-    return app.activeDocument.activeLayer.name
+    try{
+        return app.activeDocument.activeLayer.name
+    }catch(err){
+        switch(err.description){
+            case "No such element":
+                return "";
+
+            default:
+                return "";
+        }
+    }
 }
 
 function PSLayerMax(){
