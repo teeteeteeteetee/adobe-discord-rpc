@@ -1,18 +1,76 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Tee's Discord Rich Presence</title>
 
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css"/>
+
+    <script src="../lib/CSInterface.js"></script> -->
+    <script src="../lib/jquery-3.5.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 
 </head>
+
 <body>
-    
-    <!-- <button id="button">test</button> -->
-	
-	<script src="../lib/jquery-3.5.1.min.js"></script>
-	<script src="../lib/CSInterface.js"></script>
-	<script src="index.js"></script>
+
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="p-2 bd-highlight">
+
+            <div id="visualizer" class="card visualizer" style="max-height: 13.5rem;">
+                <div class="card-body mx-0 px-2">
+                    <div class="text-center">
+                    <img id="avatar" src="./assets/default.png">
+                    </div>
+                  <h6 id="visualizerName" style="font-family:RobotoCondensed-Bold;font-size:14px"class="text-center"><span id="visualizerDiscrim" style="font-family:Roboto-Light"></span></h6>
+                    <div>
+                        <p style="font-family:RobotoCondensed-Bold;font-size:10px; margin-bottom:2px;">PLAYING A GAME</p>
+
+                        <!-- <br> is broken for no reasons so i had to use div :) -->
+
+                        <p style="font-size:8px; padding:0;margin:0"><img id="appIcon">
+                            <div id="_title" class="visualizerText"><strong>After Effects</strong></div>
+                            <div id="_details" class="visualizerText">Untitled Project.aep</div>
+                            <div id="_state" class="visualizerText">Idling</div>
+                            <div id="_timestamp" class="visualizerText">00:00 elapsed</div>
+                        </p>
+
+                    </div>
+                </div>
+
+              </div>
+
+            <li class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="details" checked="true" onchange="updateSettings()">
+                <label class="custom-control-label" for="details">details</label>
+            </li>
+
+            <li class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="state" checked="true" onchange="updateSettings()">
+                <label class="custom-control-label" for="state">state</label>
+            </li>
+
+            <li class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="timestamp" checked="true" onchange="updateSettings()">
+                <label class="custom-control-label" for="timestamp">time</label>
+            </li>
+
+            <li class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="enabled" checked="true" onchange="updateSettings()">
+                <label class="custom-control-label" for="enabled">enabled</label>
+            </li>
+
+            <footer>
+                <p><a href="https://github.com/lolitee/adobe-discord-rpc">github repository</a></p>
+            </footer>
+
+            <script src="main.js"></script>
+
+        </div>
+    </div>
+
 </body>
+
 </html>

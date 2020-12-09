@@ -1,59 +1,73 @@
 const express = require("express");
 const app = express();
 const fs = require('fs');
+const config = require('./config')
 
-var config = require("./config.json")
-var port = config.server.port
+var configServer = require("./config.json")
+var rpc = require('./rpc')
+var port = configServer.server.port
 
 var apps = {};
 
+//run()
+
 module.exports = run;
 
-function run(){
+function run() {
 
-try{
+  try {
 
     connect();
 
-process.on('uncaughtException', (err) => {
-    console.log(err)
-    if (err.code === 'EADDRINUSE') {
-      console.log("port is currently in use")
-      setTimeout(function(){ connect()}, 15e3)
+    process.on('uncaughtException', (err) => {
+      console.log(err)
+      if (err.code === 'EADDRINUSE') {
+        console.log("port is currently in use")
+        setTimeout(function () { connect() }, 15000)
 
-      return;
+        return;
+      }
+    });
+
+    function connect() {
+      app.listen(port, 'localhost')
+      config.create()
+      console.log("connecting")
     }
-});
 
-function connect(){
-    app.listen(port, 'localhost')
-    console.log("connecting")
-}
+    app.use(express.json())
 
-app.use(express.json())
+    fs.readdir(__dirname + "\\..\\host", (err, files) => {
 
-fs.readdir(__dirname+"\\..\\host", (err, files) => {
-  
-files.forEach(file => {
-  var _app = file.replace(".jsx", "");
-app.put(`/rpc/${_app}`, function (req, res) {
-      console.log(req.body)
-      res.send(req.body)
-    
-      apps[_app] = req.body;
+      files.forEach(file => {
 
-      var rpc = require('./rpc')
-      rpc(JSON.stringify(apps))
+        var _app = file.replace(".jsx", "");
+
+        app.get(`/rpc/${_app}/config`, function (req, res) {
+          res.send(config.load(_app))
+        })
+
+        app.put(`/rpc/${_app}/data`, function (req, res) {
+          console.log(req.body)
+          res.send(req.body)
+
+          apps[_app] = req.body;
+
+          rpc.run(JSON.stringify(apps))
+        })
+      })
     })
-  })
-})
 
-app.get('/', function (req, res) { 
-    res.send(`com.discord.rpc.tee`)
-});
+    app.get(`/rpc/user`, function (req, res) {
+      res.send(rpc.user())
+    })
 
-}catch(err){
-  throw err;
-}
-   
+    app.get('/', function (req, res) {
+      res.send(`com.discord.rpc.tee`)
+    });
+
+  } catch (err) {
+    throw err;
+  }
+
 }

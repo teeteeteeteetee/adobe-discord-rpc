@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!-- 1) -->
+
 <ExtensionManifest ExtensionBundleId="com.discord.rpc.tee" ExtensionBundleVersion="0.0.3" Version="7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ExtensionList>
-    <!-- 2) -->
     <Extension Id="com.tee.discord.rpc" Version="0.0.10" />
+    <Extension Id="com.tee.discord.rpc.panel" Version="0.0.1" />
     <Extension Id="com.tee.server" Version="0.0.1" />
   </ExtensionList>
   <ExecutionEnvironment>
     <HostList>
-      <!-- 3) -->
+
       <Host Name="PHSP" Version="[19,99.0]" />
       <Host Name="PHXS" Version="[19,99.0]" />
       <Host Name="IDSN" Version="[13,99.0]" />
@@ -32,16 +32,45 @@
     </RequiredRuntimeList>
   </ExecutionEnvironment>
   <DispatchInfoList>
-    <!-- 2) -->
+
+  <Extension Id="com.tee.discord.rpc.panel">
+        <DispatchInfo>
+          <Resources>
+            <MainPath>./client/index.html</MainPath>
+            <CEFCommandLine />
+          </Resources>
+          <Lifecycle>
+            <AutoVisible>true</AutoVisible>
+          </Lifecycle>
+          <UI>
+            <Type>Panel</Type>
+            <Menu Placement="'Main:&amp;Window',600.0,'KBSCE Window menu'">Discord Rich Presence</Menu>
+            <Geometry>
+              <Size>
+                <Height>600</Height>
+                <Width>300</Width>
+              </Size>
+              <MaxSize>
+                <Height>600</Height>
+                <Width>300</Width>
+              </MaxSize>
+            </Geometry>
+              <Icons>
+                <Icon Type="Normal">./client/assets/IconDark.png</Icon>
+                <Icon Type="RollOver">./client/assets/IconDark.png</Icon>
+                <Icon Type="DarkNormal">./images/IconDark.png</Icon>
+                <Icon Type="DarkRollOver">./images/IconDark.png</Icon>
+                <Icon Type="LightNormal">./images/IconDark.png</Icon>
+                <Icon Type="LightRollOver">./images/IconDark.png</Icon>
+              </Icons>
+          </UI>
+        </DispatchInfo>
+      </Extension>
+
     <Extension Id="com.tee.discord.rpc">
       <DispatchInfo>
         <Resources>
-          <!-- 4) -->
-          <MainPath>./client/index.html</MainPath>
-          <!-- 5) -->
-
-          <!-- <ScriptPath>./host/core.jsx</ScriptPath> -->
-
+          <MainPath>./client/main.html</MainPath>
           <CEFCommandLine />
         </Resources>
         <Lifecycle>
@@ -54,20 +83,17 @@
           </StartOn>
         </Lifecycle>
         <UI>
-          <Type>Panel</Type>
-          <!-- 6) -->
-          <Menu Placement="'Main:&amp;Window',600.0,'KBSCE Window menu'">Discord Rich Presence</Menu>
+          <Type>Custom</Type>
           <Geometry>
             <Size>
-              <!-- 7) -->
               <Height>100</Height>
               <Width>100</Width>
             </Size>
           </Geometry>
-          <Icons />
         </UI>
       </DispatchInfo>
     </Extension>
+
     <Extension Id="com.tee.server">
         <DispatchInfo>
       <Resources>

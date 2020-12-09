@@ -6,7 +6,6 @@ var activeApp = require('./activeApp');
 var apps = require("./adobe.json");
 
 var global = {}
-var timestamp = {}
 
 var _activeApp;
 var _previousApp;
@@ -20,7 +19,23 @@ var stateOld
 var partySizeOld
 var partyMaxOld
 
-module.exports = discord
+module.exports.user = user
+
+function user(){
+
+    console.log(_activeApp)
+    console.log(global[_activeApp].user)
+
+    var data = {
+        "username": global[_activeApp].user.username,
+        "discriminator": global[_activeApp].user.discriminator,
+        "id": global[_activeApp].user.id,
+        "avatarURL": `https://cdn.discordapp.com/avatars/${global[_activeApp].user.id}/${global[_activeApp].user.avatar}?size=256`
+    }
+    return data
+}
+
+module.exports.run = discord
 
 function discord(_data){
     data = JSON.parse(_data)
@@ -38,9 +53,6 @@ function callback(window){
             global[activeApp.run(window.app)] = new RPC.Client({
                 transport: "ipc"
             })
-            if(!timestamp[_activeApp]){
-                timestamp[_activeApp] = new Date();
-            }
         }
 
         if(smallImageKeyOld != data[_activeApp].smallImageKey || 
@@ -69,6 +81,8 @@ function callback(window){
         partySizeOld = data[_activeApp].partySize
         partyMaxOld = data[_activeApp].partyMax
 
+        console.log(rpc.user)
+
         rpc.on("ready", () => {
             rpc.setActivity({
                 largeImageKey: "logo",
@@ -77,7 +91,7 @@ function callback(window){
                 largeImageText: data[_activeApp].largeImageText,
                 details: data[_activeApp].details,
                 state: data[_activeApp].state,
-                startTimestamp: timestamp[_activeApp],
+                startTimestamp: data[_activeApp].timestamp,
                 partySize: parseInt(data[_activeApp].partySize),
                 partyMax: parseInt(data[_activeApp].partyMax)
             })
@@ -101,6 +115,6 @@ function callback(window){
     } 
   }
 
-monitor.getActiveWindow(callback, -1, 2);
+monitor.getActiveWindow(callback, -1, 3);
 
 

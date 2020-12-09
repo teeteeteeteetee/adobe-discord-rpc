@@ -5,411 +5,364 @@
 var csInterface = new CSInterface();
 var appID = "", state = "", details = "", smallImageKey = "", smallImageText = "", largeImageText = "", partySize = 0, partyMax = 0;
 var stateOld, detailsOld, smallImageKeyOld, smallImageTextOld, largeImageTextOld, partySizeOld, partyMaxOld;
+var timestamp = Math.floor(Date.now() / 1000)
 
 //ae stuff
 var renderItemLock;
-
-var button = document.querySelector("#button");
-
 
 function loadJSX(fileName) {
     var csInterface = new CSInterface();
     var extensionRoot = csInterface.getSystemPath(SystemPath.EXTENSION) + "/host/";
     csInterface.evalScript('$.evalFile("' + extensionRoot + fileName + '")');
-  }
-
-// button.addEventListener("click", () => {
-
-//     //csInterface.requestOpenExtension("com.tee.server");
-//     csInterface.evalScript('IDPageName()', response => {
-//         alert(response)
-//     })
-    
-//     // loadJSX("AEFT.jsx");
-
-// });
-
+}
 
 //server
 csInterface.requestOpenExtension("com.tee.server");
 
-//window.onload = getApp();
 appID = csInterface.getApplicationID()
 
-
-loadJSX(appID+".jsx");
+loadJSX(appID + ".jsx");
 getApp();
 
-function getAppID () {
+function getAppID() {
 
     var csInterface = new CSInterface();
-
     var appID = csInterface.getApplicationID()
-
     return appID
 }
 
 
-function getApp () {
+function getApp() {
 
-    switch(appID){
-        case "PHSP":
-        
-            largeImageText = "Adobe Photoshop"
+    setInterval(() => {
 
-            csInterface.evalScript('PSTitle()', response => {
-                if(response === ("EvalScript error.")){
-                    response = "Idling";
-                }
-                details = response
-            })
-            csInterface.evalScript('PSLayer()', response => {
-                if(response === ("EvalScript error.")){
-                    response = undefined
-                    smallImageKey = undefined
-                } else {
-                    smallImageText = `Editing ${details}`
-                }
-                console.log(response)
-                state = response
-            })
+        switch (appID) {
+            case "PHSP":
 
-            csInterface.evalScript('PSLayerMax()', response => {
-                partyMax = response;
-            })
-            csInterface.evalScript('PSLayerMin()', response => {
-                partySize = response;
-            })
+                largeImageText = "Adobe Photoshop"
 
-            csInterface.evalScript('PSTool()', response => {
-                var x = response.toLowerCase()
-                smallImageKey = x
+                csInterface.evalScript('PSTitle()', response => {
+                    if (response === ("EvalScript error.")) {
+                        response = "Idling";
+                    }
+                    details = response
+                })
+                csInterface.evalScript('PSLayer()', response => {
+                    if (response === ("EvalScript error.")) {
+                        response = undefined
+                        smallImageKey = undefined
+                    } else {
+                        smallImageText = `Editing ${details}`
+                    }
+                    console.log(response)
+                    state = response
+                })
 
-            })
+                csInterface.evalScript('PSLayerMax()', response => {
+                    partyMax = response;
+                })
+                csInterface.evalScript('PSLayerMin()', response => {
+                    partySize = response;
+                })
 
-            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
-            
-            break;
-        case "PHXS":
-        
-            largeImageText = "Adobe Photoshop"
+                csInterface.evalScript('PSTool()', response => {
+                    var x = response.toLowerCase()
+                    smallImageKey = x
 
-            csInterface.evalScript('PSTitle()', response => {
-                if(response === ("EvalScript error.")){
-                    response = "Idling";
-                }
-                details = response
-            })
-            csInterface.evalScript('PSLayer()', response => {
-                if(response === ("EvalScript error.")){
-                    response = undefined
-                    smallImageKey = undefined
-                } else {
-                    smallImageText = `Editing ${details}`
-                }
-                console.log(response)
-                state = response
-            })
+                })
 
-            csInterface.evalScript('PSLayerMax()', response => {
-                if(response === "EvalScript error."){
-                    response = 0
-                }
-                partyMax = response;
-            })
-            csInterface.evalScript('PSLayerMin()', response => {
-                if(response === "EvalScript error."){
-                    response = 0
-                }
-                partySize = response;
-            })
+                break;
+            case "PHXS":
 
-            csInterface.evalScript('PSTool()', response => {
-                var x = response.toLowerCase()
-                smallImageKey = x
+                largeImageText = "Adobe Photoshop"
 
-            })
+                csInterface.evalScript('PSTitle()', response => {
+                    if (response === ("EvalScript error.")) {
+                        response = "Idling";
+                    }
+                    details = response
+                })
+                csInterface.evalScript('PSLayer()', response => {
+                    if (response === ("EvalScript error.")) {
+                        response = undefined
+                        smallImageKey = undefined
+                    } else {
+                        smallImageText = `Editing ${details}`
+                    }
+                    console.log(response)
+                    state = response
+                })
 
-            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
-            
-            break;
-        case "IDSN":
-            largeImageText = "Adobe InDesign"
+                csInterface.evalScript('PSLayerMax()', response => {
+                    if (response === "EvalScript error.") {
+                        response = 0
+                    }
+                    partyMax = response;
+                })
+                csInterface.evalScript('PSLayerMin()', response => {
+                    if (response === "EvalScript error.") {
+                        response = 0
+                    }
+                    partySize = response;
+                })
 
-            csInterface.evalScript('IDTitle()', response => {
-                if(response === ("EvalScript error.")){
-                    response = "Idling";
-                }
-                details = response
-            })
+                csInterface.evalScript('PSTool()', response => {
+                    var x = response.toLowerCase()
+                    smallImageKey = x
 
-            csInterface.evalScript('IDPageName()', response => {
-                if(response === ("EvalScript error.")){
-                    response = undefined;
-                } else {
-                    response = `Page: ${response}`
-                }
-                state = response
-            })
+                })
 
-            csInterface.evalScript('IDPageMax()', response => {
-                if(response === "EvalScript error."){
-                    response = 0
-                }
-                partyMax = response;
-            })
-            csInterface.evalScript('IDPageMin()', response => {
-                if(response === "EvalScript error."){
-                    response = 0
-                }
-                partySize = response;
-            })
 
-            smallImageText = undefined
-            smallImageKey = undefined
+                break;
+            case "IDSN":
+                largeImageText = "Adobe InDesign"
 
-            //alert("flying")
+                csInterface.evalScript('IDTitle()', response => {
+                    if (response === ("EvalScript error.")) {
+                        response = "Idling";
+                    }
+                    details = response
+                })
 
-            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
+                csInterface.evalScript('IDPageName()', response => {
+                    if (response === ("EvalScript error.")) {
+                        response = undefined;
+                    } else {
+                        response = `Page: ${response}`
+                    }
+                    state = response
+                })
 
-            break;
-        case "AICY":
-            break;
-        case "ILST":
+                csInterface.evalScript('IDPageMax()', response => {
+                    if (response === "EvalScript error.") {
+                        response = 0
+                    }
+                    partyMax = response;
+                })
+                csInterface.evalScript('IDPageMin()', response => {
+                    if (response === "EvalScript error.") {
+                        response = 0
+                    }
+                    partySize = response;
+                })
 
-            largeImageText = "Adobe Illustrator"
+                break;
+            case "AICY":
+                break;
+            case "ILST":
 
-            csInterface.evalScript('ILTitle()', response => {
-                if(response === ("EvalScript error.")){
-                    response = "Idling";
-                } else if(response.includes("Error 1302:")){
-                    response = "Idling";
-                }
-                
-                details = response
-            })
+                largeImageText = "Adobe Illustrator"
 
-            csInterface.evalScript('ILLayer()', response => {
-                if(response === ("EvalScript error.")){
-                    response = undefined
-                    smallImageKey = undefined
-                } else if(response.includes("Error 1302:")){
-                    response = undefined;
-                } else {
-                    smallImageKey = "edit"
-                    smallImageText = `Editing ${details}`
-                }
-                state = response
-            })
+                csInterface.evalScript('ILTitle()', response => {
+                    if (response === ("EvalScript error.")) {
+                        response = "Idling";
+                    } else if (response.includes("Error 1302:")) {
+                        response = "Idling";
+                    }
 
-            csInterface.evalScript('ILLayerMax()', response => {
-                if(response === "EvalScript error."){
-                    response = 0
-                }
-                partyMax = response;
-            })
-            csInterface.evalScript('ILLayerMin()', response => {
-                if(response === "EvalScript error."){
-                    response = 0
-                }
-                partySize = response;
-            })
+                    details = response
+                })
 
-            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
+                csInterface.evalScript('ILLayer()', response => {
+                    if (response === ("EvalScript error.")) {
+                        response = undefined
+                        smallImageKey = undefined
+                    } else if (response.includes("Error 1302:")) {
+                        response = undefined;
+                    } else {
+                        smallImageKey = "edit"
+                        smallImageText = `Editing ${details}`
+                    }
+                    state = response
+                })
 
-            break;
-        case "PPRO":
+                csInterface.evalScript('ILLayerMax()', response => {
+                    if (response === "EvalScript error.") {
+                        response = 0
+                    }
+                    partyMax = response;
+                })
+                csInterface.evalScript('ILLayerMin()', response => {
+                    if (response === "EvalScript error.") {
+                        response = 0
+                    }
+                    partySize = response;
+                })
 
-            largeImageText = "Adobe Premiere Pro"
-            csInterface.evalScript('PPTitle()', response => {
-                if(response === "EvalScript error."){
-                    response = "Idling"
-                } else {
-                    csInterface.evalScript('PPSequence()', response => {
-                        if(!response){
-                            response = "Idling"
-                            smallImageKey = undefined
-                        } else {
-                            smallImageKey = "edit"
-                            smallImageText = `Editing ${details}`
-                        }
-                        state = response
-                    })
-                }
-                details = response
-            })
 
-            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
+                break;
+            case "PPRO":
 
-            break;
-        case "PRLD":
-
-            largeImageText = "Adobe Prelude"
-
-            csInterface.evalScript('PLTitle()', response => {
-                if(response === "EvalScript error."){
-                    response = "Idling"
-                } else {
-                    csInterface.evalScript('PLSequence()', response => {
-                        if(!response){
-                            response = "Idling"
-                            smallImageKey = undefined
-                        } else {
-                            smallImageKey = "edit"
-                            smallImageText = `Editing ${details}`
-                        }
-                        state = response
-                    })
-                }
-                details = response
-            })
-
-            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
-
-            break;
-        case "AEFT": 
-
-        largeImageText = "Adobe After Effects"
-    
-            csInterface.evalScript('AETitle()', response => {
-                if(!response){
-                    response = "Untitled Project.aep"
-                }
-                details = response
-            })
-    
-            csInterface.evalScript('AEComp()', response => {
-                if(!response){
-                    response = "Idling"
-                    smallImageText = `Editing ${details}`
-                } else {
-                    smallImageText = `Editing ${details}`
-                }
-                state = response
-            })
-
-            csInterface.evalScript('AETool()', response => {
-                smallImageKey = response
-            })
-
-            csInterface.evalScript('AERender()', response => {                
-                if(response === "true"){
-                    csInterface.evalScript('AERenderNumItems()', response => {
-                        if(!renderItemLock){
-                            renderItemLock = response
-                        }
-                        csInterface.evalScript('AERenderItems()', response => {    
-                            partySize = response
+                largeImageText = "Adobe Premiere Pro"
+                csInterface.evalScript('PPTitle()', response => {
+                    if (response === "EvalScript error.") {
+                        response = "Idling"
+                    } else {
+                        csInterface.evalScript('PPSequence()', response => {
+                            if (!response) {
+                                response = "Idling"
+                                smallImageKey = undefined
+                            } else {
+                                smallImageKey = "edit"
+                                smallImageText = `Editing ${details}`
+                            }
+                            state = response
                         })
-                        partyMax = renderItemLock
-                    })
-                    state = "Rendering"
-                } else {
-                    renderItemLock = null;
-                    partyMax = 0
-                    partySize = 0
-                }
-            })
-
-            // csInterface.evalScript('AETool()', response => {
-
-            // })
-
-            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
-
-            break;
-        case "FLPR":
-
-            largeImageText = "Adobe Animate"
-
-            csInterface.evalScript('FLTitle()', response => {
-                
-                details = response
-            })
-
-            csInterface.evalScript('FLLayer()', response => {
-
-                state = response
-            })
-
-            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
-
-            break;
-        case "AUDT":
-
-            largeImageText = "Adobe Audition"
-
-            csInterface.evalScript('AUTitle()', response => {
-                if(response === "EvalScript error."){
-                    response = undefined
-                }
-                details = response
-            })
-    
-            csInterface.evalScript('AUType()', response => {
-                if(response === "EvalScript error."){
-                    response = "Idling"
-                }
-                state = response
-            })
-
-            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
-
-            break;
-        case "DRWV":
-
-            largeImageText = "Adobe Dreamweaver"
-
-            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
-
-            break;
-        case "RUSH":
+                    }
+                    details = response
+                })
 
 
-            put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax);
+                break;
+            case "PRLD":
 
-            break;
-    
-    }
-    
-}
+                largeImageText = "Adobe Prelude"
 
-function refresh(timer){
-    setTimeout(function(){ getApp()}, timer)
-}
+                csInterface.evalScript('PLTitle()', response => {
+                    if (response === "EvalScript error.") {
+                        response = "Idling"
+                    } else {
+                        csInterface.evalScript('PLSequence()', response => {
+                            if (!response) {
+                                response = "Idling"
+                                smallImageKey = undefined
+                            } else {
+                                smallImageKey = "edit"
+                                smallImageText = `Editing ${details}`
+                            }
+                            state = response
+                        })
+                    }
+                    details = response
+                })
+                break;
+            case "AEFT":
 
-function put(appID, state, details, smallImageKey, smallImageText, largeImageText, partySize, partyMax){
+                largeImageText = "Adobe After Effects"
 
-    if(state != stateOld || details != detailsOld || smallImageKey != smallImageKeyOld || smallImageText != smallImageTextOld || largeImageText != largeImageTextOld || partyMax != partyMaxOld || partySize != partySizeOld){
-        let data = {
-            "appID": appID,
-            "state": state,
-            "details": details,
-            "smallImageKey": smallImageKey,
-            "smallImageText": smallImageText,
-            "largeImageText": largeImageText,
-            "partySize": partySize, 
-            "partyMax": partyMax
+                csInterface.evalScript('AETitle()', response => {
+                    if (!response) {
+                        response = "Untitled Project.aep"
+                    }
+                    details = response
+                })
+
+                csInterface.evalScript('AEComp()', response => {
+                    if (!response) {
+                        response = "Idling"
+                        smallImageText = `Editing ${details}`
+                    } else {
+                        smallImageText = `Editing ${details}`
+                    }
+                    state = response
+                })
+
+                csInterface.evalScript('AETool()', response => {
+                    smallImageKey = response
+                })
+
+                csInterface.evalScript('AERender()', response => {
+                    if (response === "true") {
+                        csInterface.evalScript('AERenderNumItems()', response => {
+                            if (!renderItemLock) {
+                                renderItemLock = response
+                            }
+                            csInterface.evalScript('AERenderItems()', response => {
+                                partySize = response
+                            })
+                            partyMax = renderItemLock
+                        })
+                        state = "Rendering"
+                    } else {
+                        renderItemLock = null;
+                        partyMax = 0
+                        partySize = 0
+                    }
+                })
+
+                break;
+            case "FLPR":
+
+                largeImageText = "Adobe Animate"
+
+                csInterface.evalScript('FLTitle()', response => {
+
+                    details = response
+                })
+
+                csInterface.evalScript('FLLayer()', response => {
+
+                    state = response
+                })
+
+                break;
+            case "AUDT":
+
+                largeImageText = "Adobe Audition"
+
+                csInterface.evalScript('AUTitle()', response => {
+                    if (response === "EvalScript error.") {
+                        response = undefined
+                    }
+                    details = response
+                })
+
+                csInterface.evalScript('AUType()', response => {
+                    if (response === "EvalScript error.") {
+                        response = "Idling"
+                    }
+                    state = response
+                })
+
+                break;
+            case "DRWV":
+
+                largeImageText = "Adobe Dreamweaver"
+
+                break;
+            case "RUSH":
+
+                largeImageText = "Adobe Premiere Rush"
+
+                break;
         }
 
-        //csInterface.requestOpenExtension("com.tee.server");
-        
+        if (state != stateOld || details != detailsOld || smallImageKey != smallImageKeyOld || smallImageText != smallImageTextOld || largeImageText != largeImageTextOld || partyMax != partyMaxOld || partySize != partySizeOld) {
+            let data = {
+                "appID": appID,
+                "state": state,
+                "details": details,
+                "smallImageKey": smallImageKey,
+                "smallImageText": smallImageText,
+                "largeImageText": largeImageText,
+                "partySize": partySize,
+                "partyMax": partyMax,
+                "timestamp": timestamp
+            }
+
             $.ajax({
                 type: 'PUT',
-                url: 'http://localhost:6767/rpc/'+appID,
+                url: 'http://localhost:6767/rpc/' + appID + '/data',
                 contentType: 'application/json',
-                data: JSON.stringify(data), 
+                data: JSON.stringify(data),
+                error: function(request, status, error){
+                    console.log(request, status, error)
+                    if(request == 502){
+                        csInterface.requestOpenExtension("com.tee.server");
+                    }
+                }
             })
 
-            stateOld = state 
+            stateOld = state
             detailsOld = details
             smallImageKeyOld = smallImageKey
             smallImageTextOld = smallImageText
             largeImageTextOld = largeImageText
             partyMaxOld = partyMax
             partySizeOld = partySize
-    }
 
-    refresh(2e3)
+        }
+//refresh every 15s due to cpu usage
+    }, 3000);
 
 }
