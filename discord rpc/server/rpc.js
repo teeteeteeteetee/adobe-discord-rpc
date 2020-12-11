@@ -5,6 +5,8 @@ var activeApp = require('./activeApp');
 
 var apps = require("./adobe.json");
 
+var main = require("./main")
+
 var global = {}
 
 var _activeApp;
@@ -22,16 +24,13 @@ var partyMaxOld
 module.exports.user = user
 
 function user(){
-
-    console.log(_activeApp)
-    console.log(global[_activeApp].user)
-
-    var data = {
-        "username": global[_activeApp].user.username,
-        "discriminator": global[_activeApp].user.discriminator,
-        "id": global[_activeApp].user.id,
-        "avatarURL": `https://cdn.discordapp.com/avatars/${global[_activeApp].user.id}/${global[_activeApp].user.avatar}?size=256`
-    }
+    
+        var data = {
+            "username": global[_activeApp].user.username,
+            "discriminator": global[_activeApp].user.discriminator,
+            "id": global[_activeApp].user.id,
+            "avatarURL": `https://cdn.discordapp.com/avatars/${global[_activeApp].user.id}/${global[_activeApp].user.avatar}?size=256`
+        }
     return data
 }
 
@@ -44,7 +43,30 @@ function discord(_data){
 function callback(window){
     try {
 
-        if(activeApp.run(window.app) === undefined) return;
+        if(!activeApp.run(window.app)) return;
+    
+        // if(!settings[activeApp.run(window.app)].enabled) {
+
+        //     console.log("loololol killed")
+
+        //     try{
+        //         global[activeApp.run(window.app)].destroy()
+        //     }catch(err){
+
+        //     }
+
+        //     console.log(!global[activeApp.run(window.app)])
+
+        //     if(!global[activeApp.run(window.app)] && main.host){
+        //         console.log("loololol killed 2x")
+      
+        //         setTimeout(() => {
+        //             main.killServer();
+        //         }, 15000);
+        //     }
+
+        //     return;
+        // }
 
         _activeApp = activeApp.run(window.app);
 
@@ -55,15 +77,24 @@ function callback(window){
             })
         }
 
-        if(smallImageKeyOld != data[_activeApp].smallImageKey || 
-            smallImageTextOld != data[_activeApp].smallImageText || 
-            largeImageTextOld != data[_activeApp].largeImageText ||
-            detailsOld != data[_activeApp].details ||
-            stateOld != data[_activeApp].state ||
-            partySizeOld != data[_activeApp].partySize ||
-            partyMaxOld != data[_activeApp].partyMax) run();
-        
+try{
+    if(smallImageKeyOld != data[_activeApp].smallImageKey || 
+        smallImageTextOld != data[_activeApp].smallImageText || 
+        largeImageTextOld != data[_activeApp].largeImageText ||
+        detailsOld != data[_activeApp].details ||
+        stateOld != data[_activeApp].state ||
+        partySizeOld != data[_activeApp].partySize ||
+        partyMaxOld != data[_activeApp].partyMax) run();
+}catch(err){
+    console.log("cant get data")
+    return
+}
+
+        module.exports.forceRun = run;
+
         function run(){
+
+        var settings = require(process.env.APPDATA + "\\adobe-discord-rpc\\config.json")
 
         var rpc = global[_activeApp];
 
@@ -72,6 +103,10 @@ function callback(window){
             if(data[_activeApp][item] === "") data[_activeApp][item] = undefined;
         }
         console.log(data[_activeApp])
+
+        var details_;
+        var state_;
+        var timestamp_;
 
         smallImageKeyOld = data[_activeApp].smallImageKey
         smallImageTextOld = data[_activeApp].smallImageText
@@ -83,15 +118,35 @@ function callback(window){
 
         console.log(rpc.user)
 
+        if(!settings[_activeApp].details){
+            details_ = undefined
+        }else{
+            details_ = data[_activeApp].details
+        }
+        if(!settings[_activeApp].state) {
+            state_ = undefined
+        }else{
+            state_ = data[_activeApp].state
+        }
+        if(!settings[_activeApp].timestamp) {
+            timestamp_ = undefined
+        }else{
+            timestamp_ = data[_activeApp].timestamp
+        }
+
+        // details: data[_activeApp].details,
+        // state: data[_activeApp].state,
+        // startTimestamp: data[_activeApp].timestamp,
+
         rpc.on("ready", () => {
             rpc.setActivity({
                 largeImageKey: "logo",
                 smallImageKey: data[_activeApp].smallImageKey,
                 smallImageText: data[_activeApp].smallImageText,
                 largeImageText: data[_activeApp].largeImageText,
-                details: data[_activeApp].details,
-                state: data[_activeApp].state,
-                startTimestamp: data[_activeApp].timestamp,
+                details: details_,
+                state: state_,
+                startTimestamp: timestamp_,
                 partySize: parseInt(data[_activeApp].partySize),
                 partyMax: parseInt(data[_activeApp].partyMax)
             })
@@ -111,7 +166,7 @@ function callback(window){
     }
 
     }catch(err) {
-        throw err
+        console.log(err)
     } 
   }
 

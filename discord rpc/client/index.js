@@ -302,7 +302,7 @@ function getApp() {
 
                 csInterface.evalScript('AUTitle()', response => {
                     if (response === "EvalScript error.") {
-                        response = undefined
+                        response = ""
                     }
                     details = response
                 })

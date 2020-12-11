@@ -1,5 +1,6 @@
 const fs = require("fs")
 var path = (process.env.APPDATA + "\\adobe-discord-rpc")
+var rpc = require("./rpc")
 
 var form = {
     "details": true,
@@ -25,6 +26,55 @@ module.exports.create = function () {
 
             })
         })
+    
+    }
+    fs.readdir(__dirname + "\\..\\host", (err, files) => {
+
+        var data = require(path+ "\\config.json")
+
+        for (const key in data) {
+            if(!files.includes(`${key}.jsx`)){
+                delete data[key]
+            } 
+        }
+
+        files.forEach(file => {
+
+            if(!data.hasOwnProperty(file.replace(".jsx", ""))){
+                data[file.replace(".jsx", "")] = form
+            }
+
+            fs.writeFile(path + "\\config.json", JSON.stringify(data), (err) => {
+                if (err) throw err;
+        
+            })
+
+        })
+    })
+    
+}
+
+module.exports.update = function (appID, newData) {
+    try{
+        var data = require(path+ "\\config.json")
+
+
+        console.log(appID, newData)
+
+        data[appID] = newData
+
+        fs.writeFile(path + "\\config.json", JSON.stringify(data), (err) => {
+            if (err) throw err;
+    
+        })
+
+        console.log("here")
+        rpc.forceRun();
+        console.log("here")
+        
+
+    }catch(err){
+        throw err
     }
 }
 

@@ -1,18 +1,20 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
-<ExtensionManifest ExtensionBundleId="com.discord.rpc.tee" ExtensionBundleVersion="0.0.3" Version="7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ExtensionManifest ExtensionBundleId="com.discord.rpc.tee" ExtensionBundleVersion="0.0.13" Version="7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ExtensionList>
-    <Extension Id="com.tee.discord.rpc" Version="0.0.10" />
-    <Extension Id="com.tee.discord.rpc.panel" Version="0.0.1" />
-    <Extension Id="com.tee.server" Version="0.0.1" />
+    <Extension Id="com.tee.discord.rpc" Version="0.0.15" />
+    <Extension Id="com.tee.discord.rpc.panel" Version="0.0.15" />
+    <Extension Id="com.tee.discord.rpc.other" Version="0.0.15" />
+    <Extension Id="com.tee.server" Version="0.0.15" />
   </ExtensionList>
   <ExecutionEnvironment>
     <HostList>
 
+      <Host Name="IDSN" Version="[14,99.0]" />
+      <Host Name="AICY" Version="[14,99.0]" />
+
       <Host Name="PHSP" Version="[19,99.0]" />
       <Host Name="PHXS" Version="[19,99.0]" />
-      <Host Name="IDSN" Version="[13,99.0]" />
-      <Host Name="AICY" Version="[13,99.0]" />
       <Host Name="ILST" Version="[22,99.0]" />
       <Host Name="PPRO" Version="[12,99.0]" />
       <Host Name="PRLD" Version="[7,99.0]" />
@@ -34,6 +36,19 @@
   <DispatchInfoList>
 
   <Extension Id="com.tee.discord.rpc.panel">
+    <HostList>
+      <Host Name="PHSP" />
+      <Host Name="PHXS" />
+      <Host Name="ILST" />
+      <Host Name="PPRO" />
+      <Host Name="PRLD" />
+      <Host Name="AEFT" />
+      <Host Name="FLPR" />
+      <Host Name="AUDT" />
+      <Host Name="DRWV" />
+      <!-- <Host Name="MUSE" /> -->
+      <Host Name="RUSH" />
+    </HostList>
         <DispatchInfo>
           <Resources>
             <MainPath>./client/index.html</MainPath>
@@ -44,7 +59,45 @@
           </Lifecycle>
           <UI>
             <Type>Panel</Type>
-            <Menu Placement="'Main:&amp;Window',600.0,'KBSCE Window menu'">Discord Rich Presence</Menu>
+            <Menu>Discord Rich Presence</Menu>
+            <Geometry>
+              <Size>
+                <Height>600</Height>
+                <Width>300</Width>
+              </Size>
+              <MaxSize>
+                <Height>600</Height>
+                <Width>300</Width>
+              </MaxSize>
+            </Geometry>
+              <Icons>
+                <Icon Type="Normal">./client/assets/IconDark.png</Icon>
+                <Icon Type="RollOver">./client/assets/IconDark.png</Icon>
+                <Icon Type="DarkNormal">./images/IconDark.png</Icon>
+                <Icon Type="DarkRollOver">./images/IconDark.png</Icon>
+                <Icon Type="LightNormal">./images/IconDark.png</Icon>
+                <Icon Type="LightRollOver">./images/IconDark.png</Icon>
+              </Icons>
+          </UI>
+        </DispatchInfo>
+      </Extension>
+
+      <Extension Id="com.tee.discord.rpc.other">
+          <HostList>
+            <Host Name="IDSN" />
+            <Host Name="AICY" />
+          </HostList>
+        <DispatchInfo>
+          <Resources>
+            <MainPath>./client/index.html</MainPath>
+            <CEFCommandLine />
+          </Resources>
+          <Lifecycle>
+            <AutoVisible>true</AutoVisible>
+          </Lifecycle>
+          <UI>
+            <Type>Panel</Type>
+            <Menu Placement="'Main:&amp;Window',600.0,'KBSCE Window menu'">Discord Rich Presence(IDSN/AICY)</Menu>
             <Geometry>
               <Size>
                 <Height>600</Height>
