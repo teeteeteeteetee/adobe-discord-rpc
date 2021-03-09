@@ -35,7 +35,7 @@ if you use cracked version of adobe, there's a chance that, the author of it got
 
 ![Installation guide](https://github.com/lolitee/adobe-discord-rpc/blob/master/GUIDE.md)
 
-![Support server](https://discord.gg/RGtxbuFtzb) - use it if rly needed
+[Support server](https://discord.gg/RGtxbuFtzb) - use it if rly needed
 
 This whole project is open-source, feel free to modify them ^^
 make sure to give a star..........................
