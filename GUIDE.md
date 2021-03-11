@@ -1,5 +1,7 @@
 **CEP server on default uses port 6767 so make sure nothing runs on that port, otherwise the API server wont start and will error out!**
 
+Works on CEP 8,9,10
+
 ![](demo/installation1.gif)
 
 Method 1
@@ -15,3 +17,13 @@ Method 2 (untested)
 
 - Install any applications that supports .zxp file
 - import the file there
+
+Troubleshooting:
+
+- If there's no CEP folder then you might have a bad Adobe installation.
+- If the extension doesn't appear in (Window/Extensions) then re-check if you have added "PlayerDebugMode -> 1" in regedit
+- Make sure nothing runs on port 6767 (will be changed in future)
+- If you have done everything correctly, please check if the extension has generated in %appdata% "adobe-discord-rpc" folder, if not then there might be some permission issues and it can be fixed by adding [https://cdn.discordapp.com/attachments/819529494015639593/819529506884026418/adobe-discord-rpc.zip](this) folder in %appdata%
+- If it still doesn't work then there's an issue on Adobe's side most likely due to an outdated version that has broken extensions, I recommend updating your Adobe app
+
+Feel free to join my help discord server if you don't know how to install the extension [https://discord.gg/RGtxbuFtzb ](here)
