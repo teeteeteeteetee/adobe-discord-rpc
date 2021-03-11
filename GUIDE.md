@@ -13,10 +13,10 @@ Method 1
 - Open any adobe app that is being supported by this extension
 - On top of the window "Window -> Extensions -> Discord Rich Presence"
 
-Method 2 (untested)
+Method 2
 
-- Install any applications that supports .zxp file
-- import the file there
+- Install any apps that supports installing .zxp files, or use adobe's extension manager
+- import the .zxp file
 
 Troubleshooting:
 
