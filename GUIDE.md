@@ -6,6 +6,7 @@ Works on CEP 8,9,10
 
 Method 1
 
+- Download the extension from https://github.com/lolitee/adobe-discord-rpc/releases
 - Unzip the zip file which contains "adobe rpc" into 
   - C:/Program Files (x86)/Common Files/Adobe/CEP/extensions 
   - %appdata%/Adobe/CEP/extensions (user only)
