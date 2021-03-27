@@ -33,6 +33,10 @@ function smallImageText(){
 
 }
 
+function largeImageText(){
+    return "Adobe Prelude";
+}
+
 function partySize(){
 
 }

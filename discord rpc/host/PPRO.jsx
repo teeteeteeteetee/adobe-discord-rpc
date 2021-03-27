@@ -1,28 +1,25 @@
-function PPTitle(){
-
-    //this thing is so stupid
-
-    return app.project.name
-
-}
-
-function PPSequence(){
-    var info = undefined
-    var sequence = app.project.activeSequence
-    if (sequence) {
-        info = sequence.name+" ("+ app.project.rootItem.children.numItems+ ")";
-    } else {
-        info = "No active sequence.";
-    }
-    return info
-}
-
 function state(){
+    try{
+        var x;
+        
+        if (app.project.activeSequence) {
+            x = app.project.activeSequence.name+" ("+ app.project.rootItem.children.numItems+ ")";
+        } else {
+            x = "No active sequence.";
+        }
 
+        return x
+    }catch(e){
+        return "";
+    }
 }
 
 function details(){
-
+    try{
+        return app.project.name
+    }catch(e){
+        return "No file.";
+    }
 }
 
 function smallImageKey(){

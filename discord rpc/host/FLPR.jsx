@@ -50,6 +50,10 @@ function smallImageText(){
 
 }
 
+function largeImageText(){
+    return "Adobe Animation";
+}
+
 function partySize(){
 
 }

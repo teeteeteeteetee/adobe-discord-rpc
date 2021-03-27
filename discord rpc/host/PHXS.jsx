@@ -1,21 +1,4 @@
-function PSTitle(){
-    try{
-        return app.activeDocument.name
-
-    }catch(err){
-        switch(err.description){
-            case "No such element":
-                return "Idling"
-            break;
-
-            default:
-                return "";
-        }
-    }
-    //return app.activeDocument.name
-}
-
-function PSLayer(){
+function state(){
     try{
         return app.activeDocument.activeLayer.name
     }catch(err){
@@ -29,38 +12,55 @@ function PSLayer(){
     }
 }
 
-function PSLayerMax(){
-    return app.activeDocument.layers.length
-}
-
-function PSLayerMin(){
-    return app.activeDocument.activeLayer.itemIndex
-}
-
-function PSTool(){
-    return app.currentTool
-}
-
-function state(){
-
-}
-
 function details(){
+    try{
+        return app.activeDocument.name
 
+    }catch(err){
+        switch(err.description){
+            case "No such element":
+                return "No file."
+            break;
+
+            default:
+                return "";
+        }
+    }
 }
 
 function smallImageKey(){
-
+    try{
+        return app.currentTool.toString().toLowerCase();
+    }catch(e){
+        return "";
+    }
 }
 
 function smallImageText(){
+    try{
+        if(state === "") return "";
+        return "Editing " + state();
+    }catch(e){
+        return "";
+    }
+}
 
+function largeImageText(){
+    return "Adobe Photoshop";
 }
 
 function partySize(){
-
+    try{
+        return app.activeDocument.activeLayer.itemIndex
+    }catch(e){
+        return 0;
+    }
 }
 
 function partyMax(){
-
+    try{
+        return app.activeDocument.layers.length;
+    }catch(e){
+        return 0;
+    }
 }

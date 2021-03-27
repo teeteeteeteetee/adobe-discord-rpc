@@ -14,6 +14,10 @@ function smallImageText(){
 
 }
 
+function largeImageText(){
+    return "Adobe Premiere Rush";
+}
+
 function partySize(){
 
 }

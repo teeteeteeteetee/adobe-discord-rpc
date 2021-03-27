@@ -40,6 +40,10 @@ function smallImageText(){
 
 }
 
+function largeImageText(){
+    return "Adobe InDesign";
+}
+
 function partySize(){
 
 }

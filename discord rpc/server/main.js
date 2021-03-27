@@ -1,116 +1,114 @@
-const express = require("express");
-const app = express();
+const app = require('express')();
+const http = require('http').createServer(app);
 const fs = require('fs');
 const config = require('./config')
-const CSInterface = require("../lib/CSInterface");
 
 var tcpPortUsed = require('tcp-port-used');
-
 var configServer = require("./config.json")
 var port = configServer.server.port
 
+var rpc = require('./rpc');
+const { json } = require('express');
 var apps = {};
-
+var socketID = {};
 var host;
 
-//run()
+const io = require('socket.io')(http, {
+    cors: { origin: "*" }
+});
+
+//run();
 
 module.exports = run;
 
 async function run(x) {
 
-try {
+    try {
 
-   host = x;
+        app.use(json());
 
-console.log(x)
+        host = x;
+        
+        console.log(x);
+        await config.create()
 
-await config.create()
+        io.on('connection', (socket) => {
+            console.log("someone connected");
+            socket.on('rpc', data => {
+                console.log(data);
 
-connect();
+                apps[data.appID] = data;
+                app.get(`/rpc/${data.appID}/data`, function (req, res) {
+                    res.send(apps[data.appID])
+                })
+                app.get(`/rpc/user`, function (req, res) {
+                    res.send(rpc.user())
+                })
 
-function connect(){
+                socketID[socket.id] = {
+                    appID: data.appID
+                }
+                console.log(socketID);
 
-tcpPortUsed.waitUntilFreeOnHost(parseInt(port), 'localhost', 15000, 60000).then(function(){
+                rpc.run(JSON.stringify(apps))
 
-  var rpc = require('./rpc')
+            });
 
-    process.on('uncaughtException', (err) => {
-      console.log(err)
-      if (err.code === 'EADDRINUSE') {
-        console.log("port is currently in use")
-        setTimeout(function () { connect() }, 15000)
+            socket.on('disconnect', () => {
+                rpc.destroy(socketID[socket.id].appID);
+            });
 
-        return;
-      }
-    });
+        });
 
-    app.listen(port, 'localhost')
-    console.log("connecting")
-    
-    app.use(express.json())
+        process.on('uncaughtException', (err) => {
+            console.log(err)
+            if (err === 'EADDRINUSE') {
+                console.log("port is currently in use")
+                setTimeout(function () { connect() }, 15000)
 
-    fs.readdir(__dirname + "\\..\\host", (err, files) => {
+                return;
+            }
+        });
 
-      files.forEach(file => {
+        connect()
+        function connect() {
+            tcpPortUsed.waitUntilFreeOnHost(parseInt(port), 'localhost', 15000, 60000).then(function () {
 
-        var _app = file.replace(".jsx", "");
+                http.listen(port, () => {
+                    console.log('listening on *:6767');
+                });
 
-        app.get(`/rpc/${_app}/settings`, function (req, res) {
-          res.send(config.load(_app))
-        })
+                fs.readdir(__dirname + "\\..\\host", (err, files) => {
 
-        app.put(`/rpc/${_app}/settings`, function (req, res) {
-          config.update(_app, req.body)
-          res.send(req.body)
-        })
+                    files.forEach(file => {
 
-        app.put(`/rpc/${_app}/data`, function (req, res) {
-          console.log(req.body)
-          res.send(req.body)
+                        var _app = file.replace(".jsx", "");
 
-          apps[_app] = req.body;
+                        app.get(`/rpc/${_app}/settings`, function (req, res) {
+                            res.send(config.load(_app))
+                        })
 
-          rpc.run(JSON.stringify(apps))
+                        app.put(`/rpc/${_app}/settings`, function (req, res) {
+                            console.log(req)
+                            config.update(_app, req.body)
+                            res.send(req.body)
+                        })
+                    })
+                })
 
-          app.get(`/rpc/${_app}/data`, function (req, res){
-            res.send(apps[_app])
-          })
+                app.get('/', function (req, res) {
+                    res.send(`com.discord.rpc.tee ${host}`)
+                });
 
-        })
-      })
-    })
+            }).catch(err => {
+                if (err.message === "timeout") {
+                    connect();
+                }
+            })
+        }
 
-    app.get(`/rpc/user`, function (req, res) {
-      res.send(rpc.user())
-    })
-
-    app.get('/', function (req, res) {
-      res.send(`com.discord.rpc.tee ${host}`)
-    });
-
-  }).catch(err => {
-    console.log(err)
-    if(err.message === "timeout"){
-      connect();
+    } catch (err) {
+        console.log(err)
     }
-    
-  })
 
-}
-
-} catch (err) {
-  console.log(err)
-}
-
-}
-
-exports.killServer = function(){
-  console.log("killed server")
-
-  process.exit(1)
-}
-
-exports.host = function(){
-  return host;
 }

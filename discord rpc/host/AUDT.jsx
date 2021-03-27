@@ -34,6 +34,10 @@ function smallImageText(){
 
 }
 
+function largeImageText(){
+    return "Adobe Audition";
+}
+
 function partySize(){
 
 }

@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
-<ExtensionManifest ExtensionBundleId="com.discord.rpc.tee" ExtensionBundleVersion="0.0.13" Version="7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ExtensionManifest ExtensionBundleId="com.discord.rpc.tee" ExtensionBundleVersion="0.0.16" Version="7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ExtensionList>
-    <Extension Id="com.tee.discord.rpc" Version="0.0.15" />
-    <Extension Id="com.tee.discord.rpc.panel" Version="0.0.15" />
-    <Extension Id="com.tee.discord.rpc.panel.other" Version="0.0.15" />
-    <Extension Id="com.tee.server" Version="0.0.15" />
+    <Extension Id="com.tee.discord.rpc" Version="0.0.16" />
+    <Extension Id="com.tee.discord.rpc.panel" Version="0.0.16" />
+    <Extension Id="com.tee.discord.rpc.panel.other" Version="0.0.16" />
+    <Extension Id="com.tee.server" Version="0.0.16" />
   </ExtensionList>
   <ExecutionEnvironment>
     <HostList>
@@ -58,7 +58,7 @@
           </Lifecycle>
           <UI>
             <Type>Panel</Type>
-            <Menu>Discord Rich Presence</Menu>
+            <Menu>Discord Rich Presence with Websocket</Menu>
             <Geometry>
               <Size>
                 <Height>600</Height>
@@ -96,7 +96,7 @@
           </Lifecycle>
           <UI>
             <Type>Panel</Type>
-            <Menu Placement="'Main:&amp;Window',600.0,'KBSCE Window menu'">Discord Rich Presence(IDSN/AICY)</Menu>
+            <Menu Placement="'Main:&amp;Window',600.0,'KBSCE Window menu'">Discord Rich Presence(IDSN/AICY) with websocket</Menu>
             <Geometry>
               <Size>
                 <Height>600</Height>

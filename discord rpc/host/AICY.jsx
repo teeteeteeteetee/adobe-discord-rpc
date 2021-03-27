@@ -18,6 +18,10 @@ function smallImageText(){
 
 }
 
+function largeImageText(){
+    return "Adobe InCopy";
+}
+
 function partySize(){
 
 }

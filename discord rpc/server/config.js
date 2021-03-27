@@ -1,5 +1,6 @@
 const fs = require("fs")
-var path = process.env.APPDATA + "\\adobe-discord-rpc" || (process.platform == 'darwin' ? process.env.HOME + '/Library/Preferences' : process.env.HOME + "/.local/share") + "/adobe-discord-rpc";
+//var path = process.env.APPDATA + "\\adobe-discord-rpc" || (process.platform == 'darwin' ? process.env.HOME + '/Library/Preferences' : process.env.HOME + "/.local/share") + "/adobe-discord-rpc";
+var path = process.env.APPDATA + "\\adobe-discord-rpc";
 var rpc = require("./rpc")
 
 //if it cant get appdata somewhat
@@ -28,7 +29,9 @@ module.exports.create = function () {
             })
 
             fs.writeFile(path + "\\config.json", JSON.stringify(data), (err) => {
-                if (err) throw err;
+                if (err) this.create();
+                
+                throw err;
 
             })
         })
@@ -80,6 +83,8 @@ module.exports.update = function (appID, newData) {
 
         console.log(appID, newData)
 
+        console.log(newData);
+
         data[appID] = newData
 
         fs.writeFile(path + "\\config.json", JSON.stringify(data), (err) => {
@@ -88,6 +93,7 @@ module.exports.update = function (appID, newData) {
         })
 
         console.log("here")
+        console.log(rpc)
         rpc.forceRun();
         console.log("here")
         
