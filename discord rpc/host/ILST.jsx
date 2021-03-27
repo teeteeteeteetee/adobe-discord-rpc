@@ -13,3 +13,27 @@ function ILLayerMax(){
 function ILLayerMin(){
     return app.activeDocument.activeLayer.zOrderPosition
 }
+
+function state(){
+
+}
+
+function details(){
+
+}
+
+function smallImageKey(){
+
+}
+
+function smallImageText(){
+
+}
+
+function partySize(){
+
+}
+
+function partyMax(){
+
+}

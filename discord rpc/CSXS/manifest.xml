@@ -4,7 +4,7 @@
   <ExtensionList>
     <Extension Id="com.tee.discord.rpc" Version="0.0.15" />
     <Extension Id="com.tee.discord.rpc.panel" Version="0.0.15" />
-    <Extension Id="com.tee.discord.rpc.other" Version="0.0.15" />
+    <Extension Id="com.tee.discord.rpc.panel.other" Version="0.0.15" />
     <Extension Id="com.tee.server" Version="0.0.15" />
   </ExtensionList>
   <ExecutionEnvironment>
@@ -52,7 +52,6 @@
         <DispatchInfo>
           <Resources>
             <MainPath>./client/index.html</MainPath>
-            <CEFCommandLine />
           </Resources>
           <Lifecycle>
             <AutoVisible>true</AutoVisible>
@@ -82,7 +81,7 @@
         </DispatchInfo>
       </Extension>
 
-      <Extension Id="com.tee.discord.rpc.other">
+      <Extension Id="com.tee.discord.rpc.panel.other">
           <HostList>
             <Host Name="IDSN" />
             <Host Name="AICY" />
@@ -124,7 +123,6 @@
       <DispatchInfo>
         <Resources>
           <MainPath>./client/main.html</MainPath>
-          <CEFCommandLine />
         </Resources>
         <Lifecycle>
           <AutoVisible>false</AutoVisible>

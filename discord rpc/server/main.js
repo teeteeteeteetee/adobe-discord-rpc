@@ -1,12 +1,12 @@
 const express = require("express");
 const app = express();
 const fs = require('fs');
-const { url } = require("inspector");
 const config = require('./config')
+const CSInterface = require("../lib/CSInterface");
 
-var settings = require(process.env.APPDATA + "\\adobe-discord-rpc\\config.json")
+var tcpPortUsed = require('tcp-port-used');
+
 var configServer = require("./config.json")
-var rpc = require('./rpc')
 var port = configServer.server.port
 
 var apps = {};
@@ -17,32 +17,37 @@ var host;
 
 module.exports = run;
 
-function run(x) {
+async function run(x) {
 
-host = x;
+try {
+
+   host = x;
 
 console.log(x)
 
-  try {
+await config.create()
 
-    connect();
+connect();
+
+function connect(){
+
+tcpPortUsed.waitUntilFreeOnHost(parseInt(port), 'localhost', 15000, 60000).then(function(){
+
+  var rpc = require('./rpc')
 
     process.on('uncaughtException', (err) => {
       console.log(err)
       if (err.code === 'EADDRINUSE') {
         console.log("port is currently in use")
-        setTimeout(function () { process.exit(1) }, 3000)
+        setTimeout(function () { connect() }, 15000)
 
         return;
       }
     });
 
-    function connect() {
-      app.listen(port, 'localhost')
-      config.create()
-      console.log("connecting")
-    }
-
+    app.listen(port, 'localhost')
+    console.log("connecting")
+    
     app.use(express.json())
 
     fs.readdir(__dirname + "\\..\\host", (err, files) => {
@@ -84,9 +89,19 @@ console.log(x)
       res.send(`com.discord.rpc.tee ${host}`)
     });
 
-  } catch (err) {
-    console.log(err);
-  }
+  }).catch(err => {
+    console.log(err)
+    if(err.message === "timeout"){
+      connect();
+    }
+    
+  })
+
+}
+
+} catch (err) {
+  console.log(err)
+}
 
 }
 

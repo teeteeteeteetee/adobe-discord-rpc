@@ -40,3 +40,27 @@ function AERenderItems(){
 function AETool (){
     return app.project.toolType
 }
+
+function state(){
+
+}
+
+function details(){
+
+}
+
+function smallImageKey(){
+
+}
+
+function smallImageText(){
+
+}
+
+function partySize(){
+
+}
+
+function partyMax(){
+
+}

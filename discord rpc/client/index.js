@@ -1,11 +1,7 @@
-/*
-    im not bothered to find the way to make strings to be listened so theres a loop for it im sorry, dm me if u can help me with it
-*/
-
 var csInterface = new CSInterface();
 var appID = "", state = "", details = "", smallImageKey = "", smallImageText = "", largeImageText = "", partySize = 0, partyMax = 0;
-var stateOld, detailsOld, smallImageKeyOld, smallImageTextOld, largeImageTextOld, partySizeOld, partyMaxOld;
 var timestamp = Math.floor(Date.now() / 1000)
+var valueChanged = false;
 
 //ae stuff
 var renderItemLock;
@@ -30,6 +26,72 @@ function getAppID() {
     var appID = csInterface.getApplicationID()
     return appID
 }
+
+rpc = {
+
+    data: [],
+
+    aListener: function(val){},
+
+    set state(val) {
+        this.data[0] = val;
+        this.aListener(val);
+    },
+    get state() {
+        return this.data[0];
+    },
+    set details(val) {
+        this.data[1] = val;
+        this.aListener(val);
+    },
+    get details() {
+        return this.data[1];
+    },
+    set smallImageKey(val) {
+        this.data[2] = val;
+        this.aListener(val);
+    },
+    get smallImageKey() {
+        return this.data[2];
+    },
+    set smallImageText(val) {
+        this.data[3] = val;
+        this.aListener(val);
+    },
+    get smallImageText() {
+        return this.data[3];
+    },
+    set largeImageText(val) {
+        this.data[4] = val;
+        this.aListener(val);
+    },
+    get largeImageText() {
+        return this.data[4];
+    },
+    set partySize(val) {
+        this.data[5] = val;
+        this.aListener(val);
+    },
+    get partySize() {
+        return this.data[5];
+    },
+    set partyMax(val) {
+        this.data[6] = val;
+        this.aListener(val);
+    },
+    get partyMax() {
+        return this.data[6];
+    },
+    registerListener: function(listener){
+        this.aListener = listener;
+    }
+    
+}
+
+rpc.registerListener(function(val) {
+    console.log(`Value changed to: ${val}`)
+    valueChanged = true;
+  });
 
 
 function getApp() {
@@ -327,42 +389,46 @@ function getApp() {
                 break;
         }
 
-        if (state != stateOld || details != detailsOld || smallImageKey != smallImageKeyOld || smallImageText != smallImageTextOld || largeImageText != largeImageTextOld || partyMax != partyMaxOld || partySize != partySizeOld) {
-            let data = {
-                "appID": appID,
-                "state": state,
-                "details": details,
-                "smallImageKey": smallImageKey,
-                "smallImageText": smallImageText,
-                "largeImageText": largeImageText,
-                "partySize": partySize,
-                "partyMax": partyMax,
-                "timestamp": timestamp
-            }
+        if(rpc.state != state) rpc.state = state;
+        if(rpc.details != details) rpc.details = details;
+        if(rpc.smallImageKey != smallImageKey) rpc.smallImageKey = smallImageKey;
+        if(rpc.smallImageText != smallImageText) rpc.smallImageText = smallImageText;
+        if(rpc.largeImageText != largeImageText) rpc.largeImageText = largeImageText;
+        if(rpc.partySize != partySize) rpc.partySize = partySize;
+        if(rpc.partyMax != partyMax) rpc.partyMax = partyMax;
 
-            $.ajax({
-                type: 'PUT',
-                url: 'http://localhost:6767/rpc/' + appID + '/data',
-                contentType: 'application/json',
-                data: JSON.stringify(data),
-                error: function(request, status, error){
-                    console.log(request, status, error)
-                    if(request == 502){
-                        csInterface.requestOpenExtension("com.tee.server");
-                    }
-                }
-            })
-
-            stateOld = state
-            detailsOld = details
-            smallImageKeyOld = smallImageKey
-            smallImageTextOld = smallImageText
-            largeImageTextOld = largeImageText
-            partyMaxOld = partyMax
-            partySizeOld = partySize
-
+        if(valueChanged){
+            send();
+            valueChanged = false;
         }
-//refresh every 15s due to cpu usage
+        
     }, 3000);
 
+}
+
+function send(){
+    let data = {
+        "appID": appID,
+        "state": state,
+        "details": details,
+        "smallImageKey": smallImageKey,
+        "smallImageText": smallImageText,
+        "largeImageText": largeImageText,
+        "partySize": partySize,
+        "partyMax": partyMax,
+        "timestamp": timestamp
+    }
+
+    $.ajax({
+        type: 'PUT',
+        url: 'http://localhost:6767/rpc/' + appID + '/data',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        error: function(request, status, error){
+            console.log(request, status, error)
+            if(request == 502){
+                csInterface.requestOpenExtension("com.tee.server");
+            }
+        }
+    })
 }

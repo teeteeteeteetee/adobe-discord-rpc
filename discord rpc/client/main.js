@@ -9,9 +9,7 @@ var enabled = document.getElementById("enabled")
 
 var data;
 
-console.log("here")
 var appID = csInterface.getApplicationID()
-console.log("and")
 
 $(document).ready(function() {
 

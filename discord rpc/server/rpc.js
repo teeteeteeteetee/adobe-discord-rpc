@@ -5,7 +5,7 @@ var activeApp = require('./activeApp');
 
 var apps = require("./adobe.json");
 
-var main = require("./main")
+//var main = require("./main")
 
 var global = {}
 

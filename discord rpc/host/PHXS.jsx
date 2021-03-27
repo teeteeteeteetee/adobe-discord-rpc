@@ -40,3 +40,27 @@ function PSLayerMin(){
 function PSTool(){
     return app.currentTool
 }
+
+function state(){
+
+}
+
+function details(){
+
+}
+
+function smallImageKey(){
+
+}
+
+function smallImageText(){
+
+}
+
+function partySize(){
+
+}
+
+function partyMax(){
+
+}

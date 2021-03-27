@@ -1,6 +1,11 @@
 const fs = require("fs")
-var path = (process.env.APPDATA + "\\adobe-discord-rpc")
+var path = process.env.APPDATA + "\\adobe-discord-rpc" || (process.platform == 'darwin' ? process.env.HOME + '/Library/Preferences' : process.env.HOME + "/.local/share") + "/adobe-discord-rpc";
 var rpc = require("./rpc")
+
+//if it cant get appdata somewhat
+if(!process.env.APPDATA){
+    path = process.env.HOMEPATH + "\\Documents\\adobe-discord-rpc";
+}
 
 var form = {
     "details": true,
@@ -17,6 +22,7 @@ module.exports.create = function () {
 
     if (!fs.existsSync(path + "\\config.json")) {
         fs.readdir(__dirname + "\\..\\host", (err, files) => {
+            console.log(files);
             files.forEach(file => {
                 data[file.replace(".jsx", "")] = form
             })
@@ -30,26 +36,39 @@ module.exports.create = function () {
     }
     fs.readdir(__dirname + "\\..\\host", (err, files) => {
 
-        var data = require(path+ "\\config.json")
+        try{
+            var data = require(path+ "\\config.json")
 
-        for (const key in data) {
-            if(!files.includes(`${key}.jsx`)){
-                delete data[key]
-            } 
-        }
-
-        files.forEach(file => {
-
-            if(!data.hasOwnProperty(file.replace(".jsx", ""))){
-                data[file.replace(".jsx", "")] = form
+            for (const key in data) {
+                if(!files.includes(`${key}.jsx`)){
+                    delete data[key]
+                } 
             }
-
-            fs.writeFile(path + "\\config.json", JSON.stringify(data), (err) => {
-                if (err) throw err;
-        
+    
+            files.forEach(file => {
+    
+                if(!data.hasOwnProperty(file.replace(".jsx", ""))){
+                    data[file.replace(".jsx", "")] = form
+                }
+    
+                fs.writeFile(path + "\\config.json", JSON.stringify(data), (err) => {
+                    if (err) throw err;
+            
+                })
+    
             })
 
-        })
+        }catch(err){
+
+            if(err.message.includes("Unexpected end of JSON input")){
+                fs.unlinkSync(path + "\\config.json")
+
+                console.log("recreate")
+
+                this.create()
+                return;
+            }
+        }
     })
     
 }
