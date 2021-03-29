@@ -39,7 +39,6 @@ If __NOTHING__ on the troubleshooting section works. Or you need extra assistanc
 You can also get help here:
 - Discord: `Tee#0001`
 - [Twitter](https://twitter.com/loli_tee "@loli_tee"): `@loli_tee`
-- [Email](mailto:admin@loli.support "admin@loli.support"): `admin@loli.support`
 
 ### Support Server
 **[discord.gg/RGtxbuFtzb](https://discord.gg/RGtxbuFtzb "Join for Support")**
