@@ -36,10 +36,5 @@ And there you go! You should see the Rich Presence on your profile, if it doesn'
 # Support
 If __NOTHING__ on the troubleshooting section works. Or you need extra assistance to install the extension, feel free to join the help server [here.](https://discord.gg/RGtxbuFtzb "Redirects you to the Adobe Discord Rich Presence Support Server.")
 
-You can also get help here:
-- Discord: `Tee#0001`
-- [Twitter](https://twitter.com/loli_tee "@loli_tee"): `@loli_tee`
-- [Email](mailto:admin@loli.support "admin@loli.support"): `admin@loli.support`
-
 ### Support Server
 **[discord.gg/RGtxbuFtzb](https://discord.gg/RGtxbuFtzb "Join for Support")**
