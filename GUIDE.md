@@ -1,30 +1,45 @@
-**CEP server on default uses port 6767 so make sure nothing runs on that port, otherwise the API server wont start and will error out!**
+# Adobe Discord Rich Presence
+![](https://github.com/lolitee/adobe-discord-rpc/raw/master/demo/demo.gif "Preview of Discord x Adobe Rich Presence.")
+# Information
 
-Works on CEP 8,9,10
+**The CEP Server runs on default port __6767__ so make sure nothing runs on that port, otherwise the API server wont start and will error out.**
 
-![](demo/installation1.gif)
+This extension works on **CEP 8,9 and 10**
 
-Method 1
+# How to
+![](https://github.com/lolitee/adobe-discord-rpc/raw/master/demo/installation1.gif "Quick Demo of the Extension being installed")
+## Method 1
+ _([If you don't have a zip extractor you can install one **here**](https://7-zip.org))_
+1. Unzip the file using your preferred .zip extractor and extract the folder `discord rpc` into
+	- `C:/Program Files (x86)/Common Files/Adobe/CEP/extensions`
+		- Hold `Windows + R` and enter **%appdata%**
+	- `%appdata%/Adobe/CEP/extensions` _(User only)_
+2. Make sure you have debug mode enabled in __both__ folders. Debug mode has more information [here](https://github.com/Adobe-CEP/Getting-Started-guides/tree/master/Client-side%20Debugging) *(The reason to do this is because I didn't sign the extension)*
+	- (If there's multiple CSX numbers in Registry Editor then create one for them for all)
+3. Open any Adobe app that supports this extension.
+4. On the top of the window, go to `Window > Extensions > Discord Rich Presence`
 
-- Download the extension from https://github.com/lolitee/adobe-discord-rpc/releases (DO not clone the repo)
-- Unzip the zip file which contains "adobe rpc" into 
-  - C:/Program Files (x86)/Common Files/Adobe/CEP/extensions 
-  - %appdata%/Adobe/CEP/extensions (user only)
-- Make sure you have turned on debug mode more information in: https://github.com/Adobe-CEP/Getting-Started-guides/tree/master/Client-side%20Debugging (the reason is because I didn't sign the extension) (if theres for example csx 9/10 in regedit then create the PlayerDebugMode for them too)
-- Open any adobe app that is being supported by this extension
-- On top of the window "Window -> Extensions -> Discord Rich Presence"
+And there you go! You should see the Rich Presence on your profile, if it doesn't, go to [Troubleshooting](#Troubleshooting "Scrolls you down to the troubleshooting section"), and if that still doesn't work, Go to [Support](#Support "Scrolls you down to the Support Section").
 
-Method 2
+## Method 2
+1. Install any app that supports `.zxp` files
+	 - Or you can use Adobe's Extension Manager
+2. Import the `.zxp` file.
 
-- Install any apps that supports installing .zxp files, or use adobe's extension manager
-- import the .zxp file
+# Troubleshooting
+- If there is no `/CEP/` folder then you might have a bad Adobe Installation.
+- If the extension doesn't show up in `Window > Extensions`, then re-check if `PlayerDebugMode` is set to `1` in Registry Editor
+- Make sure there is nothing apart from the extension running on __Port 6767__. _(Will be fixed in the future)_ 
+- If you have done everything above correctly, Check if the extension has created a folder in `%appdata%` "adobe-discord-rpc". If not, there may be some permission issues and can be fixed by downloading [this file](https://cdn.discordapp.com/attachments/819529494015639593/819529506884026418/adobe-discord-rpc.zip "Download to the \"adobe-discord-rpc\" file to add to %appdata%")
+- If **nothing above** works, then there's most likely an issue on Adobe's side, most likely that your app is outdated or the extension itself is broken. I recommend updating your app.
 
-Troubleshooting:
+# Support
+If __NOTHING__ on the troubleshooting section works. Or you need extra assistance to install the extension, feel free to join the help server [here.](https://discord.gg/RGtxbuFtzb "Redirects you to the Adobe Discord Rich Presence Support Server.")
 
-- If there's no CEP folder then you might have a bad Adobe installation.
-- If the extension doesn't appear in (Window/Extensions) then re-check if you have added "PlayerDebugMode -> 1" in regedit
-- Make sure nothing runs on port 6767 (will be changed in future)
-- If you have done everything correctly, please check if the extension has generated in %appdata% "adobe-discord-rpc" folder, if not then there might be some permission issues and it can be fixed by adding [https://cdn.discordapp.com/attachments/819529494015639593/819529506884026418/adobe-discord-rpc.zip](this) folder in %appdata%
-- If it still doesn't work then there's an issue on Adobe's side most likely due to an outdated version that has broken extensions, I recommend updating your Adobe app
+You can also get help here:
+- Discord: `Tee#0001`
+- [Twitter](https://twitter.com/loli_tee "@loli_tee"): `@loli_tee`
+- [Email](mailto:admin@loli.support "admin@loli.support"): `admin@loli.support`
 
-Feel free to join my help discord server if you don't know how to install the extension [https://discord.gg/RGtxbuFtzb ](here)
+### Support Server
+**[discord.gg/RGtxbuFtzb](https://discord.gg/RGtxbuFtzb "Join for Support")**
