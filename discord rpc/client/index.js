@@ -1,6 +1,8 @@
 var csInterface = new CSInterface();
-var appID = "", state = "", details = "", smallImageKey = "", smallImageText = "", largeImageText = "", partySize = 0, partyMax = 0;
+
+var appID;
 var timestamp = Math.floor(Date.now() / 1000)
+
 var valueChanged = false;
 
 //ae stuff
@@ -12,16 +14,15 @@ function loadJSX(fileName) {
     csInterface.evalScript('$.evalFile("' + extensionRoot + fileName + '")');
 }
 
-//server
+//server connections
 csInterface.requestOpenExtension("com.tee.server");
-
-//socket io v3
+//
 const socket = io('ws://localhost:6767');
 
 appID = csInterface.getApplicationID()
 
 loadJSX(appID + ".jsx");
-getApp();
+getData();
 
 function getAppID() {
 
@@ -34,53 +35,57 @@ rpc = {
 
     data: [],
 
-    aListener: function(val){},
+    aListener: function(val, old){},
 
     set state(val) {
+        this.aListener(val, this.data[0]);
         this.data[0] = val;
-        this.aListener(val);
     },
     get state() {
         return this.data[0];
     },
     set details(val) {
+        this.aListener(val, this.data[1]);
         this.data[1] = val;
-        this.aListener(val);
     },
     get details() {
         return this.data[1];
     },
     set smallImageKey(val) {
+        this.aListener(val, this.data[2]);
         this.data[2] = val;
-        this.aListener(val);
     },
     get smallImageKey() {
         return this.data[2];
     },
     set smallImageText(val) {
+        this.aListener(val, this.data[3]);
         this.data[3] = val;
-        this.aListener(val);
     },
     get smallImageText() {
         return this.data[3];
     },
     set largeImageText(val) {
+        this.aListener(val, this.data[4]);
         this.data[4] = val;
-        this.aListener(val);
     },
     get largeImageText() {
         return this.data[4];
     },
     set partySize(val) {
+        val = parseInt(val);
+        if(!val) val = 0;
+        this.aListener(val, this.data[5]);
         this.data[5] = val;
-        this.aListener(val);
     },
     get partySize() {
         return this.data[5];
     },
     set partyMax(val) {
+        val = parseInt(val);
+        if(!val) val = 0;
+        this.aListener(val, this.data[6]);
         this.data[6] = val;
-        this.aListener(val);
     },
     get partyMax() {
         return this.data[6];
@@ -91,34 +96,30 @@ rpc = {
     
 }
 
-rpc.registerListener(function(val) {
-    console.log(`Value changed to: ${val}`)
-    valueChanged = true;
+rpc.registerListener(function(val, old) {
+
+    if(val != old) {
+         
+        console.log(`Value changed to: ${val}`)
+        valueChanged = true;
+    }
   });
 
 
-function getApp() {
+function getData() {
 
     setInterval(() => {
-        csInterface.evalScript('state()', x => state = x);
-        csInterface.evalScript('details()', x => details = x);
-        csInterface.evalScript('smallImageKey()', x => smallImageKey = x);
-        csInterface.evalScript('smallImageText()', x => smallImageText = x);
-        csInterface.evalScript('largeImageText()', x => largeImageText = x);
-        csInterface.evalScript('partySize()', x => partySize = x);
-        csInterface.evalScript('partyMax()', x => partyMax = x);
-
-        if(rpc.state != state) rpc.state = state;
-        if(rpc.details != details) rpc.details = details;
-        if(rpc.smallImageKey != smallImageKey) rpc.smallImageKey = smallImageKey;
-        if(rpc.smallImageText != smallImageText) rpc.smallImageText = smallImageText;
-        if(rpc.largeImageText != largeImageText) rpc.largeImageText = largeImageText;
-        if(rpc.partySize != partySize) rpc.partySize = partySize;
-        if(rpc.partyMax != partyMax) rpc.partyMax = partyMax;
+        csInterface.evalScript('state()', x => rpc.state = x);
+        csInterface.evalScript('details()', x => rpc.details = x);
+        csInterface.evalScript('smallImageKey()', x => rpc.smallImageKey = x);
+        csInterface.evalScript('smallImageText()', x => rpc.smallImageText = x);
+        csInterface.evalScript('largeImageText()', x => rpc.largeImageText = x);
+        csInterface.evalScript('partySize()', x => rpc.partySize = x);
+        csInterface.evalScript('partyMax()', x => rpc.partyMax = x);
 
         if(valueChanged){
-            send();
             valueChanged = false;
+            send();
         }
         
     }, 1000);
@@ -126,15 +127,16 @@ function getApp() {
 }
 
 function send(){
+
     let data = {
         "appID": appID,
-        "state": state,
-        "details": details,
-        "smallImageKey": smallImageKey,
-        "smallImageText": smallImageText,
-        "largeImageText": largeImageText,
-        "partySize": partySize,
-        "partyMax": partyMax,
+        "state": rpc.state,
+        "details": rpc.details,
+        "smallImageKey": rpc.smallImageKey,
+        "smallImageText": rpc.smallImageText,
+        "largeImageText": rpc.largeImageText,
+        "partySize": rpc.partySize,
+        "partyMax": rpc.partyMax,
         "timestamp": timestamp
     }
 

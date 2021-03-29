@@ -14,7 +14,7 @@ var socketID = {};
 var host;
 
 const io = require('socket.io')(http, {
-    cors: { origin: "*" }
+    cors: { origin: "*" },
 });
 
 //run();
@@ -37,13 +37,14 @@ async function run(x) {
             socket.on('rpc', data => {
                 console.log(data);
 
+                    app.get(`/rpc/${data.appID}/data`, function (req, res) {
+                        res.send(apps[data.appID])
+                    })
+                    app.get(`/rpc/user`, function (req, res) {
+                        res.send(rpc.user())
+                    })
+
                 apps[data.appID] = data;
-                app.get(`/rpc/${data.appID}/data`, function (req, res) {
-                    res.send(apps[data.appID])
-                })
-                app.get(`/rpc/user`, function (req, res) {
-                    res.send(rpc.user())
-                })
 
                 socketID[socket.id] = {
                     appID: data.appID

@@ -127,9 +127,13 @@ class IPCTransport extends EventEmitter {
               return;
             }
             if (data.cmd === 'AUTHORIZE' && data.evt !== 'ERROR') {
-              findEndpoint().then((endpoint) => {
-                this.client.request.endpoint = endpoint;
-              });
+              findEndpoint()
+                .then((endpoint) => {
+                  this.client.request.endpoint = endpoint;
+                })
+                .catch((e) => {
+                  this.client.emit('error', e);
+                });
             }
             this.emit('message', data);
             break;
@@ -151,9 +155,12 @@ class IPCTransport extends EventEmitter {
     this.socket.write(encode(op, data));
   }
 
-  close() {
-    this.send({}, OPCodes.CLOSE);
-    this.socket.end();
+  async close() {
+    return new Promise((r) => {
+      this.once('close', r);
+      this.send({}, OPCodes.CLOSE);
+      this.socket.end();
+    });
   }
 
   ping() {

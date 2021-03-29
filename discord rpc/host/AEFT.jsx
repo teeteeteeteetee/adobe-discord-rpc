@@ -17,11 +17,12 @@ function state(){
             x = app.project.activeItem.name + " (" + app.project.activeItem.layers.length + ")";
         };
 
-        for (var i in app.project.items) {
-          if(app.project.items[i] instanceof CompItem) {
-              return x;
+        for(var i = 1; i <= app.project.numItems; i++){
+          if(app.project.item(i) instanceof CompItem) {
+              if(app.project.activeItem instanceof CompItem) return x;
+              return app.project.activeItem.name;
           }
-        };
+        }
 
         //clear comp
         comp = undefined
