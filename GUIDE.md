@@ -10,10 +10,13 @@ This extension works on **CEP 8,9 and 10**
 ![](https://github.com/lolitee/adobe-discord-rpc/raw/master/demo/installation1.gif "Quick Demo of the Extension being installed")
 ## Method 1
  _([If you don't have a zip extractor you can install one **here**](https://7-zip.org))_
-1. Unzip the file using your preferred .zip extractor and extract the folder `discord rpc` into
-	- `C:/Program Files (x86)/Common Files/Adobe/CEP/extensions`
-		- Hold `Windows + R` and enter **%appdata%**
-	- `%appdata%/Adobe/CEP/extensions` _(User only)_
+1. Unzip the file using your preferred .zip extractor and extract the folder `discord rpc` into:
+	- **Windows:**
+		- `C:/Program Files (x86)/Common Files/Adobe/CEP/extensions`
+			- Hold `Windows + R` and enter **%appdata%**
+		- `%appdata%/Adobe/CEP/extensions` _(User only)_\n
+	- **MacOS:**
+		- `~/Library/Application Support/Adobe/CEP/extensions`
 2. Make sure you have debug mode enabled in __both__ folders. Debug mode has more information [here](https://github.com/Adobe-CEP/Getting-Started-guides/tree/master/Client-side%20Debugging) *(The reason to do this is because I didn't sign the extension)*
 	- (If there's multiple CSX numbers in Registry Editor then create one for them for all)
 3. Open any Adobe app that supports this extension.
