@@ -18,7 +18,7 @@ function details(){
     try{
         return app.project.name
     }catch(e){
-        return "No file.";
+        return "Untitled.prproj";
     }
 }
 
@@ -28,6 +28,10 @@ function smallImageKey(){
 
 function smallImageText(){
 
+}
+
+function largeImageText(){
+    return "Adobe Premiere Pro";
 }
 
 function partySize(){

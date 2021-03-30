@@ -1,6 +1,22 @@
 var FLTitle2;
 
-function FLTitle(){
+function state(){
+    try{
+        if(document.name){
+            var i = fl.getDocumentDOM().getTimeline().currentLayer;
+            var info = fl.getDocumentDOM().getTimeline().layers[i].name
+        }
+    }catch(err){
+
+        if(err){
+            info = "Testing Movie";
+        }
+    }
+
+    return info;
+}
+
+function details(){
     var info;
 
     try{
@@ -18,30 +34,6 @@ function FLTitle(){
     return info;
 }
 
-function FLLayer(){
-    try{
-        if(document.name){
-            var i = fl.getDocumentDOM().getTimeline().currentLayer;
-            var info = fl.getDocumentDOM().getTimeline().layers[i].name
-        }
-    }catch(err){
-
-        if(err){
-            info = "Testing Movie";
-        }
-    }
-
-    return info;
-}
-
-function state(){
-
-}
-
-function details(){
-
-}
-
 function smallImageKey(){
 
 }
@@ -51,13 +43,13 @@ function smallImageText(){
 }
 
 function largeImageText(){
-    return "Adobe Animation";
+    return "Adobe Animate";
 }
 
 function partySize(){
-
+    return 0;
 }
 
 function partyMax(){
-
+    return 0;
 }

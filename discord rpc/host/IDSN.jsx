@@ -1,35 +1,17 @@
-function IDTitle(){
-    return app.activeDocument.name
-}
-
-function IDPageName(){
-
-    var info = app.activeWindow.activePage
-
-    return info.name;
-}
-
-function IDPageMax(){
-
-    var info = app.activeDocument.pages
-
-    //braindead code it wants the return to be toString() for 0 reasons
-    return info.length.toString();
-}
-
-function IDPageMin(){
-    
-    var info = app.activeWindow.activePage
-
-    return info.name;
-}
-
 function state(){
-
+    try{
+        return "Page: "+app.activeWindow.activePage.name;
+    }catch(e){
+        return "";
+    }
 }
 
 function details(){
-
+    try{
+        return app.activeDocument.name;
+    }catch(e){
+        return "No file.";
+    }
 }
 
 function smallImageKey(){
@@ -45,9 +27,17 @@ function largeImageText(){
 }
 
 function partySize(){
-
+    try{
+        return app.activeWindow.activePage.name;
+    }catch(e){
+        return 0;
+    }
 }
 
 function partyMax(){
-
+    try{
+        return app.activeDocument.pages.length.toString();
+    }catch(e){
+        return 0;
+    }
 }

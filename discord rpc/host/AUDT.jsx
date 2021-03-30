@@ -1,23 +1,44 @@
 function state(){
-    var x = app.activeDocument.reflect.name
-        switch(info){
+    try{
+        var x;
+        switch(app.activeDocument.reflect.name){
             case "MultitrackDocument":
-                info = "Multitrack Session";
+                x = "Multitrack Session";
                 break;
             case "WaveDocument":
-                info = "Audio File";
+                x = "Audio File";
                 break;
             case "Document":
-                info = "CD Layout"; 
+                x = "CD Layout"; 
                 break;
+            default:
+                x = "";
         }
 
-    return x;
+        return x;
+
+    }catch(e){
+        return "";
+    }
     
 }
 
 function details(){
-    return app.activeDocument.displayName
+
+    try{
+
+    if(app.activeDocument && app.activeDocument.reflect.name){
+        return app.activeDocument.reflect.name;
+    }else{
+        return "No file.";
+    }
+
+    }catch(e){
+        return "";
+    }
+
+    return app.activeDocument.reflect.name;
+    
 }
 
 function smallImageKey(){
@@ -33,9 +54,9 @@ function largeImageText(){
 }
 
 function partySize(){
-
+    return 0;
 }
 
 function partyMax(){
-
+    return 0;
 }

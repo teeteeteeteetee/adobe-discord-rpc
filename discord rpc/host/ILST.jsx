@@ -10,7 +10,7 @@ function details(){
     try{
         return app.activeDocument.name;
     }catch(e){
-        return "";
+        return "No file.";
     }
 }
 

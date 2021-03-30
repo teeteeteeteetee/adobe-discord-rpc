@@ -51,7 +51,7 @@ function largeImageText(){
 
 function partySize(){
     try{
-        return app.activeDocument.activeLayer.itemIndex
+        return app.activeDocument.activeLayer.itemIndex;
     }catch(e){
         return 0;
     }

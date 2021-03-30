@@ -1,13 +1,13 @@
-function ICTitle(){
-    return app.activeDocument.name
-}
-
 function state(){
 
 }
 
 function details(){
-
+    try{
+        return app.activeDocument.name
+    }catch(e){
+        return "";
+    }
 }
 
 function smallImageKey(){

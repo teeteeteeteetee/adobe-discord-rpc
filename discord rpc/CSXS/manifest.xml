@@ -58,7 +58,7 @@
           </Lifecycle>
           <UI>
             <Type>Panel</Type>
-            <Menu>Discord Rich Presence with Websocket</Menu>
+            <Menu>Discord Rich Presence</Menu>
             <Geometry>
               <Size>
                 <Height>600</Height>
@@ -96,7 +96,7 @@
           </Lifecycle>
           <UI>
             <Type>Panel</Type>
-            <Menu Placement="'Main:&amp;Window',600.0,'KBSCE Window menu'">Discord Rich Presence(IDSN/AICY) with websocket</Menu>
+            <Menu Placement="'Main:&amp;Window',600.0,'KBSCE Window menu'">Discord Rich Presence(IDSN/AICY)</Menu>
             <Geometry>
               <Size>
                 <Height>600</Height>

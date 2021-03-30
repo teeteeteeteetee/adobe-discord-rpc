@@ -7,21 +7,26 @@ function PLApp(){
     return app.project
 }
 
-function PLSequence(){
-    var info;
-    if (app.project.activeSequence) {
-        info = app.project.activeSequence.name;
-    } else {
-        info = "No active sequence.";
-    }
-    return info
-}
-
 function state(){
-
+    try{
+            var x;
+    if (app.project.activeSequence) {
+        x = app.project.activeSequence.name;
+    } else {
+        x = "No active sequence.";
+    }
+    return x
+    }catch(e){
+        return "No active sequence.";
+    }
 }
 
 function details(){
+    try{
+        return app.project.name
+    }catch(e){
+        return "No file."
+    }
 
 }
 
