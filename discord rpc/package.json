@@ -15,7 +15,7 @@
     "fs": "0.0.1-security",
     "http": "0.0.1-security",
     "request": "^2.88.2",
-    "socket.io": "^4.0.0",
+    "socket.io": "^2.4.1",
     "tcp-port-used": "^1.0.2"
   }
 }
