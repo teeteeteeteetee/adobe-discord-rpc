@@ -7,8 +7,6 @@ Adobe Discord Rich Presence is an extension that connects Adobe apps with Discor
 
 doesn't work on CEP 8 and below, basically 2018 versions
 
-// the project will be a little bit inactive for a while due to being busy irl sry ill try to come back as soon as possible
-
 ![](demo/preview.gif)
 
 **Supports**:
@@ -35,6 +33,3 @@ doesn't work on CEP 8 and below, basically 2018 versions
 ![Installation guide](https://github.com/lolitee/adobe-discord-rpc/blob/master/GUIDE.md)
 
 [Support server](https://discord.gg/RGtxbuFtzb) - use it if rly needed
-
-This whole project is open-source, feel free to modify them ^^
-make sure to give a star..........................
