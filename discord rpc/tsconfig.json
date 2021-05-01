@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "outDir": "./dist",
+  },
+  "include": [
+    "src"
+  ]
+}
