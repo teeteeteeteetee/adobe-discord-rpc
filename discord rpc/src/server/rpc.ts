@@ -1,10 +1,16 @@
-const RPC = require('discord-rpc');
+import * as apps from './apps.json';
+const RPC = require("discord-rpc");
 
 export class RPCClient {
 
-    public appID: string = "";
-    public details: string = "";
-    public state: string = "";
+    private rpc = new RPC.Client({
+        transport: "ipc"
+    })
+    private clientID: any;
+    private apps: any = apps;
+
+    public details: any = undefined;
+    public state: any = undefined;
     public smallImageKey: string = "";
     public smallImageText: string = "";
     public largeImageKey: string = "logo";
@@ -13,27 +19,37 @@ export class RPCClient {
     public partyMin: number = 0;
     public partyMax: number = 0;
 
-    create() {
-        const rpc = new RPC.Client({
-            transport: "ipc"
-        })
+    constructor(appID: any){
+        this.clientID = this.apps[appID].clientID;
+    }
 
-        rpc.on("ready", () => {
-            rpc.setActivity({
-                state: "yeah",
-                largeImageKey: "logo",
-                details: "yeah", 
-            })
+    create() {
+        this.rpc.on("ready", () => {
+            this.update();
         });
 
-        rpc.login({
-            clientId: "748568089939148832"
-        })
+        this.rpc.login({
+            clientId: this.clientID
+        });
         
     }
 
-    break(){
-        
+    update(){
+        this.rpc.setActivity({
+            details: this.details,
+            state: this.state,
+            smallImageKey: this.smallImageKey,
+            smallImageText: this.smallImageText,
+            largeImageKey: "logo",
+            largeImageText: this.largeImageText,
+            startTimestamp: this.timestamp,
+            partySize: this.partyMin,
+            partyMax: this.partyMax
+        })
+    }
+
+    destroy(){
+        this.rpc.destroy();
     }
 
 }

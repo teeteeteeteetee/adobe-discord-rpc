@@ -7,21 +7,24 @@
     "lib": "lib"
   },
   "dependencies": {
+    "active-window": "^0.1.0",
     "discord-rpc": "^3.1.4",
     "express": "^4.17.1",
     "http": "0.0.1-security",
-    "socket.io": "^2.4.1"
+    "socket.io": "^2.4.1",
+    "tcp-port-used": "^1.0.2"
   },
   "devDependencies": {
+    "@types/discord-rpc": "^3.0.5",
     "@types/express": "^4.17.11",
     "@types/node": "^15.0.1",
-    "@types/socket.io": "^2.1.13",
-    "wait-port": "^0.2.9"
+    "@types/socket.io": "^2.1.13"
   },
   "scripts": {
+    "dev": "nodemon ./src/server/main.ts",
     "build": "tsc",
-    "postbuild": "@powershell Copy-Item .\\node_modules\\ .\\dist\\ -Recurse -Force"
+    "postbuild": "@powershell Copy-Item .\\node_modules\\ .\\dist\\ -Recurse -Force; Copy-Item .\\src\\lib\\ .\\dist\\ -Recurse -Force; Copy-Item .\\src\\CSXS\\ .\\dist\\ -Recurse -Force; Copy-Item .\\src\\host\\ .\\dist\\ -Recurse -Force"
   },
-  "author": "",
+  "author": "Tee",
   "license": "ISC"
 }
