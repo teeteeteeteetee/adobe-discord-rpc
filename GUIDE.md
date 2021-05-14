@@ -17,7 +17,9 @@ This extension works on **CEP 8,9 and 10**
 		- `%appdata%/Adobe/CEP/extensions` _(User only)_\n
 	- **MacOS:**
 		- `~/Library/Application Support/Adobe/CEP/extensions`
-2. Make sure you have debug mode enabled in __both__ folders. Debug mode has more information [here](https://github.com/Adobe-CEP/Getting-Started-guides/tree/master/Client-side%20Debugging) *(The reason to do this is because I didn't sign the extension)*
+2. Make sure you have created string key called "PlayerDebugMode" and put value of 1 into it. 
+	- 2021/2020(late): HKEY_CURRENT_USER/Software/Adobe/CSXS.10
+	- 2020(early)/2019/HKEY_CURRENT_USER/Software/Adobe/CSXS.9
 	- (If there's multiple CSX numbers in Registry Editor then create one for them for all)
 3. Open any Adobe app that supports this extension.
 4. On the top of the window, go to `Window > Extensions > Discord Rich Presence`
