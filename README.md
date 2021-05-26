@@ -5,6 +5,7 @@ Adobe Discord Rich Presence is an extension that connects Adobe apps with Discor
 
 # Please do not clone the repository, get the extension from "Releases" https://github.com/lolitee/adobe-discord-rpc/releases
 # .zxp method is currently broken, use the other one
+# animate is most likely broken
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/14e27cba3be44af2b1128fc7e2a332e2)](https://www.codacy.com/manual/Tee/adobe-discord-rpc/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=lolitee/adobe-discord-rpc&amp;utm_campaign=Badge_Grade) [![Build Status](https://travis-ci.org/lolitee/adobe-discord-rpc.png?branch=master)](https://travis-ci.org/lolitee/adobe-discord-rpc)
 
@@ -18,7 +19,7 @@ doesn't work on CEP 8 and below, basically 2018 versions
 - Premiere Pro
 - Audition
 - Illustrator
-- Animate
+- Animate (broken at the moment)
 - Prelude (scuffed)
 - Dreamweaver (doesn't work)
 - InDesign
