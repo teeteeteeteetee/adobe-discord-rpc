@@ -9,6 +9,9 @@ This extension works on **CEP 8,9 and 10**
 # How to
 ![](https://github.com/lolitee/adobe-discord-rpc/raw/master/demo/installation1.gif "Quick Demo of the Extension being installed")
 ## Method 1
+
+[video guide](https://youtu.be/oHytdpcVlJ8)
+
  _([If you don't have a zip extractor you can install one **here**](https://7-zip.org))_
 1. Unzip the file using your preferred .zip extractor and extract the folder `discord rpc` into:
 	- **Windows:**
