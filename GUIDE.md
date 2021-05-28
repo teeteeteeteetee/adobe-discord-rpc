@@ -14,7 +14,7 @@ This extension works on **CEP 8,9 and 10**
 	- **Windows:**
 		- `C:/Program Files (x86)/Common Files/Adobe/CEP/extensions`
 			- Hold `Windows + R` and enter **%appdata%**
-		- `%appdata%/Adobe/CEP/extensions` _(User only)_\n
+		- `%appdata%/Adobe/CEP/extensions` _(User only)_ \n (only if program files folder didn't work)
 	- **MacOS:**
 		- `~/Library/Application Support/Adobe/CEP/extensions`
 2. In regedit, go to one of these paths depending on your version
