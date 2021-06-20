@@ -20,8 +20,8 @@ This extension works on **CEP 8,9 and 10**
 		OR
 			- Hold `Windows + R` and enter **%appdata%**
 		- `%appdata%/Adobe/CEP/extensions` _(User only)_ \n (only if program files folder didn't work)
-	- **MacOS:**
-		- `~/Library/Application Support/Adobe/CEP/extensions`
+<!-- 	- **MacOS:** extensiond doesn't work on mac ignore this
+		- `~/Library/Application Support/Adobe/CEP/extensions` -->
 2. In regedit, go to one of these paths depending on your version
 	- 2021/2020(late): HKEY_CURRENT_USER/Software/Adobe/CSXS.10
 	- 2020(early)/2019/HKEY_CURRENT_USER/Software/Adobe/CSXS.9
