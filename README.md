@@ -18,8 +18,8 @@ doesn't work on CEP 8 and below, basically 2018 versions
 - Premiere Pro
 - Audition
 - Illustrator
-- Animate (broken at the moment)
-- Prelude (scuffed)
+- Animate (broken)
+- Prelude (broken)
 - Dreamweaver (doesn't work)
 - InDesign
 - InCopy
@@ -27,11 +27,7 @@ doesn't work on CEP 8 and below, basically 2018 versions
 **Doesn't support**:
 - Media Encoder
 - Acrobat
-- Premiere Rush (doesn't work + no button for some reasons)
-
--- prob useless
-- Muse
-- Bridge
+- Premiere Rush
 
 ![Installation guide](https://github.com/lolitee/adobe-discord-rpc/blob/master/GUIDE.md)
 
