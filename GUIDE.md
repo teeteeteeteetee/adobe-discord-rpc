@@ -24,16 +24,16 @@ This extension works on **CEP 8,9 and 10**
 		- `~/Library/Application Support/Adobe/CEP/extensions`
 2. - **Windows:**: 
 	In regedit, go to one of these paths depending on your version
- 	- 2021(late): HKEY_CURRENT_USER/Software/Adobe/CSXS.11
-	- 2021(early)/2020(late): HKEY_CURRENT_USER/Software/Adobe/CSXS.10
-	- 2020(early)/2019: HKEY_CURRENT_USER/Software/Adobe/CSXS.9
-	- (If there's multiple CSX numbers in Registry Editor then create one for them for all)
+ 		- 2021(late): `HKEY_CURRENT_USER/Software/Adobe/CSXS.11`
+		- 2021(early)/2020(late): `HKEY_CURRENT_USER/Software/Adobe/CSXS.10`
+		- 2020(early)/2019: `HKEY_CURRENT_USER/Software/Adobe/CSXS.9`
+		- (If there's multiple CSX numbers in Registry Editor then create one for them for all)
    - **MacOS:**: 
    	In the terminal write
-   	- 2021(late): defaults write com.adobe.CSXS.11 PlayerDebugMode 1
-   	- 2021(early)/2020(late): defaults write com.adobe.CSXS.10 PlayerDebugMode 1
-	- 2020(early)/2019: defaults write com.adobe.CSXS.9 PlayerDebugMode 1
-	- I recommend writing all of them in terminal
+   		- 2021(late): `defaults write com.adobe.CSXS.11 PlayerDebugMode 1`
+   		- 2021(early)/2020(late): `defaults write com.adobe.CSXS.10 PlayerDebugMode 1`
+		- 2020(early)/2019: `defaults write com.adobe.CSXS.9 PlayerDebugMode 1`
+		- I recommend writing all of them in terminal
 
 3. Create a string value called "PlayerDebugMode" and put "1" as value
 4. Open any Adobe app that supports this extension.
