@@ -1,7 +1,10 @@
 import { RPCClient } from "./rpc";
 import * as active from "./active.json";
+//import { Config } from "./config";
 
 import * as express from "express";
+
+const  activeWin = require("active-win");
 
 const monitor = require("active-window");
 const tcpPortUsed = require("tcp-port-used");
@@ -23,9 +26,7 @@ let isInitApp: boolean = true;
 
 //run("AEFT");
 
-const callback = function(window: any){
-
-    _window = window.app;
+function dispatch(_window: any){
 
     try {
 
@@ -79,6 +80,29 @@ const callback = function(window: any){
     }catch(err) {
         console.log(err)
     } 
+
+}
+
+const darwinActiveWin = function(){
+
+    try{
+        activeWin().then((result : any) => {
+          dispatch(result["owner"]["bundleId"]);
+          _window = result["owner"]["bundleId"];
+        });
+
+      }catch(err){
+        console.log(err);
+      }
+
+}
+
+const callback = function(window: any){
+
+    dispatch(window.app);
+    _window = window.app;
+
+
   }
 
 module.exports = run;
@@ -86,6 +110,8 @@ module.exports = run;
 async function run(x : any) {
 
     try {
+
+        //Config.load();
 
         console.log(x);
 
@@ -127,7 +153,11 @@ async function run(x : any) {
                 console.log("listening on *:6767");
             });
 
-            monitor.getActiveWindow(callback, -1, 2);
+            if(process.platform == "win32"){
+                monitor.getActiveWindow(callback, -1, 2);
+            }else if(process.platform == "darwin"){
+                setTimeout(darwinActiveWin, 2000)
+            }
 
         }, function(err: any) {
             run(x);
@@ -135,7 +165,10 @@ async function run(x : any) {
         });
 
     }catch(err){
-        console.log(err);
+        app.get('/', (req, res) => {
+            res.sendFile(__dirname + '/index.html');
+            res.send(err);
+        });
     }
 
 }

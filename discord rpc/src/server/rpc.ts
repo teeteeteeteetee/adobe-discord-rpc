@@ -20,8 +20,7 @@ export class RPCClient {
     public partyMax: number = 0;
 
     constructor(appID: any){
-        console.log(appID)
-        this.clientID = this.apps[appID].clientID;
+        this.clientID = this.apps[appID];
     }
 
     create() {
