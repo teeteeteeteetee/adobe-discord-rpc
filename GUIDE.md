@@ -20,8 +20,8 @@ This extension works on **CEP 8,9 and 10**
 		OR
 			- Hold `Windows + R` and enter **%appdata%**
 		- `%appdata%/Adobe/CEP/extensions` _(User only)_ \n (only if program files folder didn't work)
-<!-- 	- **MacOS:** extensiond doesn't work on mac ignore this
-		- `~/Library/Application Support/Adobe/CEP/extensions` -->
+	- **MacOS:** get your extension here https://github.com/lolitee/adobe-discord-rpc/releases/tag/v0.0.14-alpha
+		- `~/Library/Application Support/Adobe/CEP/extensions`
 2. In regedit, go to one of these paths depending on your version
  	- 2021(late): HKEY_CURRENT_USER/Software/Adobe/CSXS.11
 	- 2021(early)/2020(late): HKEY_CURRENT_USER/Software/Adobe/CSXS.10
