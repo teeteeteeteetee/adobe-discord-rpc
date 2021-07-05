@@ -22,12 +22,13 @@ This extension works on **CEP 8,9 and 10**
 		- `%appdata%/Adobe/CEP/extensions` _(User only)_ \n (only if program files folder didn't work)
 	- **MacOS:** get your extension here https://github.com/lolitee/adobe-discord-rpc/releases/tag/v0.0.14-alpha
 		- `~/Library/Application Support/Adobe/CEP/extensions`
-2. Windows: In regedit, go to one of these paths depending on your version
+2. - **Windows:**: 
+	In regedit, go to one of these paths depending on your version
  	- 2021(late): HKEY_CURRENT_USER/Software/Adobe/CSXS.11
 	- 2021(early)/2020(late): HKEY_CURRENT_USER/Software/Adobe/CSXS.10
 	- 2020(early)/2019: HKEY_CURRENT_USER/Software/Adobe/CSXS.9
 	- (If there's multiple CSX numbers in Registry Editor then create one for them for all)
-   MacOS: 
+   - **MacOS:**: 
    	In the terminal write
    	- 2021(late): defaults write com.adobe.CSXS.11 PlayerDebugMode 1
    	- 2021(early)/2020(late): defaults write com.adobe.CSXS.10 PlayerDebugMode 1
