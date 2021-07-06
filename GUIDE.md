@@ -4,7 +4,7 @@
 
 **The CEP Server runs on default port __6767__ so make sure nothing runs on that port, otherwise the API server wont start and will error out.**
 
-This extension works on **CEP 9+**
+This extension works on **CEP 9+ (2019+)**
 
 # How to
 ![](https://github.com/lolitee/adobe-discord-rpc/raw/master/demo/installation1.gif "Quick Demo of the Extension being installed")
