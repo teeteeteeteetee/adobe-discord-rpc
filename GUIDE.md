@@ -1,5 +1,8 @@
 # Adobe Discord Rich Presence
 ![](https://github.com/lolitee/adobe-discord-rpc/raw/master/demo/demo.gif "Preview of Discord x Adobe Rich Presence.")
+
+special thank to Stxyl and Esh for helping me test macOS compatibility!
+
 # Information
 
 **The CEP Server runs on default port __6767__ so make sure nothing runs on that port, otherwise the API server wont start and will error out.**
