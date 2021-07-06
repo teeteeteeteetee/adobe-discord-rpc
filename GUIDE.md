@@ -1,7 +1,7 @@
 # Adobe Discord Rich Presence
 ![](https://github.com/lolitee/adobe-discord-rpc/raw/master/demo/demo.gif "Preview of Discord x Adobe Rich Presence.")
 
-special thank to Stxyl and Esh for helping me test macOS compatibility!
+# special thanks to Stxyl and Esh for helping me test macOS compatibility!
 
 # Information
 
