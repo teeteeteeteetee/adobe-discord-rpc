@@ -1,0 +1,4 @@
+discord\ rpc/server/node-modules/*.js linguist-detectable=false
+discord\ rpc/lib/*.js linguist-detectable=false
+discord\ rpc/server/node-modules/* linguist-vendored
+discord\ rpc/lib/* linguist-vendored
