@@ -1,2 +1,2 @@
-discord*rpc/server/node-modules/* linguist-vendored
-discord*rpc/lib/* linguist-vendored
+discord\ rpc/server/node-modules/* linguist-vendored
+discord\ rpc/lib/* linguist-vendored
