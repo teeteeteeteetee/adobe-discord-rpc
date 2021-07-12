@@ -1,6 +1,6 @@
 {
   "name": "discord-rpc",
-  "version": "v0.0.1-beta",
+  "version": "v0.0.2-beta",
   "description": "",
   "main": "index.js",
   "directories": {

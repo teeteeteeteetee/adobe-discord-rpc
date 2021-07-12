@@ -7,6 +7,8 @@ var state =  document.getElementById("state")
 var timestamp = document.getElementById("timestamp")
 var enabled = document.getElementById("enabled")
 
+var current_avatar = "";
+
 var data;
 
 var appID = csInterface.getApplicationID()
@@ -231,6 +233,16 @@ function getUser(){
     }, 15000);
 
 }
+
+csInterface.addEventListener('com.discordrpc.user', function(e){
+    var data = e.data;
+    if(current_avatar != `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}`){
+        document.getElementById("visualizerName").innerHTML = data.username + `<span style="font-family:Roboto-Light">#${data.discriminator}</span>`
+        document.getElementById("avatar").src = `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}`
+        resize()
+        updateSettings()
+    }
+});
 
 function update() {
 

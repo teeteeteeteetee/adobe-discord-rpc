@@ -8,6 +8,7 @@ var apps = require(__dirname+'\\apps.json');
 var csInterface = new CSInterface();
 var appID = csInterface.getApplicationID()
 var valueChanged = false;
+var event = new CSEvent("com.discordrpc.user", "APPLICATION");
 
 function loadJSX(fileName) {
     var csInterface = new CSInterface();
@@ -141,6 +142,9 @@ function send(){
         "partyMax": rpc.partyMax,
         "startTimestamp": date
     }
+
+    event.data = client.user;
+    csInterface.dispatchEvent(event);
 
     client.setActivity(data).catch(console.error);
 

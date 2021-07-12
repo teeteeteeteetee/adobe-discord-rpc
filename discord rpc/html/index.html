@@ -89,40 +89,50 @@
 
         <script>
 
-            var tag_name;
-            var release;
+            var latest = "";
+            var release = "";
             var package = require(__dirname + "\\package.json");
+
+            var p = document.createElement("p")
+                p.style.color = "white"
+                p.style.fontSize = "10px";
+                p.style.martinTop = "2px";
+                p.style.marginBottom = "0";
+                p.innerHTML = package.version;
+
+                document.body.append(p);
 
             fetch("https://api.github.com/repos/lolitee/adobe-discord-rpc/releases/latest").then(response => {
                 response.json().then(data => {
                     release = data.tag_name;
                 });
             });
-            fetch("https://api.github.com/repos/lolitee/adobe-discord-rpc/tags").then(response => {
+            fetch("https://api.github.com/repos/lolitee/adobe-discord-rpc/releases").then(response => {
                 response.json().then(data => {
-                    tag_name = data[0]["name"];
+                    latest = data[0].tag_name;
                 });
             });
 
-            if(package.version != (release || tag_name)){
+            if(package.version !== (release || latest)){
                 var p = document.createElement("p")
                 p.style.color = "white"
                 p.style.fontSize = "10px";
-                p.style.martinTop = "2px";
                 p.style.marginBottom = "0";
-                p.innerHTML = "new release available available in settings!";
+                p.innerHTML = "new release available in settings!";
 
                 document.body.append(p);
             }
-            if(package.version != tag_name){
-                var p2 = document.createElement("p")
-                p2.style.color = "white"
-                p2.style.fontSize = "10px";
-                p2.style.marginBottom = 0;
-                p2.innerHTML = "new pre-release available in settings!";
+            if(package.version !== latest){
+                var p = document.createElement("p")
+                p.style.color = "white"
+                p.style.fontSize = "10px";
+                p.style.marginBottom = 0;
+                p.innerHTML = "new pre-release available in settings!";
 
-                document.body.append(p2);
+                document.body.append(p);
             }
+
+            console.log(cep_node.global.test)
 
         </script>
 

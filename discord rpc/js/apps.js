@@ -36,7 +36,6 @@ function getAppName(_appID) {
         case "RUSH":
             appID = "Premiere Rush"
             break;
-
     }
 
     return appID
