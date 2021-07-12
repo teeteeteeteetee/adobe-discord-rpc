@@ -4,7 +4,7 @@ function state(){
     }catch(err){
         switch(err.description){
             case "No such element":
-                return "";
+                return "Idling";
 
             default:
                 return "";
@@ -51,7 +51,13 @@ function largeImageText(){
 
 function partySize(){
     try{
-        return app.activeDocument.activeLayer.itemIndex;
+
+        //if(app.activeDocument.activeLayer instanceof LayerSet){
+        //    return app.activeDocument.activeLayer.itemIndex - 1;
+        //}else{
+            return app.activeDocument.activeLayer.itemIndex;
+        //}
+
     }catch(e){
         return 0;
     }

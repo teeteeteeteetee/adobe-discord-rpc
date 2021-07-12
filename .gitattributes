@@ -1,2 +1,2 @@
-discord[[:space:]]rpc/server/node-modules/* linguist-vendored
-discord[[:space:]]rpc/lib/* linguist-vendored
+discord[[:space:]]rpc/lib/*.js linguist-vendored
+discord[[:space:]]rpc/lib/*.css linguist-vendored

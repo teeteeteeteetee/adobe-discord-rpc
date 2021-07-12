@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Tee's Discord Rich Presence</title>
+
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/styles.css"/>
+
+    <script src="../js/apps.js"></script>
+    <script src="../lib/CSInterface.js"></script>
+    <script src="../lib/jquery-3.5.1.min.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <script defer src="../js/main.js"></script>
+
+</head>
+
+<body>
+
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="p-2 bd-highlight">
+
+            <div id="visualizer" class="card visualizer" style="max-height: 13.5rem;">
+                <div class="card-body mx-0 px-2">
+                    <div class="text-center">
+                    <img id="avatar" src="./assets/default.png">
+                    </div>
+                  <h6 id="visualizerName" style="font-family:RobotoCondensed-Bold;font-size:14px"class="text-center"></h6>
+                    <div>
+                        <p style="font-family:RobotoCondensed-Bold;font-size:10px; margin-bottom:2px;">PLAYING A GAME</p>
+
+                        <!-- <br> is broken for no reasons so i had to use div :) -->
+
+                        <p style="font-size:8px; padding:0;margin:0"><img id="appIcon">
+                            <div id="_text">
+                                <div id="_title" class="visualizerText" style="padding-top:18px"><strong></strong></div>
+                                <div id="_details" style="display:none" class="visualizerText"></div>
+                                <div id="_state" style="display:none" class="visualizerText"></div>
+                                <div id="_timestamp" style="display:none" class="visualizerText"></div>
+                            </div>
+                        </p>
+
+                    </div>
+                </div>
+
+              </div>
+
+            <li class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="details" checked="true" disabled="true" onchange="updateSettings(true)">
+                <label class="custom-control-label" for="details">details</label>
+            </li>
+
+            <li class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="state" checked="true" disabled="true" onchange="updateSettings(true)">
+                <label class="custom-control-label" for="state">state</label>
+            </li>
+
+            <li class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="smallImage" checked="true" disabled="true" onchange="updateSettings(true)">
+                <label class="custom-control-label" for="smallImage">small icon</label>
+            </li>
+
+            <li class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="timestamp" checked="true" disabled="true" onchange="updateSettings(true)">
+                <label class="custom-control-label" for="timestamp">time</label>
+            </li>
+
+            <!-- <li class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="enabled" checked="true" disabled="true" onchange="updateSettings(true)">
+                <label class="custom-control-label" for="enabled">enabled</label>
+            </li> -->
+
+            <footer>
+                <p><a href="https://github.com/lolitee/adobe-discord-rpc">github repository</a></p>
+            </footer>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

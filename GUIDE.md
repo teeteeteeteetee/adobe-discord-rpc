@@ -7,7 +7,7 @@
 
 **The CEP Server runs on default port __6767__ so make sure nothing runs on that port, otherwise the API server wont start and will error out.**
 
-This extension works on **CEP 8+ (2018+)**
+This extension works on **CEP 9+ (2019+)**
 
 # How to
 ![](https://github.com/lolitee/adobe-discord-rpc/raw/master/demo/installation1.gif "Quick Demo of the Extension being installed")
@@ -25,7 +25,7 @@ This extension works on **CEP 8+ (2018+)**
 		- `%appdata%/Adobe/CEP/extensions` _(User only)_ \n (only if program files folder didn't work)
 	- **MacOS:** get your extension here https://github.com/lolitee/adobe-discord-rpc/releases/tag/v0.0.14-alpha
 		- `~/Library/Application Support/Adobe/CEP/extensions`
-<!-- 		- chmod the folder in terminal with `chmod -R 777 'discord rpc'` (recommended) -->
+		- chmod the folder in terminal with `chmod -R 777 'discord rpc'` (recommended)
 2. - **Windows:**: 
 	In regedit, go to one of these paths depending on your version
  		- 2021(late): `HKEY_CURRENT_USER/Software/Adobe/CSXS.11`
@@ -39,7 +39,7 @@ This extension works on **CEP 8+ (2018+)**
    		- 2021(early)/2020(late): `defaults write com.adobe.CSXS.10 PlayerDebugMode 1`
 		- 2020(early)/2019: `defaults write com.adobe.CSXS.9 PlayerDebugMode 1`
 		- I recommend writing all of them in terminal
-<!-- 	- Application should be added into accessibility under the system preference [ref](https://cdn.discordapp.com/attachments/861647140937400380/861740220869640233/unknown.png) -->
+	- Application should be added into accessibility under the system preference [ref](https://cdn.discordapp.com/attachments/861647140937400380/861740220869640233/unknown.png)
 
 3. Open any Adobe app that supports this extension.
 4. On the top of the window, go to `Window > Extensions > Discord Rich Presence`
