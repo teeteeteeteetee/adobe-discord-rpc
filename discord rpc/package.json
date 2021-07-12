@@ -1,0 +1,18 @@
+{
+  "name": "discord-rpc",
+  "version": "v0.0.1-beta",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tee",
+  "license": "ISC",
+  "dependencies": {
+    "discord-rpc": "^3.1.4",
+    "jquery": "^3.6.0"
+  }
+}
