@@ -4,11 +4,20 @@ const client = new RPC.Client({ transport: 'ipc' });
 const date = new Date();
 
 var apps = require(__dirname+'\\apps.json');
+var data;
 
 var csInterface = new CSInterface();
 var appID = csInterface.getApplicationID()
 var valueChanged = false;
-var event = new CSEvent("com.discordrpc.user", "APPLICATION");
+var user_event = new CSEvent("com.discordrpc.user", "APPLICATION");
+var data_event = new CSEvent("com.discordrpc.data", "APPLICATION");
+var settings_event = new CSEvent("com.discordrpc.settings.get", "APPLICATION");
+
+var state_enable = true;
+var details_enable = true;
+var smallImage_enable = true;
+var timestamp_enable = true;
+var enabled_enable = true;
 
 function loadJSX(fileName) {
     var csInterface = new CSInterface();
@@ -27,11 +36,53 @@ client.login({
 loadJSX(appID + ".jsx");
 getData();
 
-function getAppID() {
-    var csInterface = new CSInterface();
-    var appID = csInterface.getApplicationID()
-    return appID
-}
+csInterface.addEventListener('com.discordrpc.settings', function(e){
+    var data = e.data;
+
+    localStorage.setItem("settings", JSON.stringify(data));
+    console.log(localStorage.getItem("settings").toString());
+
+    state_enable = data.state;
+    details_enable = data.details;
+    timestamp_enable = data.timestamp
+    enabled_enable = data.enabled;
+
+    send();
+
+});
+
+var settings_json = localStorage.getItem("settings");
+var parsed = JSON.parse(settings_json);
+
+console.log(parsed)
+
+state_enable = parsed.state;
+details_enable = parsed.details;
+timestamp_enable = parsed.timestamp;
+enabled_enable = parsed.enabled;
+
+settings_event.data = JSON.parse(settings_json);
+
+csInterface.addEventListener('com.discordrpc.settings.request', function() {
+
+    var data = {
+        state: state_enable,
+        details: details_enable,
+        timestamp: timestamp_enable,
+        enabled: enabled_enable
+    }
+
+    csInterface.dispatchEvent(data);
+});
+
+setInterval(() => {
+    user_event.data = client.user;
+    csInterface.dispatchEvent(user_event);
+
+    data_event.data = data;
+    csInterface.dispatchEvent(data_event);
+
+}, 3000);
 
 rpc = {
 
@@ -100,8 +151,7 @@ rpc = {
 
 rpc.registerListener(function(val, old) {
 
-    if(val != old) {
-         
+    if(val != old) {   
         console.log(`Value changed to: ${val}`)
         valueChanged = true;
     }
@@ -130,21 +180,18 @@ function getData() {
 
 function send(){
 
-    let data = {
+    data = {
         "appID": appID,
-        "state": rpc.state.length <= 2 ? `[${rpc.state}]` : rpc.state,
-        "details": rpc.details,
-        "smallImageKey": rpc.smallImageKey,
+        "state": state_enable == true ? (rpc.state.length <= 2 ? `[${rpc.state}]` : rpc.state) : undefined,
+        "details": details_enable == true ? rpc.details : undefined,
+        "smallImageKey": smallImage_enable == true ? rpc.smallImageKey : undefined,
         "largeImageKey": "logo",
         "smallImageText": rpc.smallImageText,
         "largeImageText": rpc.largeImageText,
         "partySize": rpc.partySize,
         "partyMax": rpc.partyMax,
-        "startTimestamp": date
+        "startTimestamp": timestamp_enable == true ? date : null
     }
-
-    event.data = client.user;
-    csInterface.dispatchEvent(event);
 
     client.setActivity(data).catch(console.error);
 
