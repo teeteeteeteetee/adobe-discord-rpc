@@ -29,3 +29,7 @@ Remove-Item $zip -Force
 Remove-Item $dir -Recurse -Force
 
 Write-Host "Make sure to restart your Adobe app, if you've updated it through the panel!"
+
+Remove-Item .\\latest.ps1
+
+PAUSE
