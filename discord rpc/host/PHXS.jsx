@@ -1,6 +1,6 @@
 function state(){
     try{
-        return app.activeDocument.activeLayer.name
+        return app.activeDocument.activeLayer.name;
     }catch(err){
         switch(err.description){
             case "No such element":
@@ -52,11 +52,7 @@ function largeImageText(){
 function partySize(){
     try{
 
-        //if(app.activeDocument.activeLayer instanceof LayerSet){
-        //    return app.activeDocument.activeLayer.itemIndex - 1;
-        //}else{
-            return app.activeDocument.activeLayer.itemIndex;
-        //}
+        return app.activeDocument.activeLayer.itemIndex;
 
     }catch(e){
         return 0;
@@ -65,7 +61,16 @@ function partySize(){
 
 function partyMax(){
     try{
-        return app.activeDocument.layers.length;
+
+        var all_layers = 0;
+
+        for (var i in app.activeDocument.layerSets) {
+            if(app.activeDocument.layerSets[i].length){
+                all_layers = all_layers + app.activeDocument.layerSets[i].length + app.activeDocument.layerSets.length;
+            }
+        };
+
+        return app.activeDocument.layers.length + all_layers;
     }catch(e){
         return 0;
     }

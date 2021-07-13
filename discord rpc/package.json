@@ -1,6 +1,6 @@
 {
   "name": "discord-rpc",
-  "version": "1.0.0",
+  "version": "v0.0.3-beta",
   "description": "",
   "main": "index.js",
   "directories": {
@@ -12,6 +12,8 @@
   "author": "Tee",
   "license": "ISC",
   "dependencies": {
-    "discord-rpc": "^3.1.4"
+    "axios": "^0.21.1",
+    "discord-rpc": "^3.1.4",
+    "node-powershell": "^4.0.0"
   }
 }
