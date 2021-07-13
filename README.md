@@ -6,9 +6,6 @@ Adobe Discord Rich Presence is an extension that connects Adobe apps with Discor
 # Please do not clone the repository, get the extension from "Releases" https://github.com/lolitee/adobe-discord-rpc/releases
 # .zxp method is currently broken, use the other one
 # animate is most likely broken
-# if the extension still doesn't work, try the rewritten version [here](https://cdn.discordapp.com/attachments/847588172203425802/847596109777076234/discord_rpc.zip)
-
-doesn't work on CEP 8 and below, basically 2018 versions
 
 ![](demo/preview.gif)
 
