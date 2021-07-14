@@ -10,7 +10,7 @@ $download = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].assets[0].browse
 $body = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].body
 
 If (Test-Path $name){
-    Remove-Item $name -Recurse -Force -Ignore
+    Remove-Item $name -Recurse -Force
     Write-Host Removing [$name]
 }
 
@@ -34,6 +34,6 @@ Remove-Item $zip -Force
 Remove-Item $dir -Recurse -Force
 
 Write-Host "Make sure to restart your Adobe app, if you've updated it through the panel!"
-Remove-Item .\release.ps1
+Remove-Item -Path $MyInvocation.MyCommand.Source
 
 PAUSE
