@@ -4,7 +4,7 @@ $name = "discord rpc"
 
 $releases = "https://api.github.com/repos/$repo/releases/latest"
 
-Write-Host Getting latest release
+Write-Host Getting stable release
 $tag = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].tag_name
 $download = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].assets[0].browser_download_url
 $body = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].body
@@ -20,7 +20,7 @@ Write-Host $body -ForegroundColor green
 $zip = "$name-$tag.zip"
 $dir = "$name-$tag"
 
-Write-Host Downloading released version
+Write-Host Downloading stable version
 Invoke-WebRequest $download -Out $zip
 
 Write-Host Extracting files
