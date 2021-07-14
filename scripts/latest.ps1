@@ -9,6 +9,10 @@ $tag = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].tag_name
 $download = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].assets[0].browser_download_url
 $body = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].body
 
+If (Test-Path $name){
+	Remove-Item $name -Recurse -Force
+}
+
 Write-Host $download
 Write-Host $body -ForegroundColor green
 
