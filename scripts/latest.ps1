@@ -10,7 +10,7 @@ $download = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].assets[0].browse
 $body = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].body
 
 If (Test-Path $name){
-    Remove-Item $name -Recurse -Force -Ignore
+    Remove-Item $name -Recurse -Force
     Write-Host Removing [$name]
 }
 
