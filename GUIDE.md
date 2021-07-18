@@ -5,7 +5,7 @@
 
 # Information
 
-**The CEP Server runs on default port __6767__ so make sure nothing runs on that port, otherwise the API server wont start and will error out.**
+~~**The CEP Server runs on default port __6767__ so make sure nothing runs on that port, otherwise the API server wont start and will error out.**~~
 - if you're using the current latest version https://github.com/lolitee/adobe-discord-rpc/releases/tag/v0.0.1-beta then its not required anymore
 
 This extension works on **CEP 8+ (2018+)**
@@ -40,7 +40,7 @@ This extension works on **CEP 8+ (2018+)**
    		- 2021(early)/2020(late): `defaults write com.adobe.CSXS.10 PlayerDebugMode 1`
 		- 2020(early)/2019: `defaults write com.adobe.CSXS.9 PlayerDebugMode 1`
 		- I recommend writing all of them in terminal
-	- Application should be added into accessibility under the system preference [ref](https://cdn.discordapp.com/attachments/861647140937400380/861740220869640233/unknown.png)
+	~~- Application should be added into accessibility under the system preference [ref](https://cdn.discordapp.com/attachments/861647140937400380/861740220869640233/unknown.png)~~
 
 3. Open any Adobe app that supports this extension.
 4. On the top of the window, go to `Window > Extensions > Discord Rich Presence`
