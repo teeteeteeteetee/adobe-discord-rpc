@@ -24,9 +24,9 @@ This extension works on **CEP 8+ (2018+)**
 		OR
 			- Hold `Windows + R` and enter **%appdata%**
 		- `%appdata%/Adobe/CEP/extensions` _(User only)_ \n (only if program files folder didn't work)
-	- **MacOS:** get your extension here https://github.com/lolitee/adobe-discord-rpc/releases/tag/v0.0.14-alpha
+	- **MacOS:**
 		- `~/Library/Application Support/Adobe/CEP/extensions`
-		- chmod the folder in terminal with `chmod -R 777 'discord rpc'` (recommended)
+<!-- 		- chmod the folder in terminal with `chmod -R 777 'discord rpc'` (recommended) -->
 2. - **Windows:**: 
 	In regedit, go to one of these paths depending on your version
  		- 2021(late): `HKEY_CURRENT_USER/Software/Adobe/CSXS.11`
