@@ -26,7 +26,7 @@ Adobe Discord Rich Presence is an extension that connects Adobe apps with Discor
 - Acrobat
 - Premiere Rush
 
-- [x] donations thanks u so much
+# donations ty so much
 - [ ] ImAARIX#1312 - 3$
 
 ![Installation guide](https://github.com/lolitee/adobe-discord-rpc/blob/master/GUIDE.md)
