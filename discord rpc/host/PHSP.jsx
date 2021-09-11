@@ -1,10 +1,10 @@
 function state(){
     try{
-        return app.activeDocument.activeLayer.name
+        return app.activeDocument.activeLayer.name;
     }catch(err){
         switch(err.description){
             case "No such element":
-                return "";
+                return "Idling";
 
             default:
                 return "";
@@ -30,7 +30,7 @@ function details(){
 
 function smallImageKey(){
     try{
-        return app.currentTool;
+        return app.currentTool.toString().toLowerCase();
     }catch(e){
         return "";
     }
@@ -51,7 +51,9 @@ function largeImageText(){
 
 function partySize(){
     try{
-        return app.activeDocument.activeLayer.itemIndex
+
+        return app.activeDocument.activeLayer.itemIndex;
+
     }catch(e){
         return 0;
     }
@@ -59,7 +61,17 @@ function partySize(){
 
 function partyMax(){
     try{
-        return app.activeDocument.layers.length;
+
+        var all_layers = 0;
+
+        if(app.activeDocument.layerSets.length !== 0){
+
+            for (var i=0, len=app.activeDocument.layerSets.length; i < len ; i++) {
+              all_layers = all_layers + app.activeDocument.layerSets[i].layers.length + app.activeDocument.layerSets.length
+            };
+        }
+
+        return app.activeDocument.layers.length + all_layers;
     }catch(e){
         return 0;
     }

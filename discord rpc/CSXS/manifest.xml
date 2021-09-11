@@ -3,6 +3,7 @@
 <ExtensionManifest ExtensionBundleId="com.discord.rpc.tee" ExtensionBundleVersion="0.0.16" Version="7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ExtensionList>
     <Extension Id="com.tee.discordrpc" Version="0.0.16" />
+    <Extension Id="com.tee.discordrpc.other.dreamweaver" Version="0.0.16" />
     <Extension Id="com.tee.discordrpc.settings" Version="0.0.16" />
     <Extension Id="com.tee.discordrpc.panel" Version="0.0.16" />
     <Extension Id="com.tee.discordrpc.panel.other" Version="0.0.16" />
@@ -154,8 +155,44 @@
           <Type>Custom</Type>
           <Geometry>
             <Size>
-              <Height>100</Height>
-              <Width>100</Width>
+              <Height>500</Height>
+              <Width>500</Width>
+            </Size>
+          </Geometry>
+        </UI>
+      </DispatchInfo>
+    </Extension>
+
+      <Extension Id="com.tee.discordrpc.other.dreamweaver">
+          <HostList>
+            <Host Name="DRWV" />
+          </HostList>
+      <DispatchInfo>
+        <Resources>
+          <MainPath>./html/main.html</MainPath>
+          <ScriptPath>./host/DRWV.jsx</ScriptPath>
+        <CEFCommandLine>
+          <Parameter>--allow-file-access</Parameter>
+	        <Parameter>--allow-file-access-from-files</Parameter>
+          <Parameter>--enable-nodejs</Parameter>
+          <Parameter>--mixed-context</Parameter>
+        </CEFCommandLine>
+        </Resources>
+        <Lifecycle>
+          <AutoVisible>false</AutoVisible>
+          <StartOn>
+            <Event>com.adobe.csxs.events.ApplicationInitialized</Event>
+            <!-- <Event>com.adobe.csxs.events.AppOnline</Event> -->
+            <Event>applicationActivate</Event>
+            <Event>com.adobe.csxs.events.ApplicationActivate</Event>
+          </StartOn>
+        </Lifecycle>
+        <UI>
+          <Type>Custom</Type>
+          <Geometry>
+            <Size>
+              <Height>500</Height>
+              <Width>500</Width>
             </Size>
           </Geometry>
         </UI>

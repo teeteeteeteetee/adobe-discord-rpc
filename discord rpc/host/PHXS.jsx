@@ -51,8 +51,14 @@ function largeImageText(){
 
 function partySize(){
     try{
+        // due to performance related stuff because javascript sucks
+        if(app.activeDocument.layerSets.length > 20) return 0;
+        if(app.activeDocument.activeLayer.itemIndex > app.activeDocument.layers.length) return 0;
+        if(app.activeDocument.layers.length > 100) return 0;
 
-        return app.activeDocument.activeLayer.itemIndex;
+        party_size = app.activeDocument.activeLayer.itemIndex;
+
+        return party_size;
 
     }catch(e){
         return 0;
@@ -64,13 +70,17 @@ function partyMax(){
 
         var all_layers = 0;
 
-        for (var i in app.activeDocument.layerSets) {
-            if(app.activeDocument.layerSets[i].length){
-                all_layers = all_layers + app.activeDocument.layerSets[i].length + app.activeDocument.layerSets.length;
-            }
-        };
+        if(app.activeDocument.layerSets.length > 20) return 0;
+        if(app.activeDocument.activeLayer.itemIndex > app.activeDocument.layers.length) return 0;
+        if(app.activeDocument.layers.length > 100) return 0;
 
-        return app.activeDocument.layers.length + all_layers;
+            if(app.activeDocument.layerSets.length !== 0){
+                for (var i=0, len=app.activeDocument.layerSets.length; i < len; i++) {
+                    all_layers = all_layers + app.activeDocument.layerSets[i].layers.length;
+                };
+            }
+
+        return app.activeDocument.layers.length + all_layers + app.activeDocument.layerSets.length;
     }catch(e){
         return 0;
     }

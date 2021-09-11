@@ -1,5 +1,9 @@
 var csInterface = new CSInterface();
 
+if(csInterface.getApplicationID() === "DRWV"){
+    csInterface.requestOpenExtension("com.tee.discordrpc.other.dreamweaver");
+}
+
 var i = 0
 
 var details = document.getElementById("details")
@@ -40,6 +44,16 @@ csInterface.addEventListener('com.discordrpc.settings.get', function (e) {
     }
 
 });
+
+if(localStorage.getItem("settings") === null){
+    var get_settings = setInterval(() => {
+        csInterface.dispatchEvent(settingsRequest_event);
+        if(localStorage.getItem("settings") != null) {
+            clearInterval(get_settings)
+            window.location.reload();
+        };
+    }, 5000);
+}
 
 var temp = JSON.parse(localStorage.getItem("settings"));
 

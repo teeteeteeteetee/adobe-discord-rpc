@@ -3,7 +3,10 @@ const RPC = require('discord-rpc');
 const client = new RPC.Client({ transport: 'ipc' });
 const date = new Date();
 
-var apps = require(__dirname+'\\apps.json');
+console.log(__dirname)
+
+var apps = require(__dirname+'/apps.json');
+
 var data;
 
 var csInterface = new CSInterface();
@@ -23,6 +26,8 @@ function loadJSX(fileName) {
     var csInterface = new CSInterface();
     var extensionRoot = csInterface.getSystemPath(SystemPath.EXTENSION) + "/host/";
     csInterface.evalScript('$.evalFile("' + extensionRoot + fileName + '")');
+    console.log(fileName);
+    console.log(extensionRoot);
 }
 
 client.on('ready', () => {
@@ -55,10 +60,21 @@ csInterface.addEventListener('com.discordrpc.settings', function(e){
 
 });
 
+// if doesn't exist on first run
+if (localStorage.getItem("settings") === null) {
+
+    var data = {
+        state: true,
+        details: true,
+        timestamp: true,
+        enabled: true
+    };
+
+    localStorage.setItem("settings", JSON.stringify(data));
+}
+
 var settings_json = localStorage.getItem("settings");
 var parsed = JSON.parse(settings_json);
-
-console.log(parsed)
 
 state_enable = parsed.state;
 details_enable = parsed.details;
@@ -76,7 +92,7 @@ csInterface.addEventListener('com.discordrpc.settings.request', function() {
         enabled: enabled_enable
     }
 
-    csInterface.dispatchEvent(data);
+    csInterface.dispatchEvent(settings_event, data);
 });
 
 setInterval(() => {
@@ -165,6 +181,7 @@ rpc.registerListener(function(val, old) {
 function getData() {
 
     setInterval(() => {
+
         csInterface.evalScript('state()', x => rpc.state = x);
         csInterface.evalScript('details()', x => rpc.details = x);
         csInterface.evalScript('smallImageKey()', x => rpc.smallImageKey = x);
@@ -188,14 +205,26 @@ function send(){
         "appID": appID,
         "state": state_enable == true ? (rpc.state.length <= 2 ? `[${rpc.state}]` : rpc.state) : undefined,
         "details": details_enable == true ? rpc.details : undefined,
-        "smallImageKey": smallImage_enable == true ? rpc.smallImageKey : undefined,
+        //"smallImageKey": smallImage_enable == true ? rpc.smallImageKey : undefined,
         "largeImageKey": "logo",
-        "smallImageText": rpc.smallImageText,
+        //"smallImageText": details_enable == true ? rpc.smallImageText : undefined,
         "largeImageText": rpc.largeImageText,
-        "partySize": rpc.partySize,
-        "partyMax": rpc.partyMax,
+        "partySize": rpc.partySize == 0 ? null: rpc.partySize,
+        "partyMax": rpc.partyMax == 0 ? null : rpc.partyMax,
         "startTimestamp": timestamp_enable == true ? date : null
     }
+
+    if(appID === "IDSN" || appID === "AICY"){
+        if(smallImage_enable == true && rpc.smallImageKey != ""){
+            data["smallImageKey"] = rpc.smallImageKey;
+        }
+    
+        if(rpc.smallImageText != ""){
+            data["smallImageText"] = rpc.smallImageKey;
+        }
+    }
+
+    console.log(data);
 
     client.setActivity(data).catch(console.error);
 

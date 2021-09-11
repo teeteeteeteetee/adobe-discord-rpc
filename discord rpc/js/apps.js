@@ -12,6 +12,9 @@ function getAppName(_appID) {
         case "AUDT":
             appID = "Audition"
             break;
+        case "DRWV":
+            appID = "Dreamweaver"
+            break;
         case "FLPR":
             appID = "Animate"
             break;
@@ -22,8 +25,6 @@ function getAppName(_appID) {
             appID = "Illustrator"
             break;
         case "PHSP":
-            appID = "Photoshop"
-            break;
         case "PHXS":
             appID = "Photoshop"
             break;
