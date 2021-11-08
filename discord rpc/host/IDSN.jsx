@@ -15,11 +15,11 @@ function details(){
 }
 
 function smallImageKey(){
-
+    return ""
 }
 
 function smallImageText(){
-
+    return ""
 }
 
 function largeImageText(){

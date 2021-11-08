@@ -4,6 +4,13 @@ if(csInterface.getApplicationID() === "DRWV"){
     csInterface.requestOpenExtension("com.tee.discordrpc.other.dreamweaver");
 }
 
+console.log(csInterface.getApplicationID())
+
+if(csInterface.getApplicationID() === "FLPR"){
+    console.log("request open")
+    csInterface.requestOpenExtension("com.tee.discordrpc.other.animate");
+}
+
 var i = 0
 
 var details = document.getElementById("details")

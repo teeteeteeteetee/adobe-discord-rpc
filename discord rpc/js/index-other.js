@@ -214,6 +214,16 @@ function send(){
         "startTimestamp": timestamp_enable == true ? date : null
     }
 
+    if(appID === "IDSN" || appID === "AICY"){
+        if(smallImage_enable == true && rpc.smallImageKey != ""){
+            data["smallImageKey"] = rpc.smallImageKey;
+        }
+    
+        if(rpc.smallImageText != ""){
+            data["smallImageText"] = rpc.smallImageKey;
+        }
+    }
+
     console.log(data);
 
     client.setActivity(data).catch(console.error);

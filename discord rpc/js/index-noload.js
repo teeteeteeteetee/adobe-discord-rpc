@@ -38,7 +38,6 @@ client.login({
     clientId: apps[appID]
 }).catch(console.error);
 
-loadJSX(appID + ".jsx");
 getData();
 
 csInterface.addEventListener('com.tee.discordrpc.restart', function(){
@@ -212,6 +211,16 @@ function send(){
         "partySize": rpc.partySize == 0 ? null: rpc.partySize,
         "partyMax": rpc.partyMax == 0 ? null : rpc.partyMax,
         "startTimestamp": timestamp_enable == true ? date : null
+    }
+
+    if(appID === "IDSN" || appID === "AICY"){
+        if(smallImage_enable == true && rpc.smallImageKey != ""){
+            data["smallImageKey"] = rpc.smallImageKey;
+        }
+    
+        if(rpc.smallImageText != ""){
+            data["smallImageText"] = rpc.smallImageKey;
+        }
     }
 
     console.log(data);
