@@ -40,7 +40,7 @@ function install(x){
                 default:
                     return;
             }
-            ps.addCommand(`Start-Process Powershell -Verb runAs -WorkingDirectory '${adobe_path}' -Argument "Write-Host '${adobe_path}';cd '${adobe_path}';Invoke-WebRequest https://raw.githubusercontent.com/lolitee/adobe-discord-rpc/install-scripts/scripts/${type}.ps1 -OutFile ${type}.ps1; .\\${type}.ps1;"`)
+            ps.addCommand(`Start-Process Powershell -Verb runAs -WorkingDirectory '${adobe_path}' -Argument "Write-Host '${adobe_path}';cd '${adobe_path}';Invoke-WebRequest https://raw.githubusercontent.com/lolitee/adobe-discord-rpc/install-scripts/scripts/${type}.ps1 -OutFile ${type}.ps1 -UseBasicParsing; .\\${type}.ps1;"`)
             ps.invoke()
             .then(output => {
                 console.log(output);
