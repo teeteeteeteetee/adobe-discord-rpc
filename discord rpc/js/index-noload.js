@@ -22,14 +22,6 @@ var smallImage_enable = true;
 var timestamp_enable = true;
 var enabled_enable = true;
 
-function loadJSX(fileName) {
-    var csInterface = new CSInterface();
-    var extensionRoot = csInterface.getSystemPath(SystemPath.EXTENSION) + "/host/";
-    csInterface.evalScript('$.evalFile("' + extensionRoot + fileName + '")');
-    console.log(fileName);
-    console.log(extensionRoot);
-}
-
 client.on('ready', () => {
     send();
 })
@@ -40,7 +32,7 @@ client.login({
 
 getData();
 
-csInterface.addEventListener('com.tee.discordrpc.restart', function(){
+csInterface.addEventListener('com.discordrpc.restart', function(){
     window.location.reload();
 });
 

@@ -4,6 +4,10 @@ const Shell = require('node-powershell');
 
 var restart_event = new CSEvent("com.discordrpc.restart", "APPLICATION");
 
+csInterface.addEventListener('com.discordrpc.restart', function(){
+    window.location.reload();
+});
+
 function restart(){
     csInterface.dispatchEvent(restart_event);
     window.location.reload();

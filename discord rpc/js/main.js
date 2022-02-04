@@ -1,14 +1,14 @@
+// gonna rewrite this sphagetti in future
+
 var csInterface = new CSInterface();
 
-if(csInterface.getApplicationID() === "DRWV"){
-    csInterface.requestOpenExtension("com.tee.discordrpc.other.dreamweaver");
-}
-
-console.log(csInterface.getApplicationID())
-
-if(csInterface.getApplicationID() === "FLPR"){
-    console.log("request open")
-    csInterface.requestOpenExtension("com.tee.discordrpc.other.animate");
+switch(csInterface.getApplicationID()){
+    case "DRWV": 
+        csInterface.requestOpenExtension("com.tee.discordrpc.other.dreamweaver");
+        break;
+    case "FLPR":
+        csInterface.requestOpenExtension("com.tee.discordrpc.other.animate");
+        break;
 }
 
 var i = 0
@@ -31,7 +31,7 @@ document.getElementById("settings").onclick = function () {
     csInterface.requestOpenExtension("com.tee.discordrpc.settings");
 }
 
-csInterface.addEventListener('com.tee.discordrpc.restart', function(){
+csInterface.addEventListener('com.discordrpc.restart', function(){
     window.location.reload();
 });
 
@@ -92,7 +92,7 @@ $(document).ready(function () {
             document.getElementById("_details").style.display = "block"
             document.getElementById("_state").style.display = "block"
             document.getElementById("_timestamp").style.display = "block"
-        } catch (err) {
+        } catch {
 
         }
     });
@@ -105,7 +105,7 @@ $(document).ready(function () {
     setInterval(() => {
         try {
             document.getElementById("_timestamp").innerHTML = `${format(i++)} elapsed`
-        } catch (err) {
+        } catch {
 
         }
 

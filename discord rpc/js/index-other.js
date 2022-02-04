@@ -41,7 +41,7 @@ client.login({
 loadJSX(appID + ".jsx");
 getData();
 
-csInterface.addEventListener('com.tee.discordrpc.restart', function(){
+csInterface.addEventListener('com.discordrpc.restart', function(){
     window.location.reload();
 });
 
