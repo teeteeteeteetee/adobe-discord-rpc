@@ -8,12 +8,17 @@ csInterface.addEventListener('com.discordrpc.restart', function(){
     window.location.reload();
 });
 
+function reset_settings(){
+    localStorage.clear();
+    restart();
+}
+
 function restart(){
     csInterface.dispatchEvent(restart_event);
     window.location.reload();
-    console.log("works");
 }
 
+// prob gonna be deleted later
 function install(x){
 
     var adobe_path = (path.join(__dirname, "../"));
@@ -44,7 +49,7 @@ function install(x){
                 default:
                     return;
             }
-            ps.addCommand(`Start-Process Powershell -Verb runAs -WorkingDirectory '${adobe_path}' -Argument "Write-Host '${adobe_path}';cd '${adobe_path}';Invoke-WebRequest https://raw.githubusercontent.com/lolitee/adobe-discord-rpc/install-scripts/scripts/${type}.ps1 -OutFile ${type}.ps1 -UseBasicParsing; .\\${type}.ps1;"`)
+            ps.addCommand(`Start-Process Powershell -ExecutionPolicy Bypass -Verb runAs -WorkingDirectory '${adobe_path}' -Argument "Write-Host '${adobe_path}';cd '${adobe_path}';Invoke-WebRequest https://raw.githubusercontent.com/lolitee/adobe-discord-rpc/install-scripts/scripts/${type}.ps1 -OutFile ${type}.ps1 -UseBasicParsing; .\\${type}.ps1;"`)
             ps.invoke()
             .then(output => {
                 console.log(output);

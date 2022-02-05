@@ -1,3 +1,9 @@
+/** 
+ * 
+ * i was gonna change functions into constants and lambdas but idk if they are being supported in older versions
+ * 
+ * */ 
+
 const RPC = require('discord-rpc');
 
 const client = new RPC.Client({ transport: 'ipc' });
@@ -22,6 +28,7 @@ var smallImage_enable = true;
 var timestamp_enable = true;
 var enabled_enable = true;
 
+
 function loadJSX(fileName) {
     var csInterface = new CSInterface();
     var extensionRoot = csInterface.getSystemPath(SystemPath.EXTENSION) + "/host/";
@@ -30,7 +37,17 @@ function loadJSX(fileName) {
     console.log(extensionRoot);
 }
 
+// temporary solution i guess
+function isDynamicLink() {
+    if (appID === "AEFT") {
+        csInterface.evalScript("app.activeViewer", x => {
+            if (x === "null") client.destroy();
+        });
+    }
+}
+
 client.on('ready', () => {
+    isDynamicLink();
     send();
 })
 
@@ -41,12 +58,12 @@ client.login({
 loadJSX(appID + ".jsx");
 getData();
 
-csInterface.addEventListener('com.discordrpc.restart', function(){
+csInterface.addEventListener('com.discordrpc.restart', () => {
     client.destroy();
     window.location.reload();
 });
 
-csInterface.addEventListener('com.discordrpc.settings', function(e){
+csInterface.addEventListener('com.discordrpc.settings', (e) => {
     var data = e.data;
 
     localStorage.setItem("settings", JSON.stringify(data));
@@ -62,7 +79,7 @@ csInterface.addEventListener('com.discordrpc.settings', function(e){
 });
 
 // if doesn't exist on first run
-if (localStorage.getItem("settings") === null) {
+if (!localStorage.getItem("settings")) {
 
     var data = {
         state: true,
@@ -84,7 +101,7 @@ enabled_enable = parsed.enabled;
 
 settings_event.data = JSON.parse(settings_json);
 
-csInterface.addEventListener('com.discordrpc.settings.request', function() {
+csInterface.addEventListener('com.discordrpc.settings.request', () => {
 
     var data = {
         state: state_enable,

@@ -12,6 +12,10 @@ function state(){
     try{
         var x = app.project.activeItem.name;
 
+        if(app.project.renderQueue.rendering){
+            return "Rendering"
+        }
+
         if(app.project.activeItem instanceof CompItem) {
             comp = app.project.activeItem.name + " (" + app.project.activeItem.layers.length + ")";
             x = app.project.activeItem.name + " (" + app.project.activeItem.layers.length + ")";
@@ -71,7 +75,7 @@ function largeImageText(){
 
 function partySize(){
     try{
-        if(app.project.renderQueue.rendering == true){
+        if(app.project.renderQueue.rendering){
         var info;
         var item;
 

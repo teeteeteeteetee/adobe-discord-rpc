@@ -30,7 +30,7 @@ CSXSWindowType._MODELESS = "Modeless";
 CSXSWindowType._MODAL_DIALOG = "ModalDialog";
 
 /** EvalScript error message */
-EvalScript_ErrMessage = "EvalScript error.";
+EvalScript_ErrMessage = "EvalScript error.";;
 
 /**
  * @class Version
