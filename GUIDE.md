@@ -12,6 +12,7 @@ This extension works on **CEP 8+ (2018+)**
 ## Method 1
 
 [video guide](https://www.youtube.com/watch?v=uZUnG9jf9RI)
+[earlier versions](https://youtu.be/oHytdpcVlJ8)
 - you can ignore the %appdata%/adobe step
 
  _([If you don't have a zip extractor you can install one **here**](https://7-zip.org))_
