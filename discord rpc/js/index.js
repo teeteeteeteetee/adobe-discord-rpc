@@ -1,9 +1,3 @@
-/** 
- * 
- * i was gonna change functions into constants and lambdas but idk if they are being supported in older versions
- * 
- * */ 
-
 const RPC = require('discord-rpc');
 
 const client = new RPC.Client({ transport: 'ipc' });
@@ -37,7 +31,7 @@ function loadJSX(fileName) {
     console.log(extensionRoot);
 }
 
-// temporary solution i guess
+
 function isDynamicLink() {
     if (appID === "AEFT") {
         csInterface.evalScript("app.activeViewer", x => {
@@ -58,12 +52,12 @@ client.login({
 loadJSX(appID + ".jsx");
 getData();
 
-csInterface.addEventListener('com.discordrpc.restart', () => {
+csInterface.addEventListener('com.discordrpc.restart', function(){
     client.destroy();
     window.location.reload();
 });
 
-csInterface.addEventListener('com.discordrpc.settings', (e) => {
+csInterface.addEventListener('com.discordrpc.settings', function(e){
     var data = e.data;
 
     localStorage.setItem("settings", JSON.stringify(data));
@@ -101,7 +95,7 @@ enabled_enable = parsed.enabled;
 
 settings_event.data = JSON.parse(settings_json);
 
-csInterface.addEventListener('com.discordrpc.settings.request', () => {
+csInterface.addEventListener('com.discordrpc.settings.request', function() {
 
     var data = {
         state: state_enable,

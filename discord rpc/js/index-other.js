@@ -22,6 +22,7 @@ var smallImage_enable = true;
 var timestamp_enable = true;
 var enabled_enable = true;
 
+
 function loadJSX(fileName) {
     var csInterface = new CSInterface();
     var extensionRoot = csInterface.getSystemPath(SystemPath.EXTENSION) + "/host/";
@@ -42,6 +43,7 @@ loadJSX(appID + ".jsx");
 getData();
 
 csInterface.addEventListener('com.discordrpc.restart', function(){
+    client.destroy();
     window.location.reload();
 });
 
@@ -61,7 +63,7 @@ csInterface.addEventListener('com.discordrpc.settings', function(e){
 });
 
 // if doesn't exist on first run
-if (localStorage.getItem("settings") === null) {
+if (!localStorage.getItem("settings")) {
 
     var data = {
         state: true,
@@ -205,9 +207,9 @@ function send(){
         "appID": appID,
         "state": state_enable == true ? (rpc.state.length <= 2 ? `[${rpc.state}]` : rpc.state) : undefined,
         "details": details_enable == true ? rpc.details : undefined,
-        //"smallImageKey": smallImage_enable == true ? rpc.smallImageKey : undefined,
+        "smallImageKey": smallImage_enable == true ? rpc.smallImageKey : undefined,
         "largeImageKey": "logo",
-        //"smallImageText": details_enable == true ? rpc.smallImageText : undefined,
+        "smallImageText": details_enable == true ? rpc.smallImageText : undefined,
         "largeImageText": rpc.largeImageText,
         "partySize": rpc.partySize == 0 ? null: rpc.partySize,
         "partyMax": rpc.partyMax == 0 ? null : rpc.partyMax,

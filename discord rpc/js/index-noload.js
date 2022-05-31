@@ -33,6 +33,7 @@ client.login({
 getData();
 
 csInterface.addEventListener('com.discordrpc.restart', function(){
+    client.destroy();
     window.location.reload();
 });
 
@@ -52,7 +53,7 @@ csInterface.addEventListener('com.discordrpc.settings', function(e){
 });
 
 // if doesn't exist on first run
-if (localStorage.getItem("settings") === null) {
+if (!localStorage.getItem("settings")) {
 
     var data = {
         state: true,
