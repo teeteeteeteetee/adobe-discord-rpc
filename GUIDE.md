@@ -11,7 +11,7 @@ This extension works on **CEP 8+ (2018+)**
 ![](https://github.com/lolitee/adobe-discord-rpc/raw/master/demo/installation1.gif "Quick Demo of the Extension being installed")
 ## Method 1
 
-[video guide](https://youtu.be/oHytdpcVlJ8)
+[video guide](https://www.youtube.com/watch?v=uZUnG9jf9RI)
 - you can ignore the %appdata%/adobe step
 
  _([If you don't have a zip extractor you can install one **here**](https://7-zip.org))_
