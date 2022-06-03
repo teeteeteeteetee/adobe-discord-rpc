@@ -92,7 +92,7 @@ $(document).ready(function () {
             document.getElementById("_details").style.display = "block"
             document.getElementById("_state").style.display = "block"
             document.getElementById("_timestamp").style.display = "block"
-        } catch {
+        } catch (err) {
 
         }
     });
@@ -105,7 +105,7 @@ $(document).ready(function () {
     setInterval(() => {
         try {
             document.getElementById("_timestamp").innerHTML = `${format(i++)} elapsed`
-        } catch {
+        } catch (err) {
 
         }
 
