@@ -1,0 +1,17 @@
+{
+  "name": "discord-rpc-client",
+  "version": "v0.0.1",
+  "description": "Discord Rich Presence extension for your adobe apps!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Tee",
+    "url": "https://github.com/lolitee/adobe-discord-rpc"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "discord-rpc": "3.1.4"
+  }
+}
