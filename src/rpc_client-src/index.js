@@ -2,19 +2,34 @@
  * @author Tee
  */
 
-import RichPresence from './rpc';
-const csInterface = new CSInterface()
+"use strict";
 
-let client = require('./client.js');
+import RichPresence from "./rpc";
+
+const csInterface = new CSInterface();
+
+let client = require("./client.js")[csInterface.getApplicationID()];
+let extensionRoot = csInterface.getSystemPath(SystemPath.EXTENSION) + "/host/apps/";
+let interval = 1500;
+
+csInterface.evalScript(`main(${extensionRoot + csInterface.getApplicationID()}.jsx)`)
 
 // do not initialize if its ran through dynamic link (after effects)
 if (csInterface.getApplicationID() === "AEFT") {
-    csInterface.evalScript("app.activeViewer", x => {
-        if (x === "null") client.destroy();
+    csInterface.evalScript("app.activeViewer", (x) => {
+        if (x === "null") return;
     });
 }
 
-client = client[csInterface.getApplicationID()]
 const rpc = new RichPresence(client);
 
-rpc.create().then(rpc.login())
+rpc.create().then(rpc.login());
+
+setTimeout(() => {
+    csInterface.evalScript(`state()`, (x) => {
+        console.log(x);
+    });
+    csInterface.evalScript(`details()`, (x) => {
+        console.log(x);
+    });
+}, interval);

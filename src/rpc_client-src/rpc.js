@@ -14,8 +14,7 @@ export default class RichPresence {
 
     async create(){
         this.client = new Client({ transport: 'ipc'})
-        this.client.on('ready', function(data){
-            console.log(data)
+        this.client.on('ready', () => {
             this.setActivity({
                 details: "hi",
                 state: "hello",

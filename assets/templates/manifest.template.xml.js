@@ -37,7 +37,7 @@ module.exports = (props) =>
       <DispatchInfo>
         <Resources>
           <MainPath>./index.html</MainPath>
-          <ScriptPath>./host/index.jsx</ScriptPath>
+          <!-- <ScriptPath>./host/index.jsx</ScriptPath> -->
           <CEFCommandLine>
               <Parameter>--enable-nodejs</Parameter>
               <Parameter>--mixed-context</Parameter>
@@ -77,6 +77,7 @@ module.exports = (props) =>
     <DispatchInfo>
       <Resources>
         <MainPath>./rpc.html</MainPath>
+        <ScriptPath>./host/index.jsx</ScriptPath>
       <CEFCommandLine>
         <Parameter>--allow-file-access</Parameter>
         <Parameter>--allow-file-access-from-files</Parameter>
