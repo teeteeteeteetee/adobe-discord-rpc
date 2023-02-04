@@ -8,24 +8,23 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-
+    
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.19.0]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm install
-    - run: npm run release:prod
+      - uses: actions/checkout@v3
+
+      - name: Set Node.js 16.19.0
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.19.0
+
+      - name: Run install
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install # will run `yarn install` command
+      - name: Build production bundle
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: release:prod # will run `yarn release:prod` command
