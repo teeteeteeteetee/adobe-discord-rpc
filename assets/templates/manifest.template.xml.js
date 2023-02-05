@@ -1,5 +1,73 @@
+const hosts = require("../../src/rpc_client-src/client.js")
+
+const getHosts = (props) => {
+  const data = []
+  for (var key in hosts){
+    console.log(key)
+    data.push(host(props, key))
+  }
+
+  return [...data]
+}
+
+const getHostsIds = (props) => {
+  const data = []
+  for (var key in hosts){
+    if(key === "PHSP"){
+      continue
+    }
+    data.push(hostId(props, key))
+  }
+
+  return [...data]
+}
+
+const hostId = (props, key) => 
+`    <Extension Id="${props.extensionBundleId}.${hosts[key].name.replace(" ", "-").toLowerCase()}" Version="${props.extensionBundleVersion}" />
+`
+
+const host = (props, key) => 
+`
+
+  <Extension Id="${props.extensionBundleId}.${hosts[key].name.replace(" ", "-").toLowerCase()}">
+    <HostList>
+      <Host Name="${key}" />
+    </HostList>
+    <DispatchInfo>
+      <Resources>
+        <MainPath>./rpc.html</MainPath>
+        <ScriptPath>./host/${key}.jsx</ScriptPath>
+        <CEFCommandLine>
+          <Parameter>--allow-file-access</Parameter>
+          <Parameter>--allow-file-access-from-files</Parameter>
+          <Parameter>--enable-nodejs</Parameter>
+          <Parameter>--mixed-context</Parameter>
+        </CEFCommandLine>
+      </Resources>
+      <Lifecycle>
+        <AutoVisible>false</AutoVisible>
+        <StartOn>
+          <Event>com.adobe.csxs.events.ApplicationInitialized</Event>
+          <Event>applicationActivate</Event>
+          <Event>com.adobe.csxs.events.ApplicationActivate</Event>
+        </StartOn>
+      </Lifecycle>
+      <UI>
+        <Type>Custom</Type>
+        <Geometry>
+          <Size>
+            <Height>500</Height>
+            <Width>500</Width>
+          </Size>
+        </Geometry>
+      </UI>
+    </DispatchInfo>
+  </Extension>
+
+`
+
 module.exports = (props) =>
-`<?xml version="1.0" encoding="UTF-8"?>
+  `<?xml version="1.0" encoding="UTF-8"?>
 <!--Copyright 2018 Adobe. All rights reserved.This file is licensed to you under the Apache License, Version 2.0 (the "License");you may not use this file except in compliance with the License. You may obtain a copyof the License at http://www.apache.org/licenses/LICENSE-2.0Unless required by applicable law or agreed to in writing, software distributed underthe License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONSOF ANY KIND, either express or implied. See the License for the specific languagegoverning permissions and limitations under the License. -->
 <ExtensionManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    ExtensionBundleId="${props.extensionBundleId}"
@@ -7,11 +75,9 @@ module.exports = (props) =>
                    ExtensionBundleName="${props.extensionBundleName}"
                    Version="${props.cepVersion}">
   <ExtensionList>
-    <Extension Id="${props.extensionBundleId}" Version="${props.extensionBundleVersion}" />
     <Extension Id="${props.extensionBundlePanelId}" Version="${props.extensionBundleVersion}" />
-  <!-- <Host Name="PHXS" Port="8088"/>
-      <Host Name="PHSP" Port="8088"/> -->
-  </ExtensionList>
+    ${getHostsIds(props).join('')}
+    </ExtensionList>
   <ExecutionEnvironment>
     <HostList>
         <Host Name="PHXS" Version="[0.0,99.9]" />
@@ -33,11 +99,11 @@ module.exports = (props) =>
     </RequiredRuntimeList>
   </ExecutionEnvironment>
   <DispatchInfoList>
+
     <Extension Id="${props.extensionBundlePanelId}">
       <DispatchInfo>
         <Resources>
           <MainPath>./index.html</MainPath>
-          <!-- <ScriptPath>./host/index.jsx</ScriptPath> -->
           <CEFCommandLine>
               <Parameter>--enable-nodejs</Parameter>
               <Parameter>--mixed-context</Parameter>
@@ -73,37 +139,7 @@ module.exports = (props) =>
       </DispatchInfo>
     </Extension>
 
-    <Extension Id="${props.extensionBundleId}">
-    <DispatchInfo>
-      <Resources>
-        <MainPath>./rpc.html</MainPath>
-        <ScriptPath>./host/index.jsx</ScriptPath>
-      <CEFCommandLine>
-        <Parameter>--allow-file-access</Parameter>
-        <Parameter>--allow-file-access-from-files</Parameter>
-        <Parameter>--enable-nodejs</Parameter>
-        <Parameter>--mixed-context</Parameter>
-      </CEFCommandLine>
-      </Resources>
-      <Lifecycle>
-        <AutoVisible>false</AutoVisible>
-        <StartOn>
-          <Event>com.adobe.csxs.events.ApplicationInitialized</Event>
-          <!-- <Event>com.adobe.csxs.events.AppOnline</Event> -->
-          <Event>applicationActivate</Event>
-          <Event>com.adobe.csxs.events.ApplicationActivate</Event>
-        </StartOn>
-      </Lifecycle>
-      <UI>
-        <Type>Custom</Type>
-        <Geometry>
-          <Size>
-            <Height>500</Height>
-            <Width>500</Width>
-          </Size>
-        </Geometry>
-      </UI>
-    </DispatchInfo>
-  </Extension>
+  ${getHosts(props).join('')}
+
   </DispatchInfoList>
-</ExtensionManifest>`
+</ExtensionManifest>`;

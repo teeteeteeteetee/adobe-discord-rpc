@@ -101,7 +101,7 @@ function partySize(){
 
 function partyMax(){
     try{
-        if(app.project.renderQueue.rendering == true){
+        if(app.project.renderQueue.rendering){
             if (!renderItemLock) {
                 AEItems = app.project.renderQueue.numItems
                 renderItemLock = app.project.renderQueue.numItems
