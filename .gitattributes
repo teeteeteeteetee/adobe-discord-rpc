@@ -1,5 +1,0 @@
-src/lib/*.js linguist-vendored
-src/lib/*.css linguist-vendored
-src/node-modules/*.js linguist-vendored
-src/lib/* linguist-vendored
-*.jsx linguist-language=js
