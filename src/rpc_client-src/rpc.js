@@ -11,15 +11,12 @@ export default class RichPresence {
     constructor(client){
         this.clientId = client.id;
     }
-
     async create(){
         this.client = new Client({ transport: 'ipc'})
         this.client.on('ready', () => {
             this.setActivity({
-                details: "hi",
-                state: "hello",
-                largeImageKey: "logo",
-                largeImageText: "test123",
+                details: undefined,
+                state: undefined
             })
         })
     }
@@ -36,6 +33,7 @@ export default class RichPresence {
     }
 
     setActivity(props){
+        console.log(props)
         this.client.setActivity({
             details: props.details,
             state: props.state,
@@ -44,6 +42,8 @@ export default class RichPresence {
             largeImageText: props.largeImageText,
             smallImageKey: props.smallImageKey,
             smallImageText: props.smallImageText,
+            partySize: props.partySize,
+            partyMax: props.partyMax,
         })
     }
 
