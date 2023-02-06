@@ -61,11 +61,8 @@ class Navigator extends React.Component {
         var title = data.title.toUpperCase()
         var icon = data.icon
 
-        if(React.isValidElement(icon)){
-            console.log(icon + ' is element')
-            return <Tab key={index} label={title}>
-                
-            </Tab>
+        if(typeof icon === "function") {
+            return <Tab key={index} style={{height: "22px"}} icon={icon()} label={title}/>
         }
 
         return <Tab key={index} icon={<Icon>{icon}</Icon>} label={title}/>

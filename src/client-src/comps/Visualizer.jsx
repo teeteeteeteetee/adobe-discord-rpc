@@ -5,16 +5,12 @@
 
 import React from "react";
 import Paper from "@material-ui/core/Paper";
-import List from "@material-ui/core/List";
 
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 import withStyles from "@material-ui/core/styles/withStyles";
-import ButtonBase from '@material-ui/core/ButtonBase';
+import ButtonBase from "@material-ui/core/ButtonBase";
+import Container from "@material-ui/core/Container";
 import Avatar from "@material-ui/core/Avatar";
-
-import PluginItem from "./PluginItem.jsx";
-import BrowseItem from "./BrowseItem.jsx";
 
 const styles = (theme) => ({
     root: {
@@ -23,10 +19,14 @@ const styles = (theme) => ({
     paper: {
         display: "flex",
         flexDirection: "column",
+        backgroundColor: "#7289da",
+        borderRadius: "25px",
     },
-    export: {
-        margin: theme.spacing.unit * 3,
-        alignSelf: "flex-end",
+    avatar: {
+        width: "80px",
+        height: "80px",
+        borderStyle: "solid",
+        borderColor: "rgba(0, 0, 0)",
     },
 });
 
@@ -40,46 +40,48 @@ class Visualizer extends React.Component {
     }
 
     render() {
-        const { user } = this.props;
+        const { classes } = this.props;
 
         return (
-            <div>
-                <Paper elevation={5}>
-                    <Avatar 
-                        alt="tee"
-                        src="https://cdn.discordapp.com/avatars/223882126020444160/ead18c39086cb8d2fed1ea3d2d3b264b.webp?size=80"
-                        sx={{ width: 256, height: 256 }}
-                        />
-                    <h1>PLAYING A GAME</h1>
-                    <Grid container
-                        spacing={8}
-                        direction="row"
-                        justify="center"
-                        alignItems="flex-start">
-                        <Grid item xs={2}>
-                            <Grid item>
-                                <ButtonBase>
-                                    <img/>
-                                </ButtonBase>
+            <div className={classes.root}>
+                <Container fixed>
+                    <Paper elevation={5} className={classes.paper}>
+                        <div style={{margin: "24px", justifyContent: "center"}}>
+                            <Avatar
+                                alt="avatar"
+                                src="https://cdn.discordapp.com/avatars/223882126020444160/ead18c39086cb8d2fed1ea3d2d3b264b.webp?size=2048"
+                                className={classes.avatar}
+                            />
+                            <h1>Tee#0001</h1>
+                        </div>
+                        <h1>PLAYING A GAME</h1>
+                        <Grid
+                            container
+                            spacing={8}
+                            direction="row"
+                            justify="center"
+                            alignItems="flex-start"
+                        >
+                            <Grid item xs={2}>
+                                <Grid item>
+                                    <ButtonBase>
+                                        <img />
+                                    </ButtonBase>
+                                </Grid>
+                            </Grid>
+                            <Grid item xs={8}>
+                                <h1>After Effects</h1>
+                                <p>state</p>
+                                <p>detail</p>
+                                <p>00:00 elapsed</p>
                             </Grid>
                         </Grid>
-                        <Grid item xs={8}>
-                            <h1>After Effects</h1>
-                            <p>state</p>
-                            <p>detail</p>
-                            <p>00:00 elapsed</p>
-                        </Grid>
-                    </Grid>
 
-                    <Button
-                        size="small"
-                    >
-                        Force Reconnect
-                    </Button>
-                    {/* <a href="" onClick={cep.util.openURLInDefaultBrowser('https://github.com/lolitee/adobe-discord-rpc')} target={"_blank"}>
-                        Repository
-                    </a> */}
-                </Paper>
+                        {/* <a href="" onClick={cep.util.openURLInDefaultBrowser('https://github.com/lolitee/adobe-discord-rpc')} target={"_blank"}>
+                            Repository
+                        </a> */}
+                    </Paper>
+                </Container>
             </div>
         );
     }

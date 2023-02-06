@@ -10,7 +10,6 @@ import Button from "@material-ui/core/Button"
 import withStyles from '@material-ui/core/styles/withStyles'
 
 import PluginItem from './PluginItem.jsx'
-import BrowseItem from './BrowseItem.jsx'
 
 const styles = theme => ({
     root: {
@@ -20,10 +19,6 @@ const styles = theme => ({
         display:'flex',
         flexDirection: 'column'
     },
-    export: {
-        margin: theme.spacing.unit * 3,
-        alignSelf: 'flex-end'
-    }
 })
 
 /**
@@ -89,11 +84,14 @@ class Config extends React.Component {
                                     desc='inspect only visible layers' icon='visibility'/>
                         <PluginItem ref={this.namesItemRef} index='5' title='Names'
                                     desc='maningful names for assets' icon='build'/>
-                        <BrowseItem innerRef={this.browseItemRef}/>
                     </List>
                     <Button onClick={this.export_onClick}
                             className={classes.export} size="small">
-                        Export
+                        Save
+                    </Button>
+                    <Button onClick={this.export_onClick}
+                            className={classes.export} size="small">
+                        Reset Default
                     </Button>
                 </Paper>
 

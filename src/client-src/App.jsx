@@ -60,7 +60,7 @@ export default class App extends React.Component {
         this._controller = props.controller
         // navigator data
         this.data = [
-            {title: 'Visualizer', icon: FaDiscord, comp: <Visualizer onExecutePlugin={this.onExecutePlugin}/>},
+            {title: 'Visualizer', icon: <FaDiscord size={22}/>, comp: <Visualizer onExecutePlugin={this.onExecutePlugin}/>},
             {title: 'Config', icon: 'settings', comp: <Config/>},
             {title: 'Debug', icon: 'bug_report', comp: <Debug rawLogz={this.controller.logz}/>}
         ]
