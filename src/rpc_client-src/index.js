@@ -5,6 +5,7 @@
 
 import RichPresence from "./rpc";
 import isEqual from "lodash/isEqual"
+import clone from "lodash/clone"
 
 const csInterface = new CSInterface();
 const client = require("./client.js")[csInterface.getApplicationID()];
@@ -50,9 +51,7 @@ function main() {
 
         if (!isEqual(activity, props)) {
             rpc.setActivity(props)
-            activity = props
-            console.log(props)
-            console.log("not equal")
+            activity = clone(props)
         }
 
     } catch (err) {
