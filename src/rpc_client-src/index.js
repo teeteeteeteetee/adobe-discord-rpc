@@ -4,8 +4,8 @@
 "use strict";
 
 import RichPresence from "./rpc";
-import isEqual from "lodash/isEqual"
-import clone from "lodash/clone"
+import isEqual from "lodash/isEqual";
+import clone from "lodash/clone";
 
 const csInterface = new CSInterface();
 const client = require("./client.js")[csInterface.getApplicationID()];
@@ -23,6 +23,7 @@ let props = {
     partyMax: 0,
 }
 let activity = {}
+let status = true;
 
 // do not initialize if its ran through dynamic link (after effects)
 if (csInterface.getApplicationID() === "AEFT") {
@@ -41,19 +42,27 @@ rpc.login()
 .catch(console.error)
 function main() {
     try {
-        csInterface.evalScript('state()', x => props.state = x);
-        csInterface.evalScript('details()', x => props.details = x);
-        csInterface.evalScript('smallImageKey()', x => props.smallImageKey = x);
-        csInterface.evalScript('smallImageText()', x => props.smallImageText = x);
-        csInterface.evalScript('largeImageText()', x => props.largeImageText = x);
-        csInterface.evalScript('partySize()', x => props.partySize = parseInt(x));
-        csInterface.evalScript('partyMax()', x => props.partyMax = parseInt(x));
-
-        if (!isEqual(activity, props)) {
-            rpc.setActivity(props)
-            activity = clone(props)
+        if(rpc.getStatus()){
+            if(!status){
+                activity = {}
+                status = true
+            }
+            csInterface.evalScript('state()', x => props.state = x);
+            csInterface.evalScript('details()', x => props.details = x);
+            csInterface.evalScript('smallImageKey()', x => props.smallImageKey = x);
+            csInterface.evalScript('smallImageText()', x => props.smallImageText = x);
+            csInterface.evalScript('largeImageText()', x => props.largeImageText = x);
+            csInterface.evalScript('partySize()', x => props.partySize = parseInt(x));
+            csInterface.evalScript('partyMax()', x => props.partyMax = parseInt(x));
+    
+            if (!isEqual(activity, props)) {
+                rpc.setActivity(props)
+                activity = clone(props)
+            }
+    
+        } else {
+            status = false;
         }
-
     } catch (err) {
         console.error(err);
     }

@@ -8,6 +8,7 @@ export default class RichPresence {
 
     client;
     clientId;
+    active = false;
 
     constructor(client) {
         this.clientId = client.id;
@@ -17,13 +18,31 @@ export default class RichPresence {
             this.client = new Client({ transport: 'ipc' })
             this.client.on('ready', () => {
                 console.log(`Rich Presence ready! ${this.client.user.username + "#" + this.client.user.discriminator}`);
+                this.active = true;
                 this.setActivity({
                     details: undefined,
                     state: undefined
                 })
                 resolve()
             })
-    
+
+            // handle user disconnect from rpc
+            this.client.on('disconnected', () => {
+                this.destroy()
+                const reconnect = setInterval(() => {
+                    this.login()
+                        .then(() => {
+                            this.active = true;
+                            clearInterval(reconnect)
+                        })
+                        .catch((err) =>{
+                            console.error("Couldn't reconnect to Discord! Error: " + err)
+                            console.log("Reconnecting in 15 seconds...")
+                        })
+                }, 15000)
+                reconnect
+            })
+
             this.client
                 .login({ clientId: this.clientId })
                 .catch(console.error)
@@ -31,6 +50,7 @@ export default class RichPresence {
     }
 
     async destroy() {
+        this.active = false;
         this.client.destroy();
         delete this.client;
     }
@@ -52,5 +72,8 @@ export default class RichPresence {
 
     getUser() {
         return this.client.user;
+    }
+    getStatus() {
+        return this.active;
     }
 }
