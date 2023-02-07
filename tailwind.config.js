@@ -2,10 +2,20 @@
 module.exports = {  
   content: [
     './dist/*.{html,js,css}',
-    "./src/client-src/*.{html,js,jsx}",
+    "./src/client-src/**/*.{html,js,jsx}",
   ],
   theme: {
     extend: {
+      typography: ({theme}) => ({
+        DEFAULT: {
+          css: {
+            color: '#dcddde',
+            a: {
+              color: '#dcddde'
+            }
+          }
+        }
+      }),
       colors: {
         primary: '#36393f',
         secondary: '#2f3136',
@@ -19,5 +29,7 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    '@tailwindcss/typography'
+  ],
 }

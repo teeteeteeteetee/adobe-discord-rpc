@@ -25,6 +25,7 @@
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
+    "@tailwindcss/typography": "^0.5.9",
     "autoprefixer": "^10.4.13",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
