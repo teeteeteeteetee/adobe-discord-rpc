@@ -10,6 +10,7 @@ const CLIENT_DIST_SRC = path.resolve(distFolder, 'rpc_client-src')
 const ENTRY_POINT_CLIENT_PATH = path.join(srcFolder, 'rpc_client-src/index.js')
 
 module.exports = {
+    mode: 'development',
     target: 'node',
     externals: [nodeExternals({modulesDir: path.join(CLIENT_DIST_SRC, 'node_modules')})],
     entry: ['babel-polyfill', ENTRY_POINT_CLIENT_PATH],

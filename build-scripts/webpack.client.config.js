@@ -8,8 +8,12 @@ const srcFolder = pluginConfig.sourceFolder
 const CLIENT_DIST_PATH = path.resolve(distFolder, 'client-dist')
 const HTML_TEMPLATE_PATH = path.join(srcFolder, 'client-src/index.server.template.html')
 const ENTRY_POINT_CLIENT_PATH = path.join(srcFolder, 'client-src/index.js')
+const tailwindcss = require('tailwindcss')
+const autoprefixer = require('autoprefixer') // help tailwindcss to work
+
 
 module.exports = ({
+    mode: 'development',
     entry: ENTRY_POINT_CLIENT_PATH,
     target: 'web',
     module: {
@@ -23,17 +27,37 @@ module.exports = ({
                 }
 
             },
+            // {
+            //     test: /\.(woff|woff2|eot|ttf|svg)$/,
+            //     loader: 'file-loader',
+            //     options: {
+            //         name: 'fonts/[name].[ext]'
+            //     }
+            // },
             {
-                test: /\.(woff|woff2|eot|ttf|svg)$/,
-                loader: 'file-loader',
-                options: {
-                    name: 'fonts/[name].[ext]'
-                }
-            },
-            {
-                test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader']
-            }]
+                test: /\.css$/i,
+                include: srcFolder,
+                // use: [
+                //     MiniCssExtractPlugin.loader,
+                //     {
+                //         loader: "css-loader",
+                //         options: {
+                //             importLoaders: 2,
+                //         }
+                //     },
+                //     {
+                //         loader: 'postcss-loader', // postcss loader needed for tailwindcss
+                //         options: {
+                //           postcssOptions: {
+                //             ident: 'postcss',
+                //             plugins: [tailwindcss, autoprefixer],
+                //           },
+                //         },
+                //     },
+                // ],
+                use: ['style-loader', 'css-loader', 'postcss-loader']
+            }
+        ]
     },
     resolve: {
         extensions: ['*', '.js', '.jsx']
@@ -48,12 +72,7 @@ module.exports = ({
         contentBase: CLIENT_DIST_PATH
     },
     plugins: [
-        new MiniCssExtractPlugin({
-            // Options similar to the same options in webpackOptions.output
-            // both options are optional https://github.com/webpack-contrib/mini-css-extract-plugin
-            filename: "[name].css",
-            chunkFilename: "[id].css"
-        }),
+        // new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
             template: HTML_TEMPLATE_PATH,
             filename: 'index.html',

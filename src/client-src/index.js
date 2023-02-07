@@ -1,17 +1,11 @@
-/**
- * @author Tomer Riko Shalev
- * @modified by Tee
- */
-
 import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App.jsx'
+import { createRoot } from 'react-dom/client';
 import controller from './Controller.js'
+import App from './App.jsx'
+import './index.css';
 
-import './assets/fonts/typeface-roboto/index.css';
-import './assets/fonts/material-icons/index.css';
-import './assets/css/style.css';
-
-ReactDOM.render(<App controller={controller}/>,
-                document.getElementById('root')
+createRoot(document.getElementById('root')).render(
+    <React.StrictMode>
+        <App controller={controller} />
+    </React.StrictMode>
 )

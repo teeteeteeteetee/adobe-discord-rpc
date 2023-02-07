@@ -32,11 +32,11 @@ function build() {
         fs.mkdirSync(pluginFolder)
         // bundle the client
         utils.log_progress('bundling client...')
-        execSync(`webpack --config ${webpack_client_config_path}  --display minimal --display-chunks --env.target=node --mode ${env}`, { stdio: [0, 1, 2] })
+        execSync(`webpack --config ${webpack_client_config_path} --node-env ${env}`, { stdio: [0, 1, 2] })
 
         // bundle rpc
         utils.log_progress('bundling discord rpc...')
-        execSync(`webpack --config ${webpack_rpc_client_config_path}  --display minimal --display-chunks --env.target=node --mode ${env}`, { stdio: [0, 1, 2] })
+        execSync(`webpack --config ${webpack_rpc_client_config_path} --node-env ${env}`, { stdio: [0, 1, 2] })
         // copy the host code
         utils.log_progress('copying host code...')
         utils.copyRecursiveSync(fromSrc('host'), fromPlugin('host'))
