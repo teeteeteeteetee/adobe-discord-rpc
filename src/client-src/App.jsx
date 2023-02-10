@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigator from './components/Navigator';
-export default function App() {
-    return (
-        <div>
-            <Navigator />
+import Visualizer from './page/Visualizer';
+import Config from './page/Config';
+import Debug from './page/Debug';
+export default function App(props) {
 
-            <h1 className="text-5xl font-bold underline">
-                Hello world!
-            </h1>
+    const [state, setState] = useState("");
+
+    useEffect(() => setState("Visualizer"))
+
+    return (
+        <div className='h-screen w-full'>
+            <Navigator setState={setState} />
+            {state === "Visualizer" && <Visualizer />}
+            {state === "Config" && <Config />}
+            {state === "Debug" && <Debug />}
         </div>
     )
 }

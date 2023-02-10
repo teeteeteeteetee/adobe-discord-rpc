@@ -1,7 +1,7 @@
 import React from "react"
-export default function NavItem({ href, icon, text }) {
+export default function NavItem({ href, icon, text, onClick }) {
     return (
-        <a href={href} className="grow mt-0 inline-block">
+        <a href={href} onClick={onClick} className="grow mt-0 inline-block">
             <div className="flex-col text-center">
                 <div className="h-auto w-auto self-center">
                     {icon}

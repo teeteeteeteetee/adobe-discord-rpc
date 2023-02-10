@@ -25,38 +25,26 @@ module.exports = ({
                 options: {
                     presets: ['env', 'react', 'stage-2']
                 }
-
             },
-            // {
-            //     test: /\.(woff|woff2|eot|ttf|svg)$/,
-            //     loader: 'file-loader',
-            //     options: {
-            //         name: 'fonts/[name].[ext]'
-            //     }
-            // },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                loader: 'url-loader',
+                options: {
+                    limit: 100000,
+                }
+            },
             {
                 test: /\.css$/i,
                 include: srcFolder,
-                // use: [
-                //     MiniCssExtractPlugin.loader,
-                //     {
-                //         loader: "css-loader",
-                //         options: {
-                //             importLoaders: 2,
-                //         }
-                //     },
-                //     {
-                //         loader: 'postcss-loader', // postcss loader needed for tailwindcss
-                //         options: {
-                //           postcssOptions: {
-                //             ident: 'postcss',
-                //             plugins: [tailwindcss, autoprefixer],
-                //           },
-                //         },
-                //     },
-                // ],
                 use: ['style-loader', 'css-loader', 'postcss-loader']
-            }
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                loader: 'url-loader',
+                options: {
+                    limit: 25000,
+                },
+            },
         ]
     },
     resolve: {

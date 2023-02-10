@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "Azeri-Bold";
+    src: url("../assets/AzeriSans-Bold.ttf") format('truetype');
+}
+@font-face {
+    font-family: "Azerir-Regular";
+    src: url("../assets/AzeriSans-Regular.ttf") format('truetype');
+}
+@font-face {
+    font-family: "Azerir-Black";
+    src: url("../assets/AzeriSans-Black.ttf") format('truetype');
+}
 body {
     @apply bg-primary;
 }
