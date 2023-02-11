@@ -8,6 +8,7 @@ export default function Preview() {
     useEffect(() => {
         window.parent.csInterface.addEventListener("com.tee.rpc.activity", (e) => {
             setActivity(e.data)
+            console.log(e.data)
         })
         window.parent.csInterface.addEventListener("com.tee.rpc.user", (e) => {
             console.log(e)
@@ -33,10 +34,10 @@ export default function Preview() {
                         </div>
                         <div className="flex gap-2 pt-2 pb-5">
                             <img className="rounded-sm w-[60px] h-[60px]" src="https://cdn.discordapp.com/app-assets/748586506888806460/752217634673655828.png"/>
-                            <div className="flex flex-col text-white text-xs font-azeri_regular">
-                                <p className="font-azeri_bold">Photoshop</p>
-                                <p>{activity.details != "" && activity.details}</p>
-                                <p>{activity.state != "" && activity.state}</p>
+                            <div className="flex flex-col text-white text-xs font-azeri_regular justify-center">
+                                {activity.name != "" && <p className="font-azeri_bold">{activity.name}</p>}
+                                {activity.details != "" && <p>{activity.details}</p>}
+                                {activity.state != "" && <p>{activity.state}</p>}
                                 <p>04:02:20 elapsed</p>
                             </div>
                         </div>

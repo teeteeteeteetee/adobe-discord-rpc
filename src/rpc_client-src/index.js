@@ -10,6 +10,7 @@ import clone from "lodash/clone";
 const csInterface = new CSInterface();
 const client = require("./client.js")[csInterface.getApplicationID()];
 const event = new CSEvent("com.tee.rpc.activity", "APPLICATION")
+const user = new CSEvent("com.tee.rpc.user", "APPLICATION")
 
 let interval = 1000;
 let props = {
@@ -39,12 +40,16 @@ if (csInterface.getApplicationID() === "AEFT") {
 
 const rpc = new RichPresence(client);
 rpc.login()
+.then(() => {
+    csInterface.dispatchEvent(user, rpc.getUser())
+})
 .then(() => main())
 .catch(console.error)
 function main() {
     try {
         if(rpc.getStatus()){
             if(!status){
+                csInterface.dispatchEvent(user, rpc.getUser())
                 activity = {}
                 status = true
             }
@@ -59,7 +64,10 @@ function main() {
             if (!isEqual(activity, props)) {
                 rpc.setActivity(props)
                 activity = clone(props)
-                event.data = activity
+                event.data = {
+                    ...activity,
+                    name: client.name
+                }
                 csInterface.dispatchEvent(event)
             }
     
