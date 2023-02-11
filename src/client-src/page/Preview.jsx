@@ -1,13 +1,18 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Avatar from "../components/Avatar";
 import Banner from "../components/Banner";
 
 export default function Preview() {
 
+    const [activity, setActivity] = useState({})
     useEffect(() => {
-        window.parent.csInterface.addEventListener("com.tee.rpc.activity", (data) => {
-            console.log(data)
+        window.parent.csInterface.addEventListener("com.tee.rpc.activity", (e) => {
+            setActivity(e.data)
         })
+        window.parent.csInterface.addEventListener("com.tee.rpc.user", (e) => {
+            console.log(e)
+        })
+
 
     }, [])
 
@@ -30,8 +35,8 @@ export default function Preview() {
                             <img className="rounded-sm w-[60px] h-[60px]" src="https://cdn.discordapp.com/app-assets/748586506888806460/752217634673655828.png"/>
                             <div className="flex flex-col text-white text-xs font-azeri_regular">
                                 <p className="font-azeri_bold">Photoshop</p>
-                                <p>Untitled-1</p>
-                                <p>Background</p>
+                                <p>{activity.details != "" && activity.details}</p>
+                                <p>{activity.state != "" && activity.state}</p>
                                 <p>04:02:20 elapsed</p>
                             </div>
                         </div>
