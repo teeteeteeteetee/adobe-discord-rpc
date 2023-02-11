@@ -7,7 +7,7 @@ export default function App(props) {
 
     const [state, setState] = useState("");
 
-    useEffect(() => setState("Preview"))
+    useEffect(() => setState("Preview"), [])
 
     return (
         <div className='h-screen w-full'>

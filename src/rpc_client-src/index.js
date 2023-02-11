@@ -9,6 +9,7 @@ import clone from "lodash/clone";
 
 const csInterface = new CSInterface();
 const client = require("./client.js")[csInterface.getApplicationID()];
+const event = new CSEvent("com.tee.rpc.activity", "APPLICATION")
 
 let interval = 1000;
 let props = {
@@ -58,6 +59,8 @@ function main() {
             if (!isEqual(activity, props)) {
                 rpc.setActivity(props)
                 activity = clone(props)
+                event.data = activity
+                csInterface.dispatchEvent(event)
             }
     
         } else {
