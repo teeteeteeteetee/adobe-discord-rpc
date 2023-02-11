@@ -4,6 +4,7 @@
 "use strict";
 
 import { Client } from 'discord-rpc'
+
 export default class RichPresence {
 
     client;

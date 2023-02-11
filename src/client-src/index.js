@@ -19,4 +19,9 @@ export function dispatchEvent(name, data) {
     const event = new CSEvent(name, "APPLICATION")
     event.data = data;
     csInterface.dispatchEvent(event)
+    console.log(`dispatched:: ${event}`)
+}
+
+export function getApplicationID() {
+    return csInterface.getApplicationID()
 }

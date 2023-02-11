@@ -43,6 +43,11 @@ rpc.login()
     .then(() => {
         csInterface.addEventListener('com.tee.rpc.update', (e) => {
             activity = {}
+            if(rpc.getStatus()){
+                user.data = rpc.getUser()
+                console.log(rpc.getUser())
+                csInterface.dispatchEvent(user)
+            }
             console.log(e)
         })
     })
@@ -54,10 +59,6 @@ function main() {
             if (!status) {
                 activity = {}
                 status = true
-            }
-            if (activity === {}){
-                user.data = rpc.getUser()
-                csInterface.dispatchEvent(user)
             }
             csInterface.evalScript('state()', x => props.state = x);
             csInterface.evalScript('details()', x => props.details = x);
