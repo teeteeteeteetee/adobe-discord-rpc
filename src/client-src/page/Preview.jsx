@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
 import Avatar from "../components/Avatar";
 import Banner from "../components/Banner";
+import { dispatchEvent } from "..";
 
 export default function Preview() {
 
     const [activity, setActivity] = useState({})
+    dispatchEvent("com.tee.rpc.update", {})
     useEffect(() => {
         window.parent.csInterface.addEventListener("com.tee.rpc.activity", (e) => {
             setActivity(e.data)

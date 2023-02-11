@@ -40,18 +40,24 @@ if (csInterface.getApplicationID() === "AEFT") {
 
 const rpc = new RichPresence(client);
 rpc.login()
-.then(() => {
-    csInterface.dispatchEvent(user, rpc.getUser())
-})
-.then(() => main())
-.catch(console.error)
+    .then(() => {
+        csInterface.addEventListener('com.tee.rpc.update', (e) => {
+            activity = {}
+            console.log(e)
+        })
+    })
+    .then(() => main())
+    .catch(console.error)
 function main() {
     try {
-        if(rpc.getStatus()){
-            if(!status){
-                csInterface.dispatchEvent(user, rpc.getUser())
+        if (rpc.getStatus()) {
+            if (!status) {
                 activity = {}
                 status = true
+            }
+            if (activity === {}){
+                user.data = rpc.getUser()
+                csInterface.dispatchEvent(user)
             }
             csInterface.evalScript('state()', x => props.state = x);
             csInterface.evalScript('details()', x => props.details = x);
@@ -60,7 +66,7 @@ function main() {
             csInterface.evalScript('largeImageText()', x => props.largeImageText = x);
             csInterface.evalScript('partySize()', x => props.partySize = parseInt(x));
             csInterface.evalScript('partyMax()', x => props.partyMax = parseInt(x));
-    
+
             if (!isEqual(activity, props)) {
                 rpc.setActivity(props)
                 activity = clone(props)
@@ -70,7 +76,7 @@ function main() {
                 }
                 csInterface.dispatchEvent(event)
             }
-    
+
         } else {
             status = false;
         }

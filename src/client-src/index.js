@@ -14,3 +14,9 @@ createRoot(document.getElementById('root')).render(
         <App controller={controller} />
     </React.StrictMode>
 )
+
+export function dispatchEvent(name, data) {
+    const event = new CSEvent(name, "APPLICATION")
+    event.data = data;
+    csInterface.dispatchEvent(event)
+}
