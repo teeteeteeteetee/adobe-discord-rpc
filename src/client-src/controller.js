@@ -6,15 +6,16 @@
  * Github: https://github.com/lolitee
  * Discord: Tee#0001
  * 
- * Last Modified: Sunday, 12th February 2023 2:22:27 pm
- * Modified By: Tee Tee
+ * Last Modified: Sunday, 12th February 2023 4:41:29 pm
+ * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
  */
 
 
-import { configuration, hasProp, getConfiguration, setConfiguration } from "./configuration";
+import { rpcConfiguration, extensionConfiguration, hasProp, getConfiguration, setConfiguration } from "./configuration";
 
+const csInterface = new CSInterface(); 
 
 class Controller {
     constructor() {
@@ -28,18 +29,28 @@ class Controller {
     init(){
         this.logz("Initializing localstorage")
         this.logz("Registering log event")
-        window.parent.csInterface.addEventListener('com.tee.panel.log', (e) => {
+        csInterface.addEventListener('com.tee.panel.log', (e) => {
             this.logz(e.data)
         })
-        if (!getConfiguration){
-            this.logz("Defining configuration")
-            setConfiguration(configuration)
+        
+        if (!getConfiguration('rpc')){
+            this.logz("Defining rpc configuration")
+            setConfiguration('rpc', rpcConfiguration)
         }
 
-        let conf = getConfiguration
-        if(!hasProp(conf, prop)){
-            this.logz("Mismatched configuration, resetting!")
-            setConfiguration(configuration)
+        if(!hasProp(getConfiguration('rpc'), rpcConfiguration)){
+            this.logz("Mismatched Rich Presence configuration, resetting!")
+            setConfiguration('rpc', rpcConfiguration)
+        }
+
+        if (!getConfiguration('extension')){
+            this.logz("Defining extension configuration")
+            setConfiguration('extension', extensionConfiguration)
+        }
+
+        if(!hasProp(getConfiguration('extension'), extensionConfiguration)){
+            this.logz("Mismatched Extension configuration, resetting!")
+            setConfiguration('extension', extensionConfiguration)
         }
     }
 

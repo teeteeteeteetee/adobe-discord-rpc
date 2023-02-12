@@ -1,10 +1,15 @@
 /*
- * Filename: c:\Users\Martin\Desktop\adobe-discord-rpc-react\src\client-src\page\Preview.jsx
- * Path: c:\Users\Martin\Desktop\adobe-discord-rpc-react
- * Created Date: Tuesday, February 7th 2023, 11:30:36 am
- * Author: Tee
+ * File: Preview.jsx
+ * Project: discord-rpc
+ * File Created: Tuesday, 7th February 2023 11:30:36 am
+ * Author: Tee (tee@stainless.love)
+ * Github: https://github.com/lolitee
+ * Discord: Tee#0001
  * 
- * Copyright (c) 2023 Your Company
+ * Last Modified: Sunday, 12th February 2023 2:47:45 pm
+ * Modified By: Tee (tee@stainless.love)
+ * 
+ * Copyright (c) 2023 Tee, Stainless Love
  */
 
 import React, { useEffect, useState } from "react";

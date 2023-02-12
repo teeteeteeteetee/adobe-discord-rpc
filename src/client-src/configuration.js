@@ -6,48 +6,85 @@
  * Github: https://github.com/lolitee
  * Discord: Tee#0001
  * 
- * Last Modified: Sunday, 12th February 2023 2:37:29 pm
- * Modified By: Tee (tee@stainless.love>)
+ * Last Modified: Sunday, 12th February 2023 7:12:57 pm
+ * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
  */
 
-const name = 'configuration'
-
-export const configuration = {
-    enabled: true,
-    details: true,
-    state: true,
-    timestamp: true,
+export const rpcConfiguration = {
+    details: {
+        enabled: true,
+        description: "",
+        name: "Details"
+    },
+    state: {
+        enabled: true,
+        description: "",
+        name: "State"
+    },
+    timestamp: {
+        enabled: true,
+        description: "",
+        name: "Timestamp"
+    },
     largeImage: 'logo',
-    largeImageKey: true,
-    largeImageText: true,
-    customLargeImage: false,
-    smallImageKey: true,
-    smallImageText: true,
-    updateNotification: true,
-    catMode: false,
+    largeImageKey: {
+        enabled: true,
+        description: "",
+        name: "Large Icon"
+    },
+    largeImageText: {
+        enabled: true,
+        description: "",
+        name: "Large Icon Text"
+    },
+    customLargeImage: {
+        enabled: false,
+        description: "",
+        name: "Custom Icon"
+    },
+    smallImageKey: {
+        enabled: true,
+        description: "",
+        name: "Small Icon"
+    },
+    smallImageText: {
+        enabled: true,
+        description: "",
+        name: "Small Icon Text"
+    },
 }
 
-export function setConfiguration(configuration){
+export const extensionConfiguration = {
+    enabled: {
+        enabled: true,
+        description: "",
+        name: "Rich Presence Enable"
+    },
+    updateNotification: {
+        enabled: true,
+        description: "",
+        name: "Update Notification"
+    },
+    catMode: {
+        enabled: false,
+        description: "",
+        name: "Cat Mode"
+    },
+}
+
+export function setConfiguration(name, configuration){
     window.localStorage.setItem(name, configuration);
 }
 
-export function getConfiguration(property){
+export function getConfiguration(name, property){
     if(!property){
         return window.localStorage.getItem(name)
     }
-    return window.localStorage.getItme(name)[property]
+    return window.localStorage.getItem(name)[property]
 }
 
 export function hasProp(obj, prop) {
-    Object.keys(obj).forEach(function (key) {
-        if (key === prop) {
-            return [true, obj[key]];
-        } else if (typeof obj[key] === 'object') {
-            hasProp(obj[key], prop);
-        } else {
-            return false;
-        }
-    });
+    return Object.keys(obj) === Object.keys(prop) ?  true : false;
 };
