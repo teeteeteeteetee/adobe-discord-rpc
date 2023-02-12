@@ -4,3 +4,4 @@ node_modules/
 
 pluginrc.js
 yarn-error.log
+.vscode

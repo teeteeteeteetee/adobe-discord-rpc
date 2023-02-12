@@ -1,88 +1,49 @@
-/**
- * @author Tomer Riko Shalev
- * @modified by Tee
+/*
+ * File: controller.js
+ * Project: discord-rpc
+ * File Created: Saturday, 4th February 2023 9:16:06 am
+ * Author: Tee (tee@stainless.love)
+ * Github: https://github.com/lolitee
+ * Discord: Tee#0001
+ * 
+ * Last Modified: Sunday, 12th February 2023 2:22:27 pm
+ * Modified By: Tee Tee
+ * 
+ * Copyright (c) 2023 Tee, Stainless Love
  */
 
-/**
- * the main plugin session. This can enter the node modules as
- * well as the host
- *
- */
+
+import { configuration, hasProp, getConfiguration, setConfiguration } from "./configuration";
+
+
 class Controller {
-
     constructor() {
-        //super()
-
         this.init()
     }
 
-    /**
-     * init - session
-     *
-     */
-    init() {
-        this.log('client controller is initing...')
-        this.log(`do we have session ? ${this.hasSession()}`)
-
-        this.log('client controller has inited')
+    logz(log){
+        console.log("Controller:: " + log)
     }
 
-    /**
-     * invoke the plugin
-     *
-     * @param  {{textures:boolean, masks:boolean, info: boolean, flatten:boolean}} options for plugin
-     *
-     * @return {object} describes how well the execution of plugin was
-     */
-    invokePlugin(options) {
-        this.log('invokePlugin')
-        console.log(options)
+    init(){
+        this.logz("Initializing localstorage")
+        this.logz("Registering log event")
+        window.parent.csInterface.addEventListener('com.tee.panel.log', (e) => {
+            this.logz(e.data)
+        })
+        if (!getConfiguration){
+            this.logz("Defining configuration")
+            setConfiguration(configuration)
+        }
 
-        if(!this.hasSession())
-            return
-
-        session.invokePlugin(options)
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
-    }
-
-
-    /**
-     * get logz - get raw logz from log manager
-     *
-     * @return {array<Object>}  description
-     */
-    get logz() {
-        if(!this.hasSession())
-            return []
-
-        return session.managers.log.rawLogs
-    }
-
-    /**
-     * do we have access to session services ?
-     *
-     * @return {boolean} true/false
-     */
-    hasSession() {
-        return window.session!==undefined
-    }
-
-    /**
-     * log some info with session prefix
-     *
-     * @param  {string} val what to log
-     */
-    log(val) {
-        console.log(`${this.name} ${val}`)
-    }
-
-    get name() {
-        return 'Client Controller:: '
+        let conf = getConfiguration
+        if(!hasProp(conf, prop)){
+            this.logz("Mismatched configuration, resetting!")
+            setConfiguration(configuration)
+        }
     }
 
 }
 
-var controller = new Controller()
-
-export default controller
+const controller = new Controller()
+export default Controller

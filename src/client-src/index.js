@@ -1,3 +1,18 @@
+/*
+ * File: index.js
+ * Project: discord-rpc
+ * File Created: Saturday, 4th February 2023 9:16:06 am
+ * Author: Tee (tee@stainless.love)
+ * Github: https://github.com/lolitee
+ * Discord: Tee#0001
+ * 
+ * Last Modified: Sunday, 12th February 2023 1:58:17 pm
+ * Modified By: Tee (tee@stainless.love>)
+ * 
+ * Copyright (c) 2023 Tee, Stainless Love
+ */
+
+
 import React from 'react'
 import { createRoot } from 'react-dom/client';
 import controller from './Controller.js'

@@ -1,3 +1,12 @@
+/*
+ * Filename: c:\Users\Martin\Desktop\adobe-discord-rpc-react\src\client-src\page\Preview.jsx
+ * Path: c:\Users\Martin\Desktop\adobe-discord-rpc-react
+ * Created Date: Tuesday, February 7th 2023, 11:30:36 am
+ * Author: Tee
+ * 
+ * Copyright (c) 2023 Your Company
+ */
+
 import React, { useEffect, useState } from "react";
 import Avatar from "../components/Avatar";
 import Banner from "../components/Banner";
