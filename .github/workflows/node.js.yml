@@ -18,7 +18,7 @@ jobs:
       - name: Set Node.js 16.19.0
         uses: actions/setup-node@v3
         with:
-          node-version: 16.19.0
+          node-version: 16
 
       - name: Run install
         uses: borales/actions-yarn@v4
@@ -30,7 +30,7 @@ jobs:
           cmd: release:prod # will run `yarn release:prod` command
           
       - name: Zip artifact for deployment
-        run: zip discord-rpc ./dist/com.tee.discord-rpc/* -r
+        run: zip -r -j discord-rpc ./dist/com.tee.discord-rpc/*
 
       - name: Upload artifact for deployment job (zip)
         uses: actions/upload-artifact@v2
