@@ -24,13 +24,17 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: install # will run `yarn install` command
+      - name: Run install
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install --cwd ./src/rpc_client-src # will run `yarn install` command
       - name: Build production bundle
         uses: borales/actions-yarn@v4
         with:
           cmd: release:prod # will run `yarn release:prod` command
           
       - name: Zip artifact for deployment
-        run: zip -r -j discord-rpc ./dist/com.tee.discord-rpc/*
+        run: cd dist; zip -r ../discord-rpc ./com.tee.discord-rpc/*
 
       - name: Upload artifact for deployment job (zip)
         uses: actions/upload-artifact@v2
