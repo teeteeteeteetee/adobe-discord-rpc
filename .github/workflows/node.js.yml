@@ -39,11 +39,11 @@ jobs:
       - name: Upload artifact for deployment job (zip)
         uses: actions/upload-artifact@v2
         with:
-          name: discord-rpc.zip
+          name: ZIP Release
           path: ./discord-rpc.zip
           
       - name: Upload artifact for deployment job (zxp)
         uses: actions/upload-artifact@v2
         with:
-          name: discord-rpc.zxp
+          name: ZXP Release
           path: ./dist/com.tee.discord-rpc.zxp
