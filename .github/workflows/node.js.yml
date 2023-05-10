@@ -24,10 +24,10 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: install # will run `yarn install` command
-      - name: Run install
+      - name: Run install (rpc)
         uses: borales/actions-yarn@v4
         with:
-          cmd: install --cwd ./src/rpc_client-src # will run `yarn install` command
+          cmd: --cwd ./src/rpc_client-src install # will run `yarn install` command
       - name: Build production bundle
         uses: borales/actions-yarn@v4
         with:
