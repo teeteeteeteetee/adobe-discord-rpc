@@ -6,7 +6,7 @@
  * Github: https://github.com/lolitee
  * Discord: Tee#0001
  * 
- * Last Modified: Sunday, 12th February 2023 2:47:45 pm
+ * Last Modified: Sunday, 12th February 2023 8:03:13 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
@@ -38,7 +38,7 @@ export default function Preview() {
     }, [])
 
     return (
-        <div className="w-screen rounded overflow-hidden h-96 pt-4">
+        <div className="w-screen rounded-sm overflow-hidden h-96 pt-4">
             <div className="flex justify-center">
                 <div className="flex flex-col self-center bg-black rounded-sm">
                     <div className="flex flex-col -space-y-12">
