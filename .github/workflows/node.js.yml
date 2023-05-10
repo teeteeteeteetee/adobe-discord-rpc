@@ -28,15 +28,17 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: release:prod # will run `yarn release:prod` command
+          
       - name: Zip artifact for deployment
-        run: zip discord-rpc ./dist/com.tee.discord-rpc/* -r -d -j
+        run: zip discord-rpc ./dist/com.tee.discord-rpc/* -r -j
 
-      - name: Upload artifact for deployment job
+      - name: Upload artifact for deployment job (zip)
         uses: actions/upload-artifact@v2
         with:
           name: discord-rpc
           path: ./discord-rpc.zip
-      - name: Upload artifact for deployment job
+          
+      - name: Upload artifact for deployment job (zxp)
         uses: actions/upload-artifact@v2
         with:
           name: discord-rpc
