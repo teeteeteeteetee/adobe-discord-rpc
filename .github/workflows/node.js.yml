@@ -33,14 +33,14 @@ jobs:
         with:
           cmd: release:prod # will run `yarn release:prod` command
           
-      - name: Zip artifact for deployment
-        run: Compress-Archive -Path ./dist/com.tee.discord-rpc -Destination ./discord-rpc
+     # - name: Zip artifact for deployment
+     #   run: Compress-Archive -Path ./dist/com.tee.discord-rpc -Destination ./discord.rpc.zip
 
       - name: Upload artifact for deployment job (zip)
         uses: actions/upload-artifact@v2
         with:
           name: ZIP Release
-          path: ./discord-rpc.zip
+          path: ./dist/com.tee.discord-rpc
           
       - name: Upload artifact for deployment job (zxp)
         uses: actions/upload-artifact@v2
