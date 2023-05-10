@@ -46,4 +46,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: discord-rpc
-          path: ./discord-rpc.zxp
+          path: ./dist/com.tee.discord-rpc.zxp
