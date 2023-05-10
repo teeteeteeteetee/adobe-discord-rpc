@@ -41,13 +41,13 @@ jobs:
         run: Move-Item -Path "./dist/com.tee.discord-rpc" -Destination "./com.tee.discord-rpc"
 
       - name: Upload artifact for deployment job (zip)
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ZIP Release
           path: ./com.tee.discord-rpc
           
       - name: Upload artifact for deployment job (zxp)
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ZXP Release
           path: ./dist/com.tee.discord-rpc.zxp
