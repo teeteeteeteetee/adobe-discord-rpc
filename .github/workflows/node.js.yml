@@ -35,9 +35,9 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: discord-rpc.zip
-          path: ./dist/discord-rpc.zip
+          path: ./discord-rpc.zip
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: discord-rpc.zxp
-          path: ./dist/discord-rpc.zxp
+          path: ./discord-rpc.zxp
