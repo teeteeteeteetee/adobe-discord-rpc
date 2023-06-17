@@ -49,7 +49,7 @@ export default function Preview() {
                     </div>
                     <div className="w-full pt-7 px-5">
                         <div className="flex flex-col divide-y divide-tertiary gap-1 bg-black">
-                            <p className="text-white font-medium">{user.username}<span className="text-gray-300">{`#${user.discriminator}`}</span></p>
+                            <p className="text-white font-medium">{user.username}{user.discriminator != 0 && <span className="text-gray-300">{`#${user.discriminator}`}</span>}</p>
                             <p className="text-white font-medium tracking-tighter">PLAYING A GAME</p>
                         </div>
                         <div className="flex gap-2 pt-2 pb-5">
