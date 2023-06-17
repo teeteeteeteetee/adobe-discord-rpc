@@ -11,33 +11,43 @@ on:
     
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
 
       - name: Set Node.js 16.19.0
         uses: actions/setup-node@v3
         with:
-          node-version: 16.19.0
+          node-version: 16
 
       - name: Run install
         uses: borales/actions-yarn@v4
         with:
           cmd: install # will run `yarn install` command
+      - name: Run install (rpc)
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: --cwd ./src/rpc_client-src install # will run `yarn install` command
       - name: Build production bundle
         uses: borales/actions-yarn@v4
         with:
           cmd: release:prod # will run `yarn release:prod` command
-      - name: Zip artifact for deployment
-        run: zip discord-rpc.zip ./dist/com.tee.discord-rpc* -r
+          
+     # - name: Zip artifact for deployment
+     #   run: Compress-Archive -Path ./dist/com.tee.discord-rpc -Destination ./discord.rpc.zip
+      - name: Create folder (com.tee.discord-rpc)
+        run: New-Item -Path "./" -Name "com.tee.discord-rpc" -ItemType "directory"
+      - name: Move artifact from dist
+        run: Move-Item -Path "./dist/com.tee.discord-rpc" -Destination "./com.tee.discord-rpc"
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
+      - name: Upload artifact for deployment job (zip)
+        uses: actions/upload-artifact@v3
         with:
-          name: discord-rpc.zip
-          path: ./dist/discord-rpc.zip
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
+          name: ZIP Release
+          path: ./com.tee.discord-rpc
+          
+      - name: Upload artifact for deployment job (zxp)
+        uses: actions/upload-artifact@v3
         with:
-          name: discord-rpc.zxp
-          path: ./dist/discord-rpc.zxp
+          name: ZXP Release
+          path: ./dist/com.tee.discord-rpc.zxp
