@@ -6,7 +6,7 @@
  * Github: https://github.com/lolitee
  * Discord: Tee#0001
  * 
- * Last Modified: Wednesday, 10th May 2023 10:51:35 am
+ * Last Modified: Wednesday, 10th May 2023 1:20:20 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
@@ -40,4 +40,8 @@ export function dispatchEvent(name, data) {
 
 export function getApplicationID() {
     return csInterface.getApplicationID()
+}
+
+export function openURLInDefaultBrowser(url){
+    return csInterface.openURLInDefaultBrowser(url)
 }

@@ -1,3 +1,16 @@
+/*
+ * File: webpack.rpc_client.config.js
+ * Project: discord-rpc
+ * File Created: Thursday, 11th May 2023 1:23:48 pm
+ * Author: Tee (tee@stainless.love)
+ * Github: https://github.com/lolitee
+ * Discord: Tee#0001
+ * 
+ * Last Modified: Thursday, 11th May 2023 1:48:56 pm
+ * Modified By: Tee (tee@stainless.love)
+ * 
+ * Copyright (c) 2023 Tee, Stainless Love
+ */
 const nodeExternals = require('webpack-node-externals')
 
 const path = require('path');
@@ -31,8 +44,8 @@ module.exports = {
                                 'node': 'current'
                             }
                         }]
-                    ]
-                }
+                    ],
+                },
             }
         }]
     }
