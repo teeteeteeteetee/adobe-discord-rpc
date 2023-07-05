@@ -1,3 +1,16 @@
+/*
+ * File: client.js
+ * Project: discord-rpc-client
+ * File Created: Sunday, 2nd July 2023 1:46:25 pm
+ * Author: Tee (tee@stainless.love)
+ * Github: https://github.com/teeteeteeteetee
+ * Discord: Tee#0001
+ * 
+ * Last Modified: Wednesday, 5th July 2023 10:32:30 am
+ * Modified By: Tee (tee@stainless.love)
+ * 
+ * Copyright (c) 2023 Tee, Stainless Love
+ */
 /**
  * @author Tee
  */

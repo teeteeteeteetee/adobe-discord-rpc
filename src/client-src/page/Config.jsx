@@ -6,7 +6,7 @@
  * Github: https://github.com/lolitee
  * Discord: Tee#0001
  * 
- * Last Modified: Wednesday, 10th May 2023 10:21:25 am
+ * Last Modified: Wednesday, 5th July 2023 10:01:40 am
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
@@ -21,10 +21,11 @@ export default function Config() {
 
     useEffect(() => {
 
-
         dispatchEvent("com.tee.rpc.update", {})
+        console.log("config2")
         window.parent.csInterface.addEventListener("com.tee.rpc.config", (e) => {
             setConfig(e.data)
+            console.log("config")
             console.log(e.data)
         })
 
