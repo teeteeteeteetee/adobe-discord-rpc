@@ -219,7 +219,7 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [issues-url]: https://github.com/teeteeteeteetee/adobe-discord-rpc/issues
 [license-shield]: https://img.shields.io/github/license/teeteeteeteetee/adobe-discord-rpc.svg?style=for-the-badge
 [license-url]: https://github.com/teeteeteeteetee/adobe-discord-rpc/blob/master/LICENSE.txt
-[discord-shield]: https://img.shields.io/discord/818827893991800842
+[discord-shield]: https://img.shields.io/discord/818827893991800842?style=for-the-badge
 [discord-url]: https://discord.gg/RGtxbuFtzb
 [product-screenshot]: images/screenshot.png
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
