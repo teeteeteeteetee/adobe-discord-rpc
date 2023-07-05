@@ -6,7 +6,7 @@
  * Github: https://github.com/lolitee
  * Discord: Tee#0001
  * 
- * Last Modified: Thursday, 11th May 2023 1:48:56 pm
+ * Last Modified: Sunday, 2nd July 2023 1:45:15 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
@@ -24,7 +24,8 @@ const ENTRY_POINT_CLIENT_PATH = path.join(srcFolder, 'rpc_client-src/index.js')
 
 module.exports = {
     mode: 'development',
-    target: 'node',
+    target: 'node7.0',
+    // target: 'node',
     externals: [nodeExternals({modulesDir: path.join(CLIENT_DIST_SRC, 'node_modules')})],
     entry: ['babel-polyfill', ENTRY_POINT_CLIENT_PATH],
     output: {
