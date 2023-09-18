@@ -6,7 +6,7 @@
  * Github: https://github.com/lolitee
  * Discord: Tee#0001
  * 
- * Last Modified: Wednesday, 5th July 2023 11:18:55 am
+ * Last Modified: Monday, 18th September 2023 7:31:31 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
@@ -14,7 +14,7 @@
 
 const csInterface = new CSInterface();
 
-export const rpcConfiguration = {
+export const rpcConfigurationTemplate = {
     enabled: {
         enabled: true,
         description: "",
@@ -57,7 +57,7 @@ export const rpcConfiguration = {
     },
 }
 
-export const extensionConfiguration = {
+export const extensionConfigurationTemplate = {
     updateNotification: {
         enabled: true,
         description: "",
@@ -71,11 +71,20 @@ export const extensionConfiguration = {
 }
 
 export function setConfiguration(name, configuration){
-    window.localStorage.setItem(name, configuration);
+    window.localStorage.setItem(name, JSON.stringify(configuration));
     csInterface.dispatchEvent('com.tee.panel.settings')
 }
 export function getConfiguration(name){
-    return window.localStorage.getItem(name)
+    return JSON.parse(window.localStorage.getItem(name))
+}
+
+export function getConfigurations(){
+    const conf = {}
+    Object.keys(window.localStorage).forEach(key => {
+        conf[key] = getConfiguration(key)
+    })
+    
+    return conf
 }
 
 export function hasProp(obj, prop) {
