@@ -6,7 +6,7 @@
  * Github: https://github.com/lolitee
  * Discord: Tee#0001
  *
- * Last Modified: Thursday, 11th May 2023 1:36:19 pm
+ * Last Modified: Monday, 18th September 2023 9:04:38 pm
  * Modified By: Tee (tee@stainless.love)
  *
  * Copyright (c) 2023 Tee, Stainless Love
@@ -30,12 +30,13 @@ export default function ConfigItem({ title, configuration }) {
     )
 
     const list = Object.keys(configuration).map((key) => {
+        console.log(key)
         if (typeof configuration[key] !== "string") {
             return (
                 <li>
                     <div className="flex flex-row text-white">
                         <p>{configuration[key].name}</p>
-                        <div className="grow" />
+                        <div className="grow pr-2" />
 
                         {configuration[key].type === "dropdown" && dropdown}
                         {configuration[key].type === "checkbox" && checkbox}
