@@ -6,7 +6,7 @@
  * Github: https://github.com/lolitee
  * Discord: Tee#0001
  *
- * Last Modified: Tuesday, 19th September 2023 2:26:16 am
+ * Last Modified: Tuesday, 19th September 2023 10:25:12 am
  * Modified By: Tee (tee@stainless.love)
  *
  * Copyright (c) 2023 Tee, Stainless Love
@@ -16,18 +16,17 @@ import "../discord.css";
 
 export default function ConfigItem({ title, template, group, config, setConfig }) {
 
-    const handleChange = event => {
-        let data = config
-        data[group][event.target.id].enabled = !data[group][event.target.id].enabled
-
-        setConfig(data)
-    }
-
     const checkbox = (id) => {
         if(Object.keys(config).length !== 0){
+            const [checked, setChecked] = useState(config[group][id].enabled)
+
             return (
                 <div className="checkbox-container my-auto">
-                    <input checked={config[group][id].enabled} onChange={handleChange} className="checkbox" id={id} type="checkbox" />
+                    <input checked={checked} onChange={() => {
+                        setChecked(!checked)
+                        config[group][id].enabled = !checked
+                        setConfig(config)
+                    }} className="checkbox" id={id} type="checkbox" />
                     <div className="checkbox-visual outline-none border-none focus:ring-0">
                         <div></div>
                     </div>
