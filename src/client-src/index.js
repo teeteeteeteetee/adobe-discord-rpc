@@ -6,7 +6,7 @@
  * Github: https://github.com/lolitee
  * Discord: Tee#0001
  * 
- * Last Modified: Wednesday, 10th May 2023 1:20:20 pm
+ * Last Modified: Monday, 18th September 2023 11:36:54 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
@@ -35,7 +35,7 @@ export function dispatchEvent(name, data) {
     const event = new CSEvent(name, "APPLICATION")
     event.data = data;
     csInterface.dispatchEvent(event)
-    console.log(`dispatched:: ${event}`)
+    console.log(`dispatched:: ${JSON.stringify(event)}`)
 }
 
 export function getApplicationID() {

@@ -6,7 +6,7 @@
  * Github: https://github.com/lolitee
  * Discord: Tee#0001
  * 
- * Last Modified: Monday, 18th September 2023 9:03:14 pm
+ * Last Modified: Monday, 18th September 2023 11:19:39 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
@@ -19,50 +19,72 @@ export const rpcConfigurationTemplate = {
         enabled: true,
         description: "",
         name: "Rich Presence Enable",
-        type: "checkbox"
+        type: "checkbox",
+        hidden: false
     },
     details: {
         enabled: true,
         description: "",
         name: "Details",
-        type: "checkbox"
+        type: "checkbox",
+        hidden: false
     },
     state: {
         enabled: true,
         description: "",
         name: "State",
-        type: "checkbox"
+        type: "checkbox",
+        hidden: false
     },
     timestamp: {
         enabled: true,
         description: "",
         name: "Timestamp",
-        type: "checkbox"
+        type: "checkbox",
+        hidden: false
     },
     largeImageKey: {
         enabled: true,
         description: "",
         name: "Large Icon",
-        type: "dropbox"
+        type: "dropdown",
+        hidden: false
     },
     largeImageText: {
         enabled: true,
         description: "",
         name: "Large Icon Text",
-        type: "checkbox"
+        type: "checkbox",
+        hidden: false
     },
     smallImageKey: {
         enabled: true,
         description: "",
         name: "Small Icon",
-        type: "checkbox"
+        type: "checkbox",
+        hidden: false
     },
     smallImageText: {
         enabled: true,
         description: "",
         name: "Small Icon Text",
-        type: "checkbox"
+        type: "checkbox",
+        hidden: false
     },
+    partySize: {
+        enabled: true,
+        description: "",
+        name: "Party Size",
+        type: "checkbox",
+        hidden: true
+    },
+    partyMax: {
+        enabled: true,
+        description: "",
+        name: "Party Max",
+        type: "checkbox",
+        hidden: true
+    }
 }
 
 export const extensionConfigurationTemplate = {
@@ -70,13 +92,15 @@ export const extensionConfigurationTemplate = {
         enabled: true,
         description: "",
         name: "Update Notification",
-        type: "checkbox"
+        type: "checkbox",
+        hidden: false
     },
     catMode: {
         enabled: false,
         description: "",
-        name: "Cat Mode",
-        type: "checkbox"
+        name: "Cat",
+        type: "checkbox",
+        hidden: false
     },
 }
 

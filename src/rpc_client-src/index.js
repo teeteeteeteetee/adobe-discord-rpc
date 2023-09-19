@@ -6,7 +6,7 @@
  * Github: https://github.com/teeteeteeteetee
  * Discord: Tee#0001
  * 
- * Last Modified: Monday, 18th September 2023 8:36:42 pm
+ * Last Modified: Monday, 18th September 2023 11:38:49 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
@@ -90,7 +90,9 @@ rpc.login()
                 console.log(rpc.getUser())
                 csInterface.dispatchEvent(user)
             }
-            console.error(e)
+            console.log(config)
+            csInterface.dispatchEvent(config)
+
         })
     })
     .then(() => main())
