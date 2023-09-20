@@ -6,7 +6,7 @@
  * Github: https://github.com/teeteeteeteetee
  * Discord: Tee#0001
  * 
- * Last Modified: Wednesday, 20th September 2023 2:41:48 pm
+ * Last Modified: Wednesday, 20th September 2023 3:33:36 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
@@ -59,6 +59,19 @@ if (csInterface.getApplicationID() === "AEFT") {
         throw new Error("Started as dynamic link");
 }
 
+csInterface.addEventListener('com.tee.rpc.reset', () => {
+    console.log("reset")
+    resetConfiguration()
+})
+
+csInterface.addEventListener('com.tee.rpc.config', (e) => {
+    console.log(e.data)
+    if (e.data.property) {
+        setConfiguration(e.data.property, e.data.config)
+        configurations = getConfigurations()
+    }
+})
+
 if (!configurations.rpc) {
     setConfiguration("rpc", rpcConfigurationTemplate);
     configurations.rpc = getConfiguration("rpc");
@@ -71,18 +84,6 @@ if (!configurations.extension) {
 
 config.data = configurations
 csInterface.dispatchEvent(config)
-
-csInterface.addEventListener('com.tee.rpc.config', (e) => {
-    console.log(e.data)
-    if (e.data.property) {
-        setConfiguration(e.data.property, e.data.config)
-        configurations = getConfigurations()
-    }
-})
-
-csInterface.addEventListener('com.tee.rpc.reset', (e) => {
-    resetConfiguration()
-})
 
 
 rpc.login()
