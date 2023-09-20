@@ -6,13 +6,12 @@
  * Github: https://github.com/teeteeteeteetee
  * Discord: Tee#0001
  * 
- * Last Modified: Wednesday, 20th September 2023 3:33:36 pm
+ * Last Modified: Wednesday, 20th September 2023 3:59:32 pm
  * Modified By: Tee (tee@stainless.love)
  * 
- * Copyright (c) 2023 Tee, Stainless Love
- *//**
-* @author Tee
-*/
+ * Copyright (c) 2023 Tee, Demon Cat
+ */
+
 "use strict";
 
 import RichPresence from "./rpc";
@@ -41,6 +40,20 @@ const props = {
     partyMax: 0,
 }
 
+csInterface.addEventListener('com.tee.rpc.reset', () => {
+    console.log("reset")
+    resetConfiguration()
+})
+
+csInterface.addEventListener('com.tee.rpc.config', (e) => {
+    console.log(e.data)
+    if (e.data.property) {
+        setConfiguration(e.data.property, e.data.config)
+        configurations = getConfigurations()
+    }
+})
+
+
 let presence = {}
 let configurations = getConfigurations()
 let status = true;
@@ -58,19 +71,6 @@ if (csInterface.getApplicationID() === "AEFT") {
     if (isDynamicLink)
         throw new Error("Started as dynamic link");
 }
-
-csInterface.addEventListener('com.tee.rpc.reset', () => {
-    console.log("reset")
-    resetConfiguration()
-})
-
-csInterface.addEventListener('com.tee.rpc.config', (e) => {
-    console.log(e.data)
-    if (e.data.property) {
-        setConfiguration(e.data.property, e.data.config)
-        configurations = getConfigurations()
-    }
-})
 
 if (!configurations.rpc) {
     setConfiguration("rpc", rpcConfigurationTemplate);
