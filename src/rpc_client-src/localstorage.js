@@ -6,7 +6,7 @@
  * Github: https://github.com/lolitee
  * Discord: Tee#0001
  * 
- * Last Modified: Monday, 18th September 2023 11:19:39 pm
+ * Last Modified: Wednesday, 20th September 2023 2:40:55 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
@@ -121,6 +121,11 @@ export function getConfigurations(){
     return conf
 }
 
-export function hasProp(obj, prop) {
-    return Object.keys(obj) === Object.keys(prop) ?  true : false;
+export function compare(obj, prop) {
+    return JSON.stringify(obj) === JSON.stringify(prop) ?  true : false;
 };
+
+export function resetConfiguration(){
+    window.localStorage.clear()
+    location.reload()
+}

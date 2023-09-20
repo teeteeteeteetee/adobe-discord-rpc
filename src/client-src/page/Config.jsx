@@ -6,7 +6,7 @@
  * Github: https://github.com/lolitee
  * Discord: Tee#0001
  * 
- * Last Modified: Tuesday, 19th September 2023 1:50:18 am
+ * Last Modified: Wednesday, 20th September 2023 2:43:04 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
@@ -15,11 +15,10 @@
 import React, {useEffect, useState} from 'react';
 import ConfigItem from '../components/ConfigItem'
 import { dispatchEvent } from '..';
-import { extensionConfigurationTemplate, getConfigurations, rpcConfigurationTemplate } from "../../rpc_client-src/localstorage"
-import { getConfiguration } from '../../rpc_client-src/localstorage';
-
+import { extensionConfigurationTemplate, getConfigurations, resetConfiguration, rpcConfigurationTemplate } from "../../rpc_client-src/localstorage"
 function ResetConfig(){
-    
+    dispatchEvent("com.tee.rpc.reset", {})
+    resetConfiguration()
 }
 function SaveConfig(config){
     console.log(config)

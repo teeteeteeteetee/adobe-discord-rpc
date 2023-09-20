@@ -6,7 +6,7 @@
  * Github: https://github.com/teeteeteeteetee
  * Discord: Tee#0001
  * 
- * Last Modified: Monday, 18th September 2023 11:38:49 pm
+ * Last Modified: Wednesday, 20th September 2023 2:41:48 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
@@ -18,7 +18,7 @@
 import RichPresence from "./rpc";
 import isEqual from "lodash/isEqual";
 import clone from "lodash/clone";
-import { extensionConfigurationTemplate, getConfiguration, getConfigurations, rpcConfigurationTemplate, setConfiguration } from "./localstorage";
+import { extensionConfigurationTemplate, getConfiguration, getConfigurations, resetConfiguration, rpcConfigurationTemplate, setConfiguration } from "./localstorage";
 
 const csInterface = new CSInterface();
 const client = require("./client.js")[csInterface.getApplicationID()];
@@ -78,6 +78,10 @@ csInterface.addEventListener('com.tee.rpc.config', (e) => {
         setConfiguration(e.data.property, e.data.config)
         configurations = getConfigurations()
     }
+})
+
+csInterface.addEventListener('com.tee.rpc.reset', (e) => {
+    resetConfiguration()
 })
 
 
