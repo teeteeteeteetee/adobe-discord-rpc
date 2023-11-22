@@ -12,13 +12,13 @@ function state(){
                 x = "CD Layout"; 
                 break;
             default:
-                x = "Nothing";
+                x = "No file.";
         }
 
         return x;
 
     }catch(e){
-        return "Nothing";
+        return "";
     }
     
 }
@@ -30,11 +30,11 @@ function details(){
     if(app.activeDocument && app.activeDocument.displayName){
         return app.activeDocument.displayName;
     }else{
-        return "No file.";
+        return "";
     }
 
     }catch(e){
-        return "No file.";
+        return "";
     }
     
 }
