@@ -40,20 +40,6 @@ const props = {
     partyMax: 0,
 }
 
-csInterface.addEventListener('com.tee.rpc.reset', () => {
-    console.log("reset")
-    resetConfiguration()
-})
-
-csInterface.addEventListener('com.tee.rpc.config', (e) => {
-    console.log(e.data)
-    if (e.data.property) {
-        setConfiguration(e.data.property, e.data.config)
-        configurations = getConfigurations()
-    }
-})
-
-
 let presence = {}
 let configurations = getConfigurations()
 let status = true;
@@ -71,6 +57,19 @@ if (csInterface.getApplicationID() === "AEFT") {
     if (isDynamicLink)
         throw new Error("Started as dynamic link");
 }
+
+csInterface.addEventListener('com.tee.rpc.reset', () => {
+    console.log("reset")
+    resetConfiguration()
+})
+
+csInterface.addEventListener('com.tee.rpc.config', (e) => {
+    console.log(e.data)
+    if (e.data.property) {
+        setConfiguration(e.data.property, e.data.config)
+        configurations = getConfigurations()
+    }
+})
 
 if (!configurations.rpc) {
     setConfiguration("rpc", rpcConfigurationTemplate);
@@ -141,7 +140,7 @@ function main() {
     }
     setTimeout(main, interval);
 
-    function callScript(func, variable) {
+    function callScript(func) {
         if (configurations["rpc"][func.replace('()', '')]["enabled"]) {
             csInterface.evalScript(func, (e) => {
                 props[func.replace('()', '')] = e
@@ -149,7 +148,7 @@ function main() {
         }
     
     }
-    function callScriptNumber(func, variable) {
+    function callScriptNumber(func) {
         if (configurations["rpc"][func.replace('()', '')]["enabled"]) {
             csInterface.evalScript(func, (e) => {
                 props[func.replace('()', '')] = parseInt(e)

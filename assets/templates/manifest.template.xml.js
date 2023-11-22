@@ -90,6 +90,7 @@ module.exports = (props) =>
         <Host Name="PRLD" Version="[0.0,99.9]" />
         <Host Name="FLPR" Version="[0.0,99.9]" />
         <Host Name="DRWV" Version="[0.0,99.9]" />
+        <Host Name="AUDT" Version="[0.0,99.9]" />
     </HostList>
     <LocaleList>
       <Locale Code="All" />
