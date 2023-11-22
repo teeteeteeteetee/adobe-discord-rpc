@@ -27,8 +27,8 @@ function details(){
 
     try{
 
-    if(app.activeDocument && app.activeDocument.reflect.name){
-        return app.activeDocument.reflect.name;
+    if(app.activeDocument && app.activeDocument.displayName){
+        return app.activeDocument.displayName;
     }else{
         return "No file.";
     }
@@ -36,8 +36,6 @@ function details(){
     }catch(e){
         return "";
     }
-
-    return app.activeDocument.reflect.name;
     
 }
 

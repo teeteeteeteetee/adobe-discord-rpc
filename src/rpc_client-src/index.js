@@ -55,6 +55,7 @@ if (csInterface.getApplicationID() === "AEFT") {
         return;
     });
     if (isDynamicLink)
+    // TODO: handle dunamic link
         throw new Error("Started as dynamic link");
 }
 
