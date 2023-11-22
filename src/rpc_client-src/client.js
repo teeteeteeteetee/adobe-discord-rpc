@@ -14,58 +14,84 @@
 /**
  * @author Tee
  */
+import { AEFT, AEFT1, 
+        AICY, AICY1, 
+        AUDT, AUDT1,
+        DRWV, DRWV1,
+        FLPR, FLPR1,
+        IDSN, IDSN1,
+        ILST, ILST1,
+        PHXS, PHXS1,
+        PPRO, PPRO1,
+        PRLD, MEDIA_ENCODER,
+        MEDIA_ENCODER1,
+    } from "../client-src/components/Icons"
 
 module.exports = {
     AEFT: {
         name: 'After Effects',
-        id: '748568089939148832'
+        id: '748568089939148832',
+        icons: [AEFT, AEFT1]
     },
     AICY: {
         name: 'InCopy',
-        id: '756139390924750859'
+        id: '756139390924750859',
+        icons: [AICY, AICY1]
+
     },
     AUDT: {
         name: 'Audition',
-        id: '750462631176830977'
+        id: '750462631176830977',
+        icons: [AUDT, AUDT1]
     },
     DRWV: {
         name: 'Dreamweaver',
-        id: '756169802766221502'
+        id: '756169802766221502',
+        icons: [DRWV, DRWV1]
     },
     FLPR: {
         name: 'Animate',
-        id: '756143118604173384'
+        id: '756143118604173384',
+        icons: [FLPR, FLPR1]
     },
     IDSN: {
         name: 'InDesign',
-        id: '753663267137912953'
+        id: '753663267137912953',
+        icons: [IDSN, IDSN1]
     },
     ILST: {
         name: 'Illustrator',
-        id: '751430009716998144'
+        id: '751430009716998144',
+        icons: [ILST, ILST1]
     },
     PHSP: {
         name: 'Photoshop',
-        id: '748586506888806460'
+        id: '748586506888806460',
+        icons: [PHXS, PHXS1]
     },
     PHXS: {
         name: 'Photoshop',
-        id: '748586506888806460'
+        id: '748586506888806460',
+        icons: [PHXS, PHXS1]
     },
     PPRO: {
         name: 'Premiere Pro',
-        id: '748580494324662353'
+        id: '748580494324662353',
+        icons: [PPRO, PPRO1]
     },
     PRLD: {
         name: 'Prelude',
-        id: '756139699051036797'
+        id: '756139699051036797',
+        icons: [PRLD]
     },
     RUSH: {
         name: 'Premiere Rush',
-        id: '756158973241196595'
+        id: '756158973241196595',
+        icons: [RUSH, RUSH1]
     },
     MEDIA_ENCODER: {
         name: 'Media Encoder',
-        id: '756149565429776453'
+        id: '756149565429776453',
+        icons: [MEDIA_ENCODER, MEDIA_ENCODER1]
     }
 }

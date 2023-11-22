@@ -8,6 +8,10 @@ import DRWV from "../../assets/DRWV.png";
 import DRWV1 from "../../assets/DRWV1.png";
 import FLPR from "../../assets/FLPR.png";
 import FLPR1 from "../../assets/FLPR1.png";
+import IDSN from "../../assets/IDSN.png"
+import IDSN1 from "../../assets/IDSN1.png"
+import ILST from "../../assets/ILST.png"
+import ILST1 from "../../assets/ILST1.png"
 import MEDIA_ENCODER from "../../assets/MEDIA_ENCODER.png";
 import MEDIA_ENCODER1 from "../../assets/MEDIA_ENCODER1.png";
 import PHXS from "../../assets/PHXS.png";
@@ -15,6 +19,8 @@ import PHXS1 from "../../assets/PHXS1.png";
 import PPRO from "../../assets/PPRO.png";
 import PPRO1 from "../../assets/PPRO1.png";
 import PRLD from "../../assets/PRLD.png";
+import RUSH from "../../assets/RUSH.png"
+import RUSH1 from "../../assets/RUSH1.png"
 
 export {
   AEFT,
@@ -27,6 +33,10 @@ export {
   DRWV1,
   FLPR,
   FLPR1,
+  IDSN,
+  IDSN1,
+  ILST,
+  ILST1,
   MEDIA_ENCODER,
   MEDIA_ENCODER1,
   PHXS,
@@ -34,6 +44,8 @@ export {
   PPRO,
   PPRO1,
   PRLD,
+  RUSH,
+  RUSH1
 };
 
 export function setCustom({url}){
@@ -44,6 +56,9 @@ export function getIcon({ className, version }) {
   // <img className="rounded-sm w-[60px] h-[60px]" src="../../assets/AEFT.png" />
   
   let source;
+
+
+
 
   return <img className={className} src={source}></img>;
 }

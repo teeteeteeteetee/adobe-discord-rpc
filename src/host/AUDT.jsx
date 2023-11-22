@@ -1,6 +1,6 @@
 function state(){
+    var x;
     try{
-        var x;
         switch(app.activeDocument.reflect.name){
             case "MultitrackDocument":
                 x = "Multitrack Session";
@@ -12,15 +12,15 @@ function state(){
                 x = "CD Layout"; 
                 break;
             default:
-                x = "No file.";
+                x = app.activeDocument.reflect.name;
         }
 
-        return x;
-
     }catch(e){
-        return "";
+        x = "No file.";
     }
-    
+
+    return x;
+
 }
 
 function details(){
