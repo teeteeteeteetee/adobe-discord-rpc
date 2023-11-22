@@ -40,8 +40,10 @@ export function setCustom({url}){
 
 }
 
-export function getIcon({ appId, className }) {
+export function getIcon({ className, version }) {
   // <img className="rounded-sm w-[60px] h-[60px]" src="../../assets/AEFT.png" />
+  
+  let source;
 
-  return <img className={className}></img>;
+  return <img className={className} src={source}></img>;
 }

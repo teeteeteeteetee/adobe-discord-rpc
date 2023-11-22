@@ -22,6 +22,7 @@ const getHost = (props, key) =>
     <Host Name="PRLD" Port="4008" />
     <Host Name="FLPR" Port="4009" />
     <Host Name="DRWV" Port="4010" />
+    <Host Name="AUDT" Port="4011" />
   </HostList>
 </Extension>
 ` 
@@ -41,6 +42,7 @@ module.exports = (props) =>
       <Host Name="PRLD" Port="3008" />
       <Host Name="FLPR" Port="3009" />
       <Host Name="DRWV" Port="3010" />
+      <Host Name="AUDT" Port="3011" />
     </HostList>
   </Extension>
   ${getHosts(props).join('')}
