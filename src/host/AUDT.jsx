@@ -12,13 +12,13 @@ function state(){
                 x = "CD Layout"; 
                 break;
             default:
-                x = "";
+                x = "Nothing";
         }
 
         return x;
 
     }catch(e){
-        return "";
+        return "Nothing";
     }
     
 }
@@ -34,7 +34,7 @@ function details(){
     }
 
     }catch(e){
-        return "";
+        return "No file.";
     }
     
 }
