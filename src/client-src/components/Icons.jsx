@@ -1,3 +1,4 @@
+import { getApplicationID } from "..";
 import AEFT from "../../assets/AEFT.png";
 import AEFT1 from "../../assets/AEFT1.png";
 import AICY from "../../assets/AICY.png";
@@ -53,12 +54,8 @@ export function setCustom({url}){
 }
 
 export function getIcon({ className, version }) {
-  // <img className="rounded-sm w-[60px] h-[60px]" src="../../assets/AEFT.png" />
-  
-  let source;
+  // <img className="rounded-sm w-[60px] h-[60px]" src="../../assets/AEFT.png" />  
+  const client = require("../../rpc_client-src/client")[getApplicationID()]
 
-
-
-
-  return <img className={className} src={source}></img>;
+  return <img className={className} src={client.icons[version]}></img>;
 }
