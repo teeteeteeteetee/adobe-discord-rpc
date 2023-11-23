@@ -6,7 +6,7 @@
  * Github: https://github.com/lolitee
  * Discord: Tee#0001
  * 
- * Last Modified: Wednesday, 10th May 2023 12:58:02 pm
+ * Last Modified: Thursday, 23rd November 2023 2:52:08 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
@@ -16,7 +16,7 @@ import React, { useEffect, useState } from "react";
 import Avatar from "../components/Avatar";
 import Banner from "../components/Banner";
 import { dispatchEvent } from "..";
-import { getIcon } from "../components/Icons";
+import Icons from "../components/Icons";
 
 export default function Preview() {
 
@@ -54,7 +54,7 @@ export default function Preview() {
                             <p className="text-white font-medium tracking-tighter">PLAYING A GAME</p>
                         </div>
                         <div className="flex gap-2 pt-2 pb-5">
-                            <getIcon className="rounded-sm w-[60px] h-[60px]" version={1}/>
+                            <Icons className="rounded-sm w-[60px] h-[60px]" version={1}/>
                             {/* <img className="rounded-sm w-[60px] h-[60px]" src="../../assets/AEFT.png" /> */}
                             <div className="flex flex-col text-white text-xs font-azeri_regular justify-center">
                                 {activity.name != "" && <p className="font-azeri_bold">{activity.name}</p>}

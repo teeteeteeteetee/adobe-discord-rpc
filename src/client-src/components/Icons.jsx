@@ -1,3 +1,18 @@
+/*
+ * File: Icons.jsx
+ * Project: discord-rpc
+ * File Created: Thursday, 23rd November 2023 11:19:04 am
+ * Author: Tee (tee@stainless.love)
+ * Github: https://github.com/teeteeteeteetee
+ * Discord: Tee#0001
+ * 
+ * Last Modified: Thursday, 23rd November 2023 2:51:18 pm
+ * Modified By: Tee (tee@stainless.love)
+ * 
+ * Copyright (c) 2023 Tee, Demon Cat
+ */
+
+import React from "react";
 import { getApplicationID } from "..";
 import AEFT from "../../assets/AEFT.png";
 import AEFT1 from "../../assets/AEFT1.png";
@@ -22,6 +37,22 @@ import PPRO1 from "../../assets/PPRO1.png";
 import PRLD from "../../assets/PRLD.png";
 import RUSH from "../../assets/RUSH.png"
 import RUSH1 from "../../assets/RUSH1.png"
+
+const icons = {
+  AEFT: [AEFT, AEFT1],
+  AICY: [AICY, AICY1],
+  AUDT: [AUDT, AUDT1],
+  DRWV: [DRWV, DRWV1],
+  FLPR: [FLPR, FLPR1],
+  IDSN: [IDSN, IDSN1],
+  ILST: [ILST, ILST1],
+  MEDIA_ENCODER: [MEDIA_ENCODER, MEDIA_ENCODER1],
+  PHXS: [PHXS, PHXS1],
+  PHSP: [PHXS, PHXS1],
+  PPRO: [PPRO, PPRO1],
+  PRLD: [PRLD],
+  RUSH: [RUSH, RUSH1],
+}
 
 export {
   AEFT,
@@ -53,9 +84,9 @@ export function setCustom({url}){
 
 }
 
-export function getIcon({ className, version }) {
+export default function getIcon ({ className, version }) {
   // <img className="rounded-sm w-[60px] h-[60px]" src="../../assets/AEFT.png" />  
-  const client = require("../../rpc_client-src/client")[getApplicationID()]
+  
 
-  return <img className={className} src={client.icons[version]}></img>;
+  return <img className={className} src={icons[getApplicationID()][version]} />
 }
