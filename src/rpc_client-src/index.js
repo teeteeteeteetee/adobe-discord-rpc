@@ -6,7 +6,7 @@
  * Github: https://github.com/teeteeteeteetee
  * Discord: Tee#0001
  * 
- * Last Modified: Saturday, 25th November 2023 1:08:59 pm
+ * Last Modified: Saturday, 25th November 2023 3:36:16 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Demon Cat
@@ -151,7 +151,7 @@ function main() {
                 props[func.replace('()', '')] = e
             })
         } else {
-            props[func.replace('()', '')] = "(hidden)"
+            props[func.replace('()', '')] = undefined
         }
     
     }
