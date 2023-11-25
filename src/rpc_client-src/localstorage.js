@@ -6,7 +6,7 @@
  * Github: https://github.com/lolitee
  * Discord: Tee#0001
  * 
- * Last Modified: Wednesday, 20th September 2023 2:40:55 pm
+ * Last Modified: Saturday, 25th November 2023 12:23:38 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
@@ -108,6 +108,7 @@ export function setConfiguration(name, configuration){
     window.localStorage.setItem(name, JSON.stringify(configuration));
     csInterface.dispatchEvent('com.tee.panel.settings')
 }
+
 export function getConfiguration(name){
     return JSON.parse(window.localStorage.getItem(name))
 }

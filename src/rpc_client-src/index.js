@@ -6,7 +6,7 @@
  * Github: https://github.com/teeteeteeteetee
  * Discord: Tee#0001
  * 
- * Last Modified: Wednesday, 20th September 2023 3:59:32 pm
+ * Last Modified: Saturday, 25th November 2023 1:02:21 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Demon Cat
@@ -61,15 +61,20 @@ if (csInterface.getApplicationID() === "AEFT") {
 
 csInterface.addEventListener('com.tee.rpc.reset', () => {
     console.log("reset")
+    rpc.destroy()
     resetConfiguration()
+    window.location.reload()
 })
 
 csInterface.addEventListener('com.tee.rpc.config', (e) => {
     console.log(e.data)
-    if (e.data.property) {
-        setConfiguration(e.data.property, e.data.config)
-        configurations = getConfigurations()
+
+    for (const [key, value] of Object.entries(e.data)){
+        console.log(key)
+        setConfiguration(key, value)
     }
+    configurations = getConfigurations()
+    presence = {}
 })
 
 if (!configurations.rpc) {
@@ -146,6 +151,8 @@ function main() {
             csInterface.evalScript(func, (e) => {
                 props[func.replace('()', '')] = e
             })
+        } else {
+            props[func.replace('()', '')] = "(hidden)"
         }
     
     }
@@ -154,6 +161,8 @@ function main() {
             csInterface.evalScript(func, (e) => {
                 props[func.replace('()', '')] = parseInt(e)
             })
+        }else{
+            props[func.replace('()', '')] = 0
         }
     }
 }

@@ -6,7 +6,7 @@
  * Github: https://github.com/lolitee
  * Discord: Tee#0001
  * 
- * Last Modified: Wednesday, 20th September 2023 2:58:43 pm
+ * Last Modified: Saturday, 25th November 2023 1:02:43 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
@@ -18,9 +18,12 @@ import { dispatchEvent } from '..';
 import { extensionConfigurationTemplate, getConfigurations, resetConfiguration, rpcConfigurationTemplate } from "../../rpc_client-src/localstorage"
 function ResetConfig(){
     dispatchEvent("com.tee.rpc.reset", {})
+    window.location.reload()
     // resetConfiguration()
 }
-function SaveConfig(config){
+function SaveConfig(config){    
+    dispatchEvent("com.tee.rpc.config", config)
+    // window.location.reload()
     console.log(config)
 }
 export default function Config() {
