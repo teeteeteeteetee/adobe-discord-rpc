@@ -6,7 +6,7 @@
  * Github: https://github.com/teeteeteeteetee
  * Discord: Tee#0001
  * 
- * Last Modified: Saturday, 25th November 2023 2:49:42 pm
+ * Last Modified: Saturday, 25th November 2023 5:12:42 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
@@ -14,8 +14,6 @@
 
 import { setConfiguration } from "../rpc_client-src/localstorage";
 
-
-// import { rpcConfiguration, extensionConfiguration, hasProp, getConfiguration, setConfiguration } from "./configuration";
 const csInterface = new CSInterface(); 
 
 class Controller {

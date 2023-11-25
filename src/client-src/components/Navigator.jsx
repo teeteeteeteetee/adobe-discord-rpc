@@ -6,7 +6,7 @@
  * Github: https://github.com/teeteeteeteetee
  * Discord: Tee#0001
  * 
- * Last Modified: Saturday, 25th November 2023 2:49:42 pm
+ * Last Modified: Saturday, 25th November 2023 4:18:43 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
@@ -16,7 +16,6 @@ import NavItem from "./NavItem";
 import { FaDiscord, FaCog, FaGithub } from 'react-icons/fa'
 import { VscDebugConsole } from 'react-icons/vsc'
 import property from "../../../package.json"
-import { openUrlInDefaultBrowser } from "..";
 export default function Navigator({setState}) {
 
     const [update, setUpdate] = useState(false)

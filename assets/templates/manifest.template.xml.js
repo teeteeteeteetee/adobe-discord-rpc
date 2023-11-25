@@ -1,3 +1,16 @@
+/*
+ * File: manifest.template.xml.js
+ * Project: discord-rpc
+ * File Created: Thursday, 23rd November 2023 11:19:04 am
+ * Author: Tee (tee@stainless.love)
+ * Github: https://github.com/teeteeteeteetee
+ * Discord: Tee#0001
+ * 
+ * Last Modified: Saturday, 25th November 2023 5:21:10 pm
+ * Modified By: Tee (tee@stainless.love)
+ * 
+ * Copyright (c) 2023 Tee, Demon Cat
+ */
 const hosts = require("../../src/rpc_client-src/client.js")
 
 const getHosts = (props) => {
@@ -40,6 +53,7 @@ const host = (props, key) =>
         <CEFCommandLine>
           <Parameter>--allow-file-access</Parameter>
           <Parameter>--allow-file-access-from-files</Parameter>
+          <Parameter>--disable-application-cache</Parameter>
           <Parameter>--enable-nodejs</Parameter>
           <Parameter>--mixed-context</Parameter>
         </CEFCommandLine>

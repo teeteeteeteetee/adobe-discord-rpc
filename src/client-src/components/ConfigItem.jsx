@@ -6,20 +6,20 @@
  * Github: https://github.com/teeteeteeteetee
  * Discord: Tee#0001
  *
- * Last Modified: Saturday, 25th November 2023 2:49:42 pm
+ * Last Modified: Saturday, 25th November 2023 4:45:34 pm
  * Modified By: Tee (tee@stainless.love)
  *
  * Copyright (c) 2023 Tee, Stainless Love
  */
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../discord.css";
 
 export default function ConfigItem({ title, template, group, config, setConfig }) {
 
     const checkbox = (id) => {
-        if(Object.keys(config).length !== 0){
+        if(Object.keys(config).length > 0){
             const [checked, setChecked] = useState(config[group][id].enabled)
-
+            
             return (
                 <div className="checkbox-container my-auto">
                     <input checked={checked} onChange={() => {
@@ -27,6 +27,7 @@ export default function ConfigItem({ title, template, group, config, setConfig }
                         config[group][id].enabled = !checked
                         setConfig(config)
                     }} className="checkbox" id={id} type="checkbox" />
+
                     <div className="checkbox-visual outline-none border-none focus:ring-0">
                         <div></div>
                     </div>

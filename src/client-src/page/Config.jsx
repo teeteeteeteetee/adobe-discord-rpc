@@ -6,7 +6,7 @@
  * Github: https://github.com/teeteeteeteetee
  * Discord: Tee#0001
  * 
- * Last Modified: Saturday, 25th November 2023 2:49:42 pm
+ * Last Modified: Saturday, 25th November 2023 5:12:00 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
@@ -15,14 +15,18 @@
 import React, {useEffect, useState} from 'react';
 import ConfigItem from '../components/ConfigItem'
 import { dispatchEvent } from '..';
-import { extensionConfigurationTemplate, getConfigurations, resetConfiguration, rpcConfigurationTemplate } from "../../rpc_client-src/localstorage"
+import { extensionConfigurationTemplate, getConfigurations, resetConfiguration, rpcConfigurationTemplate, setConfiguration } from "../../rpc_client-src/localstorage"
 function ResetConfig(){
     dispatchEvent("com.tee.rpc.reset", {})
     window.location.reload()
-    // resetConfiguration()
+    resetConfiguration()
 }
 function SaveConfig(config){    
     dispatchEvent("com.tee.rpc.config", config)
+    for (const [key, value] of Object.entries(config)){
+        console.log(key)
+        setConfiguration(key, value)
+    }
     // window.location.reload()
     console.log(config)
 }
