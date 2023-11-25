@@ -6,7 +6,7 @@
  * Github: https://github.com/lolitee
  * Discord: Tee#0001
  * 
- * Last Modified: Wednesday, 10th May 2023 1:19:59 pm
+ * Last Modified: Saturday, 25th November 2023 12:06:22 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
@@ -24,7 +24,7 @@ export default function Navigator({setState}) {
                 <NavItem onClick={() => setState("Preview")} href={"#"} text={"Preview"} icon={<FaDiscord className="text-gray-200 m-auto" />} />
                 <NavItem onClick={() => setState("Config")} href={"#"} text={"Config"} icon={<FaCog className="text-gray-200 m-auto" />} />
                 <NavItem onClick={() => setState("Debug")} href={"#"} text={"Debug"} icon={<VscDebugConsole className="text-gray-200 m-auto" />} />
-                <NavItem onClick={() => openUrlInDefaultBrowser('https://github.com/teeteeteeteetee/adobe-discord-rpc')} href={"#"} text={"Repository"} icon={<FaGithub className="text-gray-200 m-auto" />} />
+                <NavItem onClick={() => setState("Repository")} href={"#"} text={"Repository"} icon={<FaGithub className="text-gray-200 m-auto" />} />
             </div>
         </nav>
     );

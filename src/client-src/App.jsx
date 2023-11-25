@@ -6,7 +6,7 @@
  * Github: https://github.com/lolitee
  * Discord: Tee#0001
  * 
- * Last Modified: Wednesday, 10th May 2023 1:03:58 pm
+ * Last Modified: Saturday, 25th November 2023 12:05:51 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
@@ -17,6 +17,7 @@ import Navigator from './components/Navigator';
 import Preview from './page/Preview';
 import Config from './page/Config';
 import Debug from './page/Debug';
+import Repository from './page/Repository';
 export default function App(props) {
 
     const [state, setState] = useState("");
@@ -29,6 +30,7 @@ export default function App(props) {
             {state === "Preview" && <Preview />}
             {state === "Config" && <Config />}
             {state === "Debug" && <Debug />}
+            {state === "Repository" && <Repository />}
         </div>
     )
 }
