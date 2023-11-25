@@ -1,6 +1,6 @@
 {
   "name": "discord-rpc-client",
-  "version": "v0.0.2-hotfix1",
+  "version": "v0.0.2-hotfix2",
   "description": "Discord Rich Presence extension for your adobe apps!",
   "main": "index.js",
   "scripts": {
