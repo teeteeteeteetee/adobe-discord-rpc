@@ -6,13 +6,13 @@
  * Github: https://github.com/teeteeteeteetee
  * Discord: Tee#0001
  * 
- * Last Modified: Saturday, 25th November 2023 5:12:42 pm
+ * Last Modified: Saturday, 25th November 2023 6:12:27 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
  */
 
-import { setConfiguration } from "../rpc_client-src/localstorage";
+import { setConfiguration, rpcConfigurationTemplate, extensionConfigurationTemplate } from "../rpc_client-src/localstorage";
 
 const csInterface = new CSInterface(); 
 
@@ -39,6 +39,12 @@ class Controller {
             })
             this.logz(e.data)
         })
+
+        if(Object.keys(window.localStorage).length <= 0){
+            this.logz("Couldn't receive config, generating new ones.")
+            setConfiguration("rpc", rpcConfigurationTemplate);
+            setConfiguration("extension", extensionConfigurationTemplate);
+        }
     }
 
 }
