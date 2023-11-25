@@ -6,7 +6,7 @@
  * Github: https://github.com/teeteeteeteetee
  * Discord: Tee#0001
  * 
- * Last Modified: Saturday, 25th November 2023 1:02:21 pm
+ * Last Modified: Saturday, 25th November 2023 1:08:59 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Demon Cat
@@ -87,8 +87,7 @@ if (!configurations.extension) {
     configurations.extension = getConfiguration("extension");
 }
 
-config.data = configurations
-csInterface.dispatchEvent(config)
+csInterface.dispatchEvent(configurations)
 
 
 rpc.login()
@@ -100,8 +99,8 @@ rpc.login()
                 console.log(rpc.getUser())
                 csInterface.dispatchEvent(user)
             }
-            console.log(config)
-            csInterface.dispatchEvent(config)
+            console.log(configurations)
+            csInterface.dispatchEvent(configurations)
 
         })
     })
