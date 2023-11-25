@@ -3,10 +3,10 @@
  * Project: discord-rpc
  * File Created: Monday, 6th February 2023 9:35:09 pm
  * Author: Tee (tee@stainless.love)
- * Github: https://github.com/lolitee
+ * Github: https://github.com/teeteeteeteetee
  * Discord: Tee#0001
  * 
- * Last Modified: Saturday, 25th November 2023 1:52:40 pm
+ * Last Modified: Saturday, 25th November 2023 2:49:42 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love

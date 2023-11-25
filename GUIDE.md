@@ -1,5 +1,5 @@
 # Adobe Discord Rich Presence
-![](https://github.com/lolitee/adobe-discord-rpc/raw/master/demo/demo.gif "Preview of Discord x Adobe Rich Presence.")
+![](https://github.com/teeteeteeteetee/adobe-discord-rpc/raw/master/demo/demo.gif "Preview of Discord x Adobe Rich Presence.")
 
 # special thanks to Stxyl for helping me test macOS compatibility!
 
@@ -8,7 +8,7 @@
 This extension works on **CEP 8+ (2018+)**
 
 # How to
-![](https://github.com/lolitee/adobe-discord-rpc/raw/master/demo/installation1.gif "Quick Demo of the Extension being installed")
+![](https://github.com/teeteeteeteetee/adobe-discord-rpc/raw/master/demo/installation1.gif "Quick Demo of the Extension being installed")
 ## Method 1
 
 [video guide](https://www.youtube.com/watch?v=uZUnG9jf9RI)
