@@ -7,6 +7,7 @@ Adobe Discord Rich Presence is an extension that connects Adobe apps with Discor
 [UXP Version of extension](https://github.com/teeteeteeteetee/adobe-discord-rpc-uxp) (in progress)
 
 # Please do not clone the repository, get the extension from "Releases" https://github.com/teeteeteeteetee/adobe-discord-rpc/releases
+# Users on Apple Silicon need to run Photoshop through Rosetta and turn on Legacy Extensions through Preferences and restart the application.
 
 ![](demo/preview.gif)
 
