@@ -6,7 +6,7 @@
  * Github: https://github.com/teeteeteeteetee
  * Discord: Tee#0001
  * 
- * Last Modified: Saturday, 25th November 2023 4:52:55 pm
+ * Last Modified: Sunday, 7th April 2024 11:52:17 am
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Stainless Love
@@ -45,6 +45,7 @@ export const rpcConfigurationTemplate = {
     },
     largeImageKey: {
         enabled: true,
+        value: "logo",
         description: "",
         name: "Large Icon",
         type: "dropdown",

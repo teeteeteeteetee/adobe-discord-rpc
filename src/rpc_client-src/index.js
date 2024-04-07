@@ -6,7 +6,7 @@
  * Github: https://github.com/teeteeteeteetee
  * Discord: Tee#0001
  * 
- * Last Modified: Saturday, 25th November 2023 6:06:47 pm
+ * Last Modified: Sunday, 7th April 2024 12:08:04 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Demon Cat
@@ -123,7 +123,7 @@ function main() {
             callScript('largeImageText()')
             callScriptNumber('partySize()')
             callScriptNumber('partyMax()')
-            props.largeImageKey = 'logo'
+            props.largeImageKey = configurations.largeImageKey.value
 
 
             console.log(props)

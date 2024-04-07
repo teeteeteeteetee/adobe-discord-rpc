@@ -6,7 +6,7 @@
  * Github: https://github.com/teeteeteeteetee
  * Discord: Tee#0001
  *
- * Last Modified: Saturday, 25th November 2023 4:45:34 pm
+ * Last Modified: Sunday, 7th April 2024 12:08:18 pm
  * Modified By: Tee (tee@stainless.love)
  *
  * Copyright (c) 2023 Tee, Stainless Love
@@ -37,15 +37,21 @@ export default function ConfigItem({ title, template, group, config, setConfig }
     }
 
 
-    const dropdown = (id) => (
-        <div>
-            <select id={id} className="bg-dropdown outline-none w-32 px-2 rounded-md" name="logo">
-                <option value="old">Old</option>
-                <option value="new">Updated</option>
-                <option value="custom">Custom</option>
-            </select>
-        </div>
-    )
+    const dropdown = (id) => {
+
+        if(Object.keys(config).length > 0){
+            const [value, setValue] = useState(config[group][id].value)
+            return (
+                <div>
+                    <select onChange={console.log(this)} id={id} className="bg-dropdown outline-none w-32 px-2 rounded-md" name="logo">
+                        <option value="old">Old</option>
+                        <option value="new">Updated</option>
+                        <option value="custom">Custom</option>
+                    </select>
+                </div>
+            )
+        }
+    }
 
     const list = Object.keys(template)
         .filter(key => !template[key].hidden)
