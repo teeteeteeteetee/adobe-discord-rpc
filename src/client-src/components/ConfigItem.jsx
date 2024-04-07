@@ -6,7 +6,7 @@
  * Github: https://github.com/teeteeteeteetee
  * Discord: Tee#0001
  *
- * Last Modified: Sunday, 7th April 2024 12:08:18 pm
+ * Last Modified: Sunday, 7th April 2024 12:25:20 pm
  * Modified By: Tee (tee@stainless.love)
  *
  * Copyright (c) 2023 Tee, Stainless Love
@@ -40,10 +40,9 @@ export default function ConfigItem({ title, template, group, config, setConfig }
     const dropdown = (id) => {
 
         if(Object.keys(config).length > 0){
-            const [value, setValue] = useState(config[group][id].value)
             return (
                 <div>
-                    <select onChange={console.log(this)} id={id} className="bg-dropdown outline-none w-32 px-2 rounded-md" name="logo">
+                    <select onChange={(e) => config[group][id].value = e.target.value} id={id} className="bg-dropdown outline-none w-32 px-2 rounded-md" name="logo">
                         <option value="old">Old</option>
                         <option value="new">Updated</option>
                         <option value="custom">Custom</option>

@@ -6,7 +6,7 @@
  * Github: https://github.com/teeteeteeteetee
  * Discord: Tee#0001
  * 
- * Last Modified: Sunday, 7th April 2024 12:08:04 pm
+ * Last Modified: Sunday, 7th April 2024 12:30:53 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Demon Cat
@@ -115,6 +115,9 @@ function main() {
                 status = true
             }
 
+
+            console.log(configurations.rpc)
+
             callScript('state()')
             callScript('details()')
             callScript('smallImageKey()')
@@ -123,8 +126,21 @@ function main() {
             callScript('largeImageText()')
             callScriptNumber('partySize()')
             callScriptNumber('partyMax()')
-            props.largeImageKey = configurations.largeImageKey.value
-
+            // props.largeImageKey = configurations.extension[largeImageKey].value
+            if(configurations.rpc.largeImageKey.value){
+                switch(configurations.rpc.largeImageKey.value){
+                    case "old":
+                        props.largeImageKey = 'logo'
+                        break;
+                    case "new":
+                        props.largeImageKey = 'logo2'
+                        break;
+                    default:
+                        props.largeImageKey = configurations.rpc.largeImageKey.value
+                }
+            }else{
+                props.largeImageKey = 'logo2'
+            }
 
             console.log(props)
 
