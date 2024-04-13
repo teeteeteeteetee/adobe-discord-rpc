@@ -45,7 +45,7 @@ export default function ConfigItem({ title, template, group, config, setConfig }
                     <select onChange={(e) => config[group][id].value = e.target.value} id={id} className="bg-dropdown outline-none w-32 px-2 rounded-md" name="logo">
                         <option value="old">Old</option>
                         <option value="new">Updated</option>
-                        <option value="custom">Custom</option>
+                        <option disabled value="custom">Custom</option>
                     </select>
                 </div>
             )

@@ -6,7 +6,7 @@
  * Github: https://github.com/teeteeteeteetee
  * Discord: Tee#0001
  * 
- * Last Modified: Saturday, 25th November 2023 5:21:10 pm
+ * Last Modified: Sunday, 7th April 2024 11:07:36 pm
  * Modified By: Tee (tee@stainless.love)
  * 
  * Copyright (c) 2023 Tee, Demon Cat
@@ -64,6 +64,7 @@ const host = (props, key) =>
           <Event>com.adobe.csxs.events.ApplicationInitialized</Event>
           <Event>applicationActivate</Event>
           <Event>com.adobe.csxs.events.ApplicationActivate</Event>
+          <Event>com.adobe.events.flash.documentChanged</Event>
         </StartOn>
       </Lifecycle>
       <UI>
