@@ -65,6 +65,7 @@ const host = (props, key) =>
           <Event>applicationActivate</Event>
           <Event>com.adobe.csxs.events.ApplicationActivate</Event>
           <Event>com.adobe.events.flash.documentChanged</Event>
+          <Event>com.tee.rpc.update</Event>
         </StartOn>
       </Lifecycle>
       <UI>
