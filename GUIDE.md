@@ -18,10 +18,10 @@ This extension works on **CEP 8+ (2018+)**
  _([If you don't have a zip extractor you can install one **here**](https://7-zip.org))_
 1. Unzip the file using your preferred .zip extractor and extract the folder `discord rpc` into:
 	- **Windows:**
-		- `C:/Program Files (x86)/Common Files/Adobe/CEP/extensions`
+		- `C:\Program Files (x86)\Common Files\Adobe\CEP\extensions`
 		OR
 			- Hold `Windows + R` and enter **%appdata%**
-		- `%appdata%/Adobe/CEP/extensions` _(User only)_ \n (only if program files folder didn't work)
+		- `%appdata%\Adobe\CEP\extensions` _(User only)_ \n (only if program files folder didn't work)
 	- **MacOS:**
 		- `~/Library/Application Support/Adobe/CEP/extensions`
 <!-- 		- chmod the folder in terminal with `chmod -R 777 'discord rpc'` (recommended) -->
