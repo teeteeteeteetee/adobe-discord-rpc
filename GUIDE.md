@@ -52,9 +52,9 @@ And there you go! You should see the Rich Presence on your profile, if it doesn'
 
 # Troubleshooting
 - **Windows:**
-	- If there is no `/CEP/` folder then you might have a bad Adobe Installation.
+	- If there is no `/CEP/` folder, create a folder called `CEP` in `C:\Program Files (x86)\Common Files\Adobe\`. Then, inside the newly created `CEP` folder, create a folder called `extensions`. Now drag and drop the extracted folder to the `extensions` folder, and the Rich Presence extension should work correctly.
 	- If the extension doesn't show up in `Window > Extensions`, then re-check if `PlayerDebugMode` is set to `1` in Registry Editor
-	- If **nothing above** works, then there's most likely an issue on Adobe's side, most likely that your app is outdated or the extension itself is broken. I 		recommend updating your app.
+	- If **nothing above** works, then there's most likely an issue on Adobe's side, most likely that your app is outdated or the extension itself is broken. I recommend updating your app.
 # Support
 If __NOTHING__ on the troubleshooting section works. Or you need extra assistance to install the extension, feel free to join the help server [here.](https://discord.gg/RGtxbuFtzb "Redirects you to the Adobe Discord Rich Presence Support Server.")
 
