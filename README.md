@@ -1,3 +1,7 @@
+⚠️ make sure to update to the latest version due to changes to the rpc api on discord's side
+![image](https://github.com/user-attachments/assets/9b41dc7b-7ee7-4e98-a66d-d0e017f08d6d)
+
+
 ![](demo/demo.gif)
 
 # Adobe Discord Rich Presence
