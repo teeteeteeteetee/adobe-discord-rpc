@@ -61,13 +61,20 @@ export default class RichPresence {
         this.client.setActivity({
             details: props.details,
             state: props.state,
-            startTimestamp: props.startTimestamp,
-            largeImageKey: props.largeImageKey,
-            largeImageText: props.largeImageText,
-            smallImageKey: props.smallImageKey,
-            smallImageText: props.smallImageText,
-            partySize: props.partySize,
-            partyMax: props.partyMax,
+            // https://discord.com/developers/docs/events/gateway-events#activity-object-activity-assets recent api changes
+
+            timestamps: {
+                start: props.startTimestamp,
+            },
+            assets: {
+                large_image: props.largeImageKey,
+                large_text: props.largeImageText,
+                small_image: props.smallImageKey,
+                small_text: props.smallImageText,
+            },
+            party: {
+                size: [props.partySize, props.partyMax]
+            }
         })
     }
 
