@@ -27,6 +27,7 @@ This extension works on **CEP 8+ (2018+)**
 <!-- 		- chmod the folder in terminal with `chmod -R 777 'discord rpc'` (recommended) -->
 2. - **Windows:**: 
 	In regedit, go to one of these paths depending on your version
+		- 2025(late): `HKEY_CURRENT_USER\Software\Adobe\CSXS.12`
  		- 2021(late): `HKEY_CURRENT_USER\Software\Adobe\CSXS.11`
 		- 2021(early)/2020(late): `HKEY_CURRENT_USER\Software\Adobe\CSXS.10`
 		- 2020(early)/2019: `HKEY_CURRENT_USER\Software\Adobe\CSXS.9`
@@ -34,6 +35,7 @@ This extension works on **CEP 8+ (2018+)**
 	- Create a string value called "PlayerDebugMode" and put "1" as value
    - **MacOS:**: 
    	In the terminal write
+		- 2025(late): `defaults write com.adobe.CSXS.12 PlayerDebugMode 1`
    		- 2021(late): `defaults write com.adobe.CSXS.11 PlayerDebugMode 1`
    		- 2021(early)/2020(late): `defaults write com.adobe.CSXS.10 PlayerDebugMode 1`
 		- 2020(early)/2019: `defaults write com.adobe.CSXS.9 PlayerDebugMode 1`
