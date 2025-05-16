@@ -45,7 +45,7 @@ export const rpcConfigurationTemplate = {
     },
     largeImageKey: {
         enabled: true,
-        value: "logo",
+        value: "logo2",
         description: "",
         name: "Large Icon",
         type: "dropdown",

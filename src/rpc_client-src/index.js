@@ -32,7 +32,7 @@ const props = {
     state: undefined,
     details: undefined,
     startTimestamp: new Date(),
-    largeImageKey: 'logo',
+    largeImageKey: 'logo2',
     largeImageText: undefined,
     smallImageKey: undefined,
     smallImageText: undefined,
