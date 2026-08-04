@@ -1,10 +1,9 @@
 {
   "name": "discord-rpc",
-  "version": "v0.0.4",
+  "version": "v0.0.5",
   "description": "Discord Rich Presence extension for your adobe apps!",
   "main": "./client-src/src/index.js",
   "scripts": {
-    "build": "node ./scripts/build.js",
     "start": "npm run client:dev-server",
     "client:dev-server": "webpack-dev-server --config ./build-scripts/webpack.client.config.js --env.target=web --mode development --open",
     "build:dev": "node ./build-scripts/build.js development",
@@ -53,7 +52,7 @@
     "url-loader": "^4.1.1",
     "webpack": "^5.88.1",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^3.11.3",
+    "webpack-dev-server": "4",
     "webpack-node-externals": "^1.7.2",
     "zxp-sign-cmd": "^1.0.0"
   },

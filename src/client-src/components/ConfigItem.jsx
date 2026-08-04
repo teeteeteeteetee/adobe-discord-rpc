@@ -18,14 +18,12 @@ export default function ConfigItem({ title, template, group, config, setConfig }
 
     const checkbox = (id) => {
         if(Object.keys(config).length > 0){
-            const [checked, setChecked] = useState(config[group][id].enabled)
-            
             return (
                 <div className="checkbox-container my-auto">
-                    <input checked={checked} onChange={() => {
-                        setChecked(!checked)
-                        config[group][id].enabled = !checked
-                        setConfig(config)
+                    <input checked={config[group][id].enabled} onChange={(e) => {
+                        const newConfig = JSON.parse(JSON.stringify(config));
+                        newConfig[group][id].enabled = e.target.checked;
+                        setConfig(newConfig);
                     }} className="checkbox" id={id} type="checkbox" />
 
                     <div className="checkbox-visual outline-none border-none focus:ring-0">
@@ -42,7 +40,11 @@ export default function ConfigItem({ title, template, group, config, setConfig }
         if(Object.keys(config).length > 0){
             return (
                 <div>
-                    <select onChange={(e) => config[group][id].value = e.target.value} id={id} className="bg-dropdown outline-none w-32 px-2 rounded-md" name="logo">
+                    <select value={config[group][id].value} onChange={(e) => {
+                        const newConfig = JSON.parse(JSON.stringify(config));
+                        newConfig[group][id].value = e.target.value;
+                        setConfig(newConfig);
+                    }} id={id} className="bg-dropdown outline-none w-32 px-2 rounded-md" name="logo">
                         <option value="old">Old</option>
                         <option value="new">Updated</option>
                         <option disabled value="custom">Custom</option>

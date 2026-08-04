@@ -13,10 +13,10 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set Node.js 16.19.0
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 16
 
@@ -41,13 +41,13 @@ jobs:
         run: Move-Item -Path "./dist/com.tee.discord-rpc" -Destination "./com.tee.discord-rpc"
 
       - name: Upload artifact for deployment job (zip)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ZIP Release
           path: ./com.tee.discord-rpc
           
       - name: Upload artifact for deployment job (zxp)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ZXP Release
           path: ./dist/com.tee.discord-rpc.zxp

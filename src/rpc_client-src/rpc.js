@@ -84,4 +84,9 @@ export default class RichPresence {
     getStatus() {
         return this.active;
     }
+    clearActivity() {
+        if (this.client) {
+            this.client.clearActivity().catch(console.error);
+        }
+    }
 }

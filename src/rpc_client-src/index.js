@@ -55,7 +55,7 @@ if (csInterface.getApplicationID() === "AEFT") {
         return;
     });
     if (isDynamicLink)
-    // TODO: handle dunamic link
+        // TODO: handle dunamic link
         throw new Error("Started as dynamic link");
 }
 
@@ -69,7 +69,7 @@ csInterface.addEventListener('com.tee.rpc.reset', () => {
 csInterface.addEventListener('com.tee.rpc.config', (e) => {
     console.log(e.data)
 
-    for (const [key, value] of Object.entries(e.data)){
+    for (const [key, value] of Object.entries(e.data)) {
         console.log(key)
         setConfiguration(key, value)
     }
@@ -110,50 +110,57 @@ rpc.login()
 function main() {
     try {
         if (rpc.getStatus()) {
-            if (!status) {
-                presence = {}
-                status = true
-            }
-
-
-            console.log(configurations.rpc)
-
-            callScript('state()')
-            callScript('details()')
-            callScript('smallImageKey()')
-            callScript('smallImageText()')
-            // callScript('largeImageKey()')
-            callScript('largeImageText()')
-            callScriptNumber('partySize()')
-            callScriptNumber('partyMax()')
-            // props.largeImageKey = configurations.extension[largeImageKey].value
-            if(configurations.rpc.largeImageKey.value){
-                switch(configurations.rpc.largeImageKey.value){
-                    case "old":
-                        props.largeImageKey = 'logo'
-                        break;
-                    case "new":
-                        props.largeImageKey = 'logo2'
-                        break;
-                    default:
-                        props.largeImageKey = configurations.rpc.largeImageKey.value
+            if (!configurations.rpc.enabled.enabled) {
+                if (status) {
+                    rpc.clearActivity();
+                    presence = {};
+                    status = false;
                 }
-            }else{
-                props.largeImageKey = 'logo2'
-            }
-
-            console.log(props)
-
-            if (!isEqual(presence, props)) {
-                rpc.setActivity(props)
-                presence = clone(props)
-                activity.data = {
-                    ...presence,
-                    name: client.name
+            } else {
+                if (!status) {
+                    presence = {}
+                    status = true
                 }
-                csInterface.dispatchEvent(activity)
-            }
 
+                console.log(configurations.rpc)
+
+                callScript('state()')
+                callScript('details()')
+                callScript('smallImageKey()')
+                callScript('smallImageText()')
+                // callScript('largeImageKey()')
+                callScript('largeImageText()')
+                callScriptNumber('partySize()')
+                callScriptNumber('partyMax()')
+                // props.largeImageKey = configurations.extension[largeImageKey].value
+                if (configurations.rpc.largeImageKey.value) {
+                    switch (configurations.rpc.largeImageKey.value) {
+                        case "old":
+                            props.largeImageKey = 'logo'
+                            break;
+                        case "new":
+                            props.largeImageKey = 'logo2'
+                            break;
+                        default:
+                            props.largeImageKey = configurations.rpc.largeImageKey.value
+                    }
+                } else {
+                    props.largeImageKey = 'logo2'
+                }
+
+                console.log(props)
+
+                if (!isEqual(presence, props)) {
+                    rpc.setActivity(props)
+                    presence = clone(props)
+                    activity.data = {
+                        ...presence,
+                        name: client.name
+                    }
+                    csInterface.dispatchEvent(activity)
+                }
+
+            }
         } else {
             status = false;
         }
@@ -170,14 +177,14 @@ function main() {
         } else {
             props[func.replace('()', '')] = undefined
         }
-    
+
     }
     function callScriptNumber(func) {
         if (configurations["rpc"][func.replace('()', '')]["enabled"]) {
             csInterface.evalScript(func, (e) => {
                 props[func.replace('()', '')] = parseInt(e)
             })
-        }else{
+        } else {
             props[func.replace('()', '')] = 0
         }
     }
