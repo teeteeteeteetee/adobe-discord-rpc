@@ -41,8 +41,8 @@ function build() {
         utils.log_progress('copying host code...')
         utils.copyRecursiveSync(fromSrc('host'), fromPlugin('host'))
         // copy the session's node modules folder
-        utils.log_progress('copying rpc_client node-modules...')
-        utils.copyRecursiveSync(fromSrc('rpc_client-src/node_modules'), fromPlugin('node_modules'))
+        //utils.log_progress('copying rpc_client node-modules...')
+        //utils.copyRecursiveSync(fromSrc('rpc_client-src/node_modules'), fromPlugin('node_modules'))
         // copying libs folder
         utils.log_progress('copying libs folder...')
         utils.copyRecursiveSync(fromSrc('libs'), fromPlugin('libs'))
