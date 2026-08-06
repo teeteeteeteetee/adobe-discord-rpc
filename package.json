@@ -5,6 +5,7 @@
   "main": "./client-src/src/index.js",
   "scripts": {
     "start": "npm run client:dev-server",
+    "build:installer": "npm run deploy:prod && ISCC installer\\setup.iss",
     "client:dev-server": "webpack-dev-server --config ./build-scripts/webpack.client.config.js --env.target=web --mode development --open",
     "build:dev": "node ./build-scripts/build.js development",
     "build:prod": "node ./build-scripts/build.js production",
@@ -12,7 +13,7 @@
     "deploy:prod": "node ./build-scripts/deploy.js production",
     "archive": "node ./build-scripts/archive.js",
     "release:dev": "npm run build:dev && npm run deploy:dev",
-    "release:prod": "npm run build:prod && npm run deploy:prod && npm run archive",
+    "release:prod": "npm run build:prod && npm run deploy:prod && npm run archive && npm run build:installer",
     "b": "babel ./client/js --out-dir ./client/out",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -60,6 +61,7 @@
     "@babel/plugin-proposal-optional-catch-binding": "^7.18.6",
     "axios": "^1.4.0",
     "console-feed": "^3.4.3",
+    "discord-rpc": "^3.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1"
